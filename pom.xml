@@ -13,8 +13,8 @@
 		<java.version>11</java.version>
 	</properties>
   
-	<name>AutoTest</name>
-	<description>AutoTest project for Spring Boot</description>
+	<name>MechineryMotorTalent</name>
+	<description>MechineryMotorTalent project for Spring Boot</description>
 
 
 	<!-- 
