@@ -23,6 +23,7 @@ public class User {
 	@GeneratedValue
 	@Column(name = "id", nullable = false)
 	private Long id;
+	@Column(name = "email", nullable = false)
 	private String email;
 	private String password;
 	private String name;
