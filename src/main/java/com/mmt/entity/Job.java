@@ -1,15 +1,23 @@
 package com.mmt.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="job")
 public class Job {
-	
+	@Id
+	@GeneratedValue
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String name;
@@ -25,6 +33,10 @@ public class Job {
 	private String contact;
 	private String contactPhone;
 	private String email;
+	private Long status;
+	private Long topFlag;//是否置顶
+	private List<User> postUsers; //投递用户
+	private List<User> collectUsers; //收藏用户
 	/**
 	 * @return the id
 	 */
@@ -193,5 +205,68 @@ public class Job {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	/**
+	 * @return the status
+	 */
+	public Long getStatus() {
+		return status;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(Long status) {
+		this.status = status;
+	}
+	/**
+	 * @return the topFlag
+	 */
+	public Long getTopFlag() {
+		return topFlag;
+	}
+	/**
+	 * @param topFlag the topFlag to set
+	 */
+	public void setTopFlag(Long topFlag) {
+		this.topFlag = topFlag;
+	}
+	/**
+	 * @return the postUsers
+	 */
+	public List<User> getPostUsers() {
+		return postUsers;
+	}
+	/**
+	 * @param postUsers the postUsers to set
+	 */
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "post_user_job",
+    	joinColumns = @JoinColumn(name = "job_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+	public void setPostUsers(List<User> postUsers) {
+		this.postUsers = postUsers;
+	}
+	/**
+	 * @return the collectUsers
+	 */
+	public List<User> getCollectUsers() {
+		return collectUsers;
+	}
+	/**
+	 * @param collectUsers the collectUsers to set
+	 */
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "collect_user_job",
+    	joinColumns = @JoinColumn(name = "job_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+	public void setCollectUsers(List<User> collectUsers) {
+		this.collectUsers = collectUsers;
+	}
 }

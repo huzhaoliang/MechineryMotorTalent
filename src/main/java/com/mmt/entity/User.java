@@ -1,7 +1,15 @@
 package com.mmt.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 /**
  * 个人用户
@@ -11,7 +19,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user")
 public class User {
-	
+	@Id
+	@GeneratedValue
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String email;
@@ -25,6 +34,9 @@ public class User {
 	private String resumePath;
 	private String refreshTime;
 	// to be added: 投递职位，收藏职位
+	private List<Job> postJobs;
+	private List<Job> collectJobs;
+	
 	/**
 	 * @return the refreshTime
 	 */
@@ -171,6 +183,46 @@ public class User {
 	 */
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	/**
+	 * @return the postJobs
+	 */
+	public List<Job> getPostJobs() {
+		return postJobs;
+	}
+	/**
+	 * @param postJobs the postJobs to set
+	 */
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "post_user_job",
+    	joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
+	public void setPostJobs(List<Job> postJobs) {
+		this.postJobs = postJobs;
+	}
+	/**
+	 * @return the collectJobs
+	 */
+	public List<Job> getCollectJobs() {
+		return collectJobs;
+	}
+	/**
+	 * @param collectJobs the collectJobs to set
+	 */
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "collect_user_job",
+    	joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
+	public void setCollectJobs(List<Job> collectJobs) {
+		this.collectJobs = collectJobs;
 	}
 	
 }
