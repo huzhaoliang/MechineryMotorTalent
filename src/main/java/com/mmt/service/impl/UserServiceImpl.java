@@ -13,10 +13,8 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 
 	@Override
-	public int insertUser(User user) {
-		// TODO Auto-generated method stub
-		
-		return 0;
+	public User insertUser(User user) {
+		return userRepository.saveAndFlush(user);
 	}
 
 }
