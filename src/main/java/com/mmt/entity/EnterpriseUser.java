@@ -1,5 +1,6 @@
 package com.mmt.entity;
 
+import java.sql.Clob;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,11 +23,12 @@ public class EnterpriseUser {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String name;
+	private String password;
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
 	private City city;
 	private String locate;
-	private String description;
+	private Clob description;
 	private String logoPath;
 	private String contact;
 	private String telephone;
@@ -35,6 +37,7 @@ public class EnterpriseUser {
 	private String webSite;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Job> jobs;
+	private Long status;// 0:待审核 1:审核通过
 	/**
 	 * @return the id
 	 */
@@ -83,18 +86,6 @@ public class EnterpriseUser {
 	 */
 	public void setLocate(String locate) {
 		this.locate = locate;
-	}
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	/**
 	 * @return the logoPath
@@ -180,5 +171,40 @@ public class EnterpriseUser {
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
-	
+	/**
+	 * @return the description
+	 */
+	public Clob getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(Clob description) {
+		this.description = description;
+	}
+	/**
+	 * @return the status
+	 */
+	public Long getStatus() {
+		return status;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(Long status) {
+		this.status = status;
+	}
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

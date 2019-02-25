@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,6 +22,8 @@ public class City {
 	private Long parentId;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<EnterpriseUser> companys;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<JobFair> jobFairs;
 	/**
 	 * @return the id
 	 */
@@ -71,5 +72,28 @@ public class City {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
-	
+	/**
+	 * @return the companys
+	 */
+	public List<EnterpriseUser> getCompanys() {
+		return companys;
+	}
+	/**
+	 * @param companys the companys to set
+	 */
+	public void setCompanys(List<EnterpriseUser> companys) {
+		this.companys = companys;
+	}
+	/**
+	 * @return the jobFairs
+	 */
+	public List<JobFair> getJobFairs() {
+		return jobFairs;
+	}
+	/**
+	 * @param jobFairs the jobFairs to set
+	 */
+	public void setJobFairs(List<JobFair> jobFairs) {
+		this.jobFairs = jobFairs;
+	}
 }

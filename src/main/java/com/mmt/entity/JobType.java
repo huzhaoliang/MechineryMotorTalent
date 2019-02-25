@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * 工作类型
+ * @author hp
+ *
+ */
 @Entity
 @Table(name="job_type")
 public class JobType {
@@ -20,6 +25,7 @@ public class JobType {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String type;
+	private Long flag;// 1， 2， 3
 	private Long parentId;
 	private Date updateTime;
 	@OneToMany(cascade = CascadeType.ALL)
@@ -72,6 +78,28 @@ public class JobType {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
-	
+	/**
+	 * @return the flag
+	 */
+	public Long getFlag() {
+		return flag;
+	}
+	/**
+	 * @param flag the flag to set
+	 */
+	public void setFlag(Long flag) {
+		this.flag = flag;
+	}
+	/**
+	 * @return the jobs
+	 */
+	public List<Job> getJobs() {
+		return jobs;
+	}
+	/**
+	 * @param jobs the jobs to set
+	 */
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
 }

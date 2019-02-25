@@ -1,5 +1,6 @@
 package com.mmt.entity;
 
+import java.sql.Clob;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Job {
 	private Long exp;
 	private String tag;
 	private Date publishTime;
-	private String description;
+	private Clob description;
 	private String contact;
 	private String contactPhone;
 	private String email;
@@ -194,17 +195,16 @@ public class Job {
 	public void setPublishTime(Date publishTime) {
 		this.publishTime = publishTime;
 	}
-
 	/**
 	 * @return the description
 	 */
-	public String getDescription() {
+	public Clob getDescription() {
 		return description;
 	}
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
+	public void setDescription(Clob description) {
 		this.description = description;
 	}
 	/**
