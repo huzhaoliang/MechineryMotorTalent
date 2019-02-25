@@ -1,15 +1,18 @@
 package com.mmt.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
  * 个人用户
@@ -31,25 +34,31 @@ public class User {
 	private Long gender;
 	private Long education;
 	private Long experience;
-	private Long destCityId;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+	private City destCity;
 	private String resumePath;
-	private String refreshTime;
+	private Date refreshTime;
 	// to be added: 投递职位，收藏职位
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "post_user_job",
+    	joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
 	private List<Job> postJobs;
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+	        CascadeType.MERGE
+	    })
+    @JoinTable(name = "collect_user_job",
+    	joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
 	private List<Job> collectJobs;
 	
-	/**
-	 * @return the refreshTime
-	 */
-	public String getRefreshTime() {
-		return refreshTime;
-	}
-	/**
-	 * @param refreshTime the refreshTime to set
-	 */
-	public void setRefreshTime(String refreshTime) {
-		this.refreshTime = refreshTime;
-	}
 	private Integer status;
 	/**
 	 * @return the id
@@ -150,16 +159,16 @@ public class User {
 	}
 	
 	/**
-	 * @return the destCityId
+	 * @return the destCity
 	 */
-	public Long getDestCityId() {
-		return destCityId;
+	public City getDestCity() {
+		return destCity;
 	}
 	/**
-	 * @param destCityId the destCityId to set
+	 * @param destCity the destCity to set
 	 */
-	public void setDestCityId(Long destCityId) {
-		this.destCityId = destCityId;
+	public void setDestCity(City destCity) {
+		this.destCity = destCity;
 	}
 	/**
 	 * @return the resumePath
@@ -194,14 +203,6 @@ public class User {
 	/**
 	 * @param postJobs the postJobs to set
 	 */
-	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-	        CascadeType.MERGE
-	    })
-    @JoinTable(name = "post_user_job",
-    	joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "job_id")
-    )
 	public void setPostJobs(List<Job> postJobs) {
 		this.postJobs = postJobs;
 	}
@@ -214,16 +215,20 @@ public class User {
 	/**
 	 * @param collectJobs the collectJobs to set
 	 */
-	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-	        CascadeType.MERGE
-	    })
-    @JoinTable(name = "collect_user_job",
-    	joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "job_id")
-    )
 	public void setCollectJobs(List<Job> collectJobs) {
 		this.collectJobs = collectJobs;
+	}
+	/**
+	 * @return the refreshTime
+	 */
+	public Date getRefreshTime() {
+		return refreshTime;
+	}
+	/**
+	 * @param refreshTime the refreshTime to set
+	 */
+	public void setRefreshTime(Date refreshTime) {
+		this.refreshTime = refreshTime;
 	}
 	
 }

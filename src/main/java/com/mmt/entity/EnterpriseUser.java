@@ -2,10 +2,15 @@ package com.mmt.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +22,9 @@ public class EnterpriseUser {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String name;
-	private Long cicyId;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+	private City city;
 	private String locate;
 	private String description;
 	private String logoPath;
@@ -26,6 +33,7 @@ public class EnterpriseUser {
 	private String postCode;
 	private String email;
 	private String webSite;
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Job> jobs;
 	/**
 	 * @return the id
@@ -51,18 +59,18 @@ public class EnterpriseUser {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	/**
-	 * @return the cicyId
+	 * @return the city
 	 */
-	public Long getCicyId() {
-		return cicyId;
+	public City getCity() {
+		return city;
 	}
 	/**
-	 * @param cicyId the cicyId to set
+	 * @param city the city to set
 	 */
-	public void setCicyId(Long cicyId) {
-		this.cicyId = cicyId;
+	public void setCity(City city) {
+		this.city = city;
 	}
 	/**
 	 * @return the locate

@@ -1,11 +1,14 @@
 package com.mmt.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,8 @@ public class JobType {
 	private String type;
 	private Long parentId;
 	private Date updateTime;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Job> jobs;
 	/**
 	 * @return the id
 	 */
