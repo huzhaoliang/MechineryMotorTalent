@@ -13,7 +13,6 @@ public class Main
 		System.out.println("Hello");
 		SpringApplication.run(Main.class, args);
 		
-		
 	}
 
 }
