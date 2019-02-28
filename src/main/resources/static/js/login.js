@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', []);
-myApp.controller('loginCtrl', function($scope, $http) {
+myApp.controller('loginCtrl', function($scope, $http, $location) {
 	$scope.submit = function(){
 		var name = $scope.name;
 		if(name == null){
@@ -18,13 +18,15 @@ myApp.controller('loginCtrl', function($scope, $http) {
 		}).then(function successCallback(res) {
 			var status = res.data;
 	        console.log("status = " + status);
-	        if (status == true){
-	            alert("登录成功，页面跳转......");
-	        }else {
+	        if (status == false){
 	        	alert("请输入正确的用户名和密码！");
+	        	return;
+	        }else{
+	        	$location.path("/main");
 	        }
         	}, function errorCallback(res) {
         		alert("登录失败，请稍后再试！");
+        		return;
 		});    
 	}
 });

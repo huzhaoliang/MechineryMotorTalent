@@ -9,6 +9,7 @@ import com.mmt.service.SysAdminUserService;
 
 @Service(value="SysAdminUserService")
 public class SysAdminUserServiceImpl implements SysAdminUserService{
+	
 	@Autowired
 	private SysAdminUserRepository adminRepository;
 
@@ -16,4 +17,5 @@ public class SysAdminUserServiceImpl implements SysAdminUserService{
 	public SysAdminUser checkUserByNameAndPwd(String name, String password) {
 		return adminRepository.checkUserByNameAndPwd(name, password);
 	}
+	
 }

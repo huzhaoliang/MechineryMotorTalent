@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 /**
  * 管理员
  * @author hp
@@ -21,6 +22,7 @@ public class SysAdminUser {
 	private String name;
 	private String password;
 	private Date LastLoginTime;
+	
 	/**
 	 * @return the id
 	 */
