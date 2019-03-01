@@ -22,7 +22,8 @@ myApp.controller('loginCtrl', function($scope, $http, $location) {
 	        	alert("请输入正确的用户名和密码！");
 	        	return;
 	        }else{
-	        	$location.path("/main");
+	        	//$location.path("/main");
+	        	window.location="/main";
 	        }
         	}, function errorCallback(res) {
         		alert("登录失败，请稍后再试！");
