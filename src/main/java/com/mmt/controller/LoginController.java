@@ -7,8 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class LoginController {
+public class LoginController 
+{
 	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	@RequestMapping(value="/")
+	public String home()
+	{
+		logger.info("++++++++login action++++++++++");
+		return "manage/login";
+	}
 	
 	@RequestMapping(value="/login")
 	public String index() {
