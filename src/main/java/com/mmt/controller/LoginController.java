@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mmt.service.SysAdminUserService;
 
@@ -32,6 +33,6 @@ public class LoginController
 	@RequestMapping("/manage/login-error")
 	public String loginError(Model model) {
 		model.addAttribute("loginError", true);
-		return "manage/404";
+		return "manage/login";
 	}
 }

@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', []);
-myApp.controller('loginCtrl', function($scope, $http, $location) {
+myApp.controller('loginCtrl', function($scope, $http) {
 	$scope.submit = function(){
-		var name = $scope.name;
+		var name = $scope.username;
 		if(name == null){
 			alert("请填写用户名！");
 			return;
@@ -12,9 +12,10 @@ myApp.controller('loginCtrl', function($scope, $http, $location) {
 			return;
 		}
 		$http({
-		    method: 'GET',
-		    url: '/verify',
-		    params: {'name':name,'password':password}
+		    method: 'POST',
+		    url: '/manage/login',
+		    data: {username: name, password:password}, 
+	        headers: {'Content-Type':'application/x-www-form-urlencoded'} 
 		}).then(function successCallback(res) {
 			var status = res.data;
 	        console.log("status = " + status);
@@ -22,8 +23,7 @@ myApp.controller('loginCtrl', function($scope, $http, $location) {
 	        	alert("请输入正确的用户名和密码！");
 	        	return;
 	        }else{
-	        	//$location.path("/main");
-	        	window.location="/main";
+	        	alert("ddd")
 	        }
         	}, function errorCallback(res) {
         		alert("登录失败，请稍后再试！");
