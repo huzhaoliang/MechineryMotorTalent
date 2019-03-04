@@ -2,15 +2,9 @@ package com.mmt.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.mmt.service.SysAdminUserService;
-
 
 @Controller
 public class LoginController 
@@ -34,5 +28,15 @@ public class LoginController
 	public String loginError(Model model) {
 		model.addAttribute("loginError", true);
 		return "manage/login";
+	}
+	
+	@RequestMapping("/manage/404")
+	public String notFound(Model model) {
+		return "manage/404";
+	}
+	
+	@RequestMapping("/manage/403")
+	public String notAccess(Model model) {
+		return "manage/403";
 	}
 }

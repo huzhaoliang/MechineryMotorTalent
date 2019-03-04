@@ -1,7 +1,6 @@
 package com.mmt.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,8 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
-
-import com.mmt.Main;
 import com.mmt.support.MyUserDetailsService;
 
 @Configuration
@@ -34,16 +31,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             //.antMatchers("/manage/**").hasRole("MANAGE")
             // 任何尚未匹配的URL只需要验证用户即可访问
             .anyRequest().authenticated()
-            .and()
-            .formLogin()
+            .and().formLogin()
             // 指定登录页面,授予所有用户访问登录页面
             .loginPage("/manage/login")
             .successHandler(new ForwardAuthenticationSuccessHandler("/manage/main"))
             .failureUrl("/manage/login-error").permitAll()
-            .and()
-            .logout()
-            .logoutSuccessUrl("/manage/login");
-	}
+            .and().exceptionHandling().accessDeniedPage("/manage/403")
+            .and().logout().logoutSuccessUrl("/manage/login")
+            .and().csrf().disable();
+        }
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
