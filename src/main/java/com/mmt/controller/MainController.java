@@ -20,4 +20,16 @@ public class MainController {
 		System.out.println("++++++to main.html+++++");
 		return "manage/main";
 	}
+	
+	@RequestMapping(value = "/top")
+	public String top() {
+		System.out.println("++++++to top.html+++++");
+		return "manage/top";
+	}
+	
+	@RequestMapping(value = "/left")
+	public String left() {
+		System.out.println("++++++to left.html+++++");
+		return "manage/left";
+	}
 }
