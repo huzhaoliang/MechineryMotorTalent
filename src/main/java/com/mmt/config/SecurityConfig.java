@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
+
+import com.mmt.support.MyAccessDeniedHandler;
+import com.mmt.support.MyAuthenticationEntryPoint;
 import com.mmt.support.MyUserDetailsService;
 
 @Configuration
@@ -31,12 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             //.antMatchers("/manage/**").hasRole("MANAGE")
             // 任何尚未匹配的URL只需要验证用户即可访问
             .anyRequest().authenticated()
-            .and().formLogin()
-            // 指定登录页面,授予所有用户访问登录页面
-            .loginPage("/manage/login")
+            .and().formLogin().loginPage("/manage/login")// 指定登录页面,授予所有用户访问登录页面
             .successHandler(new ForwardAuthenticationSuccessHandler("/manage/main"))
             .failureUrl("/manage/login-error").permitAll()
-            .and().exceptionHandling().accessDeniedPage("/manage/403")
             .and().logout().logoutSuccessUrl("/manage/login")
             .and().csrf().disable();
         }
