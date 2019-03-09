@@ -14,6 +14,12 @@ public class MainController {
 	@Autowired
 	private SysAdminUserService userService;
 	
+	@RequestMapping(value = "/")
+	public String index() {
+		System.out.println("++++++to index.html+++++");
+		return "index";
+	}
+	
 	@PreAuthorize("hasAuthority('MAIN')")
 	@RequestMapping(value = "/main")
 	public String main() {
