@@ -13,6 +13,6 @@ public class indexController
 	@RequestMapping(value = "/")
 	public String index() {
 		System.out.println("++++++to index.html+++++");
-		return "index";
+		return "index/index";
 	}
 }
