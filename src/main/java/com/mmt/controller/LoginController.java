@@ -11,35 +11,26 @@ public class LoginController
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	/*
-	@RequestMapping(value="/")
-	public String home()
-	{
-		logger.info("++++++++login action++++++++++");
-		return "manage/login";
-	}
-	*/
-	
 	
 	@RequestMapping(value="/manage/login")
-	public String index() {
+	public String manageLogin() {
 		logger.info("++++++++login action++++++++++");
 		return "manage/login";
 	}
 	
 	@RequestMapping("/manage/login-error")
-	public String loginError(Model model) {
+	public String manageLoginError(Model model) {
 		model.addAttribute("loginError", true);
 		return "manage/login";
 	}
 	
 	@RequestMapping("/manage/404")
-	public String notFound(Model model) {
+	public String manageNotFound(Model model) {
 		return "manage/404";
 	}
 	
 	@RequestMapping("/manage/403")
-	public String notAccess(Model model) {
+	public String manageNotAccess(Model model) {
 		return "manage/403";
 	}
 }
