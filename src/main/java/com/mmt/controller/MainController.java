@@ -38,6 +38,12 @@ public class MainController {
 		return "job";
 	}
 	
+	@RequestMapping(value = "/enterprise")
+	public String enterprise() {
+		System.out.println("++++++to enterprise.html+++++");
+		return "enterprise";
+	}
+	
 	@PreAuthorize("hasAuthority('MAIN')")
 	@RequestMapping(value = "/main")
 	public String main(Model model) {
