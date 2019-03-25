@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/static/img/**",
             			"/static/bootstrap/**",
             			"/index",
+            			"/job",
             			"/"
             		     )
             .permitAll()

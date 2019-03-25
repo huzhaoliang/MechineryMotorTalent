@@ -18,10 +18,24 @@ public class MainController {
 	@Autowired
 	private SysAdminUserService userService;
 	
+	
 	@RequestMapping(value = "/")
+	public String home() 
+	{
+		System.out.println("++++++to index.html+++++");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/index")
 	public String index() {
 		System.out.println("++++++to index.html+++++");
 		return "index";
+	}
+	
+	@RequestMapping(value = "/job")
+	public String job() {
+		System.out.println("++++++to job.html+++++");
+		return "job";
 	}
 	
 	@PreAuthorize("hasAuthority('MAIN')")
@@ -42,4 +56,6 @@ public class MainController {
 		System.out.println("++++++to left.html+++++");
 		return "manage/left";
 	}
+	
+	
 }
