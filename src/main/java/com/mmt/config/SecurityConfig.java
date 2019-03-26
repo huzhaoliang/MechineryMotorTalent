@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/static/css/**",
             			"/static/js/**",
             			"/static/img/**",
-            			"/static/bootstrap/**",
+            			"/static/bootstrap-4.3.1-dist/**",
             			"/index",
             			"/job",
             			"enterprise",
