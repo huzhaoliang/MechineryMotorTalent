@@ -1,5 +1,7 @@
 package com.mmt.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,5 +28,12 @@ public class CityServiceImpl implements CityService{
 		Page<City> citys = cityRepository.findAll(request);
 		return citys;
 	}
+
+	@Override
+	public List<City> getProvinces() {
+		return cityRepository.findProvinces();
+	}
+	
+	
 
 }
