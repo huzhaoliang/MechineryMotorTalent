@@ -7,14 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AdminPermitControl {
+public class EnterpriseControl {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@RequestMapping(value="/manage/admin_permit")
-	public String index(Model model) {
-		logger.info("++++++++admin_permit++++++++++");
-		model.addAttribute("active", "admin");
+	@RequestMapping(value="/manage/enter_list")
+	public String list(Model model) {
+		logger.info("++++++++enterprise list++++++++++");
 		
-		return "manage/admin_permit";
+		return "manage/enter_list";
 	}
 }
