@@ -22,9 +22,7 @@ public class City {
 	private Long id;
 	private String name;
 	private Integer Flag;//1:一级 xx省 2: 子城市
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-	private City city;
+	private Long parentId;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<EnterpriseUser> companys;
 	@OneToMany(cascade = CascadeType.ALL)
@@ -65,18 +63,7 @@ public class City {
 	public void setFlag(Integer flag) {
 		Flag = flag;
 	}
-	/**
-	 * @return the city
-	 */
-	public City getCity() {
-		return city;
-	}
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity(City city) {
-		this.city = city;
-	}
+
 	/**
 	 * @return the companys
 	 */
@@ -100,5 +87,17 @@ public class City {
 	 */
 	public void setJobFairs(List<JobFair> jobFairs) {
 		this.jobFairs = jobFairs;
+	}
+	/**
+	 * @return the parentId
+	 */
+	public Long getParentId() {
+		return parentId;
+	}
+	/**
+	 * @param parentId the parentId to set
+	 */
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 }

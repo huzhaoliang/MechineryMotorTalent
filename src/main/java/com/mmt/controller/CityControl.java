@@ -1,6 +1,8 @@
 package com.mmt.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mmt.entity.City;
 import com.mmt.service.CityService;
@@ -27,6 +31,12 @@ public class CityControl {
 		if(citys != null) {
 			model.addAttribute("citys", citys);
 		}
+		List<City> provinces = cityService.getProvinces();
+		Map<Long, String> provinceMap = new HashMap<Long, String>();
+		for(City city:provinces) {
+			provinceMap.put(city.getId(), city.getName());
+		}
+		model.addAttribute("provinces", provinceMap);
 		return "manage/city_list";
 	}
 	
@@ -40,10 +50,13 @@ public class CityControl {
 		return "manage/city_add";
 	}
 	
-	@RequestMapping(value="/manage/city_save")
-	public String save(Model model) {
+	@RequestMapping(value="/manage/city_save", method=RequestMethod.POST)
+	public String save(@ModelAttribute(value="cityForm") City city) {
 		logger.info("++++++++city save++++++++++");
-		
-		return "manage/city_add";
+		if(city.getFlag() == 1l) {
+			city.setParentId(null);
+		}
+		cityService.insertCity(city);
+		return "manage/city_list";
 	}
 }

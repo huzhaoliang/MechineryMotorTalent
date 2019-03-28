@@ -50,8 +50,8 @@
                   	<td th:if="${city.flag == 1}" th:text="一级城市"></td>
                   	<td th:if="${city.flag != 1}" th:text="二级城市"></td>
                     <td th:text="${city.name}"></td>
-                    <td th:if="${city.city}" th:text="${city.city.name}"></td>
-                    <td th:if="not ${city.city}" th:text="null"></td>
+                    <td th:if="${city.parentId}" th:text="${provinces[city.parentId]}"></td>
+                    <td th:if="not ${city.parentId}" th:text="null"></td>
                     <td><a href="/manage/city_add">城市新增</a></td>
                   	</tr>
                   </tbody>
