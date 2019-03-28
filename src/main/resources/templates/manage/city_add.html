@@ -36,37 +36,32 @@
                     <!--***** BASIC FORM *****-->
                     <div class="card form" id="form1">
                         <div class="card-header">
-                            <h3>新增城市</h3>
+                            <h3>城市新增</h3>
                         </div>
-                        <br>
+                        <br/>
                         <form id="city_form" th:action="@{/manage/login}" method="post">
                             <div class="row">
                                 <div class="col-md-6">
-                                	<fieldset class="form-group row">
-                                        <legend>城市类别：</legend>
+                                	<fieldset class="form-group">
+                                        <legend>类别：</legend>
                                         <div class="form-check">
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="flag" id="flag" value="1" checked/>省/直辖市
                                             </label>
-                                        </div>
-                                        <div class="form-check">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="flag" id="flag" value="2"/>城市
+                                                <input type="radio" class="form-check-input" name="flag" id="flag" value="2"/>二级城市
                                             </label>
-                                        </div> 
+                                        </div>
                                     </fieldset>
-                                    <div class="form-group row">
-                                        <label for="exampleSelect1">省份</label>
+                                    <div class="form-group">
+                                        <legend>省份：</legend>
                                         <select class="form-control" id="parentId">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <option th:each="city,cityStat:${provinces}" th:value="${city.id}" th:text="${city.name}"></option>
                                         </select>
                                     </div>
-                                    <div class="form-group row">
-                                        <label style="width: 85px;" class=" col-form-label">城市名称</label>
+                                    <div class="form-group">
+                                        <legend>名称：</legend>
                                    		<div class="col-9">
                                         <input class="form-control" type="text" id="name"/>
                                     	</div>

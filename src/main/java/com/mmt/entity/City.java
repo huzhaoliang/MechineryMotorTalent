@@ -5,8 +5,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,8 +21,10 @@ public class City {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	private String name;
-	private Long Flag;//1:一级 xx省 2: 子城市
-	private Long parentId;
+	private Integer Flag;//1:一级 xx省 2: 子城市
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+	private City city;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<EnterpriseUser> companys;
 	@OneToMany(cascade = CascadeType.ALL)
@@ -51,26 +56,26 @@ public class City {
 	/**
 	 * @return the flag
 	 */
-	public Long getFlag() {
+	public Integer getFlag() {
 		return Flag;
 	}
 	/**
 	 * @param flag the flag to set
 	 */
-	public void setFlag(Long flag) {
+	public void setFlag(Integer flag) {
 		Flag = flag;
 	}
 	/**
-	 * @return the parentId
+	 * @return the city
 	 */
-	public Long getParentId() {
-		return parentId;
+	public City getCity() {
+		return city;
 	}
 	/**
-	 * @param parentId the parentId to set
+	 * @param city the city to set
 	 */
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
+	public void setCity(City city) {
+		this.city = city;
 	}
 	/**
 	 * @return the companys

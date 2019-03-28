@@ -38,65 +38,26 @@
                   <thead>
                     <tr class="bg-info text-white">
                       <th>#</th>
-                      <th>城市</th>
-                      <th>省份</th>
+                      <th>类别</th>
+                      <th>城市名称</th>
+                      <th>所属省份</th>
                       <th>操作</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td><a href="/manage/cicy_add">城市新增</a></td>
-                    </tr>
-                    <tr class="table-info">
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr class="table-info">
-                      <th scope="row">3</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr class="table-info">
-                      <th scope="row">5</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">6</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr class="table-info">
-                      <th scope="row">7</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
+                  	<tr th:each="city,cityStat:${citys}">
+                  	<th scope="row" th:text="${cityStat.index+1}"></th>
+                  	<td th:if="${city.flag == 1}" th:text="一级城市"></td>
+                  	<td th:if="${city.flag != 1}" th:text="二级城市"></td>
+                    <td th:text="${city.name}"></td>
+                    <td th:if="${city.city}" th:text="${city.city.name}"></td>
+                    <td th:if="not ${city.city}" th:text="null"></td>
+                    <td><a href="/manage/city_add">城市新增</a></td>
+                  	</tr>
                   </tbody>
                 </table>
-            </div> 
-
-        </div>
+            </div>
+         </div>
     </div> 
 
     <!--Global Javascript -->

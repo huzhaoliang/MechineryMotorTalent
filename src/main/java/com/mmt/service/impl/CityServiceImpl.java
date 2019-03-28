@@ -24,7 +24,7 @@ public class CityServiceImpl implements CityService{
 
 	@Override
 	public Page<City> getCitys(int pageNumber, int pageSize) {
-		PageRequest request = PageRequest.of(pageNumber - 1, pageSize, null);
+		PageRequest request = PageRequest.of(pageNumber - 1, pageSize);
 		Page<City> citys = cityRepository.findAll(request);
 		return citys;
 	}
