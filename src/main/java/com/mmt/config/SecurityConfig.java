@@ -35,8 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/static/img/**",
             			"/static/bootstrap-4.3.1-dist/**",
             			"/index",
+            			"/signup",
             			"/job",
-            			"enterprise",
+            			"/enterprise",
             			"/"
             		     )
             .permitAll()
