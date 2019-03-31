@@ -33,7 +33,19 @@ public class CityServiceImpl implements CityService{
 	public List<City> getProvinces() {
 		return cityRepository.findProvinces();
 	}
-	
-	
 
+	@Override
+	public City updateCity(City city) {
+		return cityRepository.saveAndFlush(city);
+	}
+
+	@Override
+	public void deleteCities(List<City> cities) {
+		cityRepository.deleteInBatch(cities);
+	}
+
+	@Override
+	public City getOneCity(Long id) {
+		return cityRepository.getOne(id);
+	}
 }
