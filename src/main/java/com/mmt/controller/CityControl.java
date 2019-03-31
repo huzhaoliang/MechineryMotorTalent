@@ -59,4 +59,18 @@ public class CityControl {
 		cityService.insertCity(city);
 		return "manage/city_list";
 	}
+	
+	@RequestMapping(value="/manage/city_update")
+	public String update(Model model, @ModelAttribute(value="id") Long id) {
+		logger.info("++++++++city update++++++++++");
+		City city = cityService.getOneCity(id);
+		if(city != null) {
+			model.addAttribute("city", city);
+		}
+		List<City> provinces = cityService.getProvinces();
+		if(provinces != null) {
+			model.addAttribute("provinces", provinces);
+		}
+		return "manage/city_update";
+	}
 }

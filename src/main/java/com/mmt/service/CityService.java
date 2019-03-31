@@ -12,4 +12,10 @@ public interface CityService {
 	Page<City> getCitys(int pageNumber, int pageSize);
 	
 	List<City> getProvinces();
+	
+	City updateCity(City city);
+	
+	void deleteCities(List<City> cities);
+	
+	City getOneCity(Long id);
 }
