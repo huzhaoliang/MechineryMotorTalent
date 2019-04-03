@@ -32,6 +32,12 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/signup")
+	public String signUp() {
+		System.out.println("++++++to signup.html+++++");
+		return "signup";
+	}
+	
 	@RequestMapping(value = "/job")
 	public String job() {
 		System.out.println("++++++to job.html+++++");
