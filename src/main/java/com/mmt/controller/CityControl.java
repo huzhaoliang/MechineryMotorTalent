@@ -56,7 +56,7 @@ public class CityControl {
 		if(city.getFlag() == 1l) {
 			city.setParentId(null);
 		}
-		cityService.insertCity(city);
+		cityService.saveCity(city);
 		return "manage/city_list";
 	}
 	

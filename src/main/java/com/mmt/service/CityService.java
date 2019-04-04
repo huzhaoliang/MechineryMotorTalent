@@ -7,13 +7,11 @@ import org.springframework.data.domain.Page;
 import com.mmt.entity.City;
 
 public interface CityService {
-	City insertCity(City city);
+	City saveCity(City city);
 	
 	Page<City> getCitys(int pageNumber, int pageSize);
 	
 	List<City> getProvinces();
-	
-	City updateCity(City city);
 	
 	void deleteCities(List<City> cities);
 	

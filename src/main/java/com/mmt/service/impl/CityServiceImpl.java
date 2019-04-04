@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mmt.entity.City;
@@ -18,13 +19,14 @@ public class CityServiceImpl implements CityService{
 	private CityRepository cityRepository;
 
 	@Override
-	public City insertCity(City city) {
+	public City saveCity(City city) {
 		return cityRepository.saveAndFlush(city);
 	}
 
 	@Override
 	public Page<City> getCitys(int pageNumber, int pageSize) {
-		PageRequest request = PageRequest.of(pageNumber - 1, pageSize);
+		Sort sort = new Sort(Sort.Direction.DESC, "id");
+		PageRequest request = PageRequest.of(pageNumber - 1, pageSize, sort);
 		Page<City> citys = cityRepository.findAll(request);
 		return citys;
 	}
@@ -32,11 +34,6 @@ public class CityServiceImpl implements CityService{
 	@Override
 	public List<City> getProvinces() {
 		return cityRepository.findProvinces();
-	}
-
-	@Override
-	public City updateCity(City city) {
-		return cityRepository.saveAndFlush(city);
 	}
 
 	@Override
