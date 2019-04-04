@@ -16,4 +16,6 @@ public interface CityService {
 	void deleteCities(List<City> cities);
 	
 	City getOneCity(Long id);
+	
+	Page<City> getCitysByQueries(City param, int pageNumber, int pageSize);
 }
