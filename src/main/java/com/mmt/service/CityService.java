@@ -18,4 +18,6 @@ public interface CityService {
 	City getOneCity(Long id);
 	
 	Page<City> getCitysByQueries(City param, int pageNumber, int pageSize);
+	
+	void deleteCityById(Long id);
 }

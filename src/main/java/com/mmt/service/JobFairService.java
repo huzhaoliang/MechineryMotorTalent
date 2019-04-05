@@ -14,4 +14,6 @@ public interface JobFairService {
 	void deleteJobFairs(List<JobFair> jobFairs);
 	
 	JobFair getOneJobFair(Long id);
+	
+	void deleteJobFairById(Long id);
 }

@@ -52,7 +52,8 @@
                     <td th:text="${city.name}"></td>
                     <td th:if="${city.parentId}" th:text="${provinces[city.parentId]}"></td>
                     <td th:if="not ${city.parentId}" th:text="null"></td>
-                    <td><a href="/manage/city_add">城市新增</a></td>
+                    <td><a th:href="@{'/manage/city_add'}">新增</a>
+                    <a th:href="@{'/manage/city_delete?id='+${city.id}}">删除</a></td>
                   	</tr>
                   </tbody>
                 </table>

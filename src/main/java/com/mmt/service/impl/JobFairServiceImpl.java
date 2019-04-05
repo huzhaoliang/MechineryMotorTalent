@@ -38,4 +38,9 @@ public class JobFairServiceImpl implements JobFairService{
 	public JobFair getOneJobFair(Long id) {
 		return jobFairRepository.getOne(id);
 	}
+
+	@Override
+	public void deleteJobFairById(Long id) {
+		jobFairRepository.deleteJobFairById(id);
+	}
 }

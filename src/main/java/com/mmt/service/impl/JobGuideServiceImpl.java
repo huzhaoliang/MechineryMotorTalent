@@ -38,4 +38,9 @@ public class JobGuideServiceImpl implements JobGuideService{
 		return jobGuideRepository.getOne(id);
 	}
 
+	@Override
+	public void deleteJobGuideById(Long id) {
+		jobGuideRepository.deleteJobGuideById(id);
+	}
+
 }

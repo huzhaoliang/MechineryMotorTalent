@@ -14,4 +14,6 @@ public interface JobGuideService {
 	void deleteJobGuides(List<JobGuide> jobFairs);
 	
 	JobGuide getOneJobGuide(Long id);
+	
+	void deleteJobGuideById(Long id);
 }

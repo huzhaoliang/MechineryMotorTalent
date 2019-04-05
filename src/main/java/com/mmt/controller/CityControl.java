@@ -57,7 +57,7 @@ public class CityControl {
 			city.setParentId(null);
 		}
 		cityService.saveCity(city);
-		return "manage/city_list";
+		return "redirect:city_list";
 	}
 	
 	@RequestMapping(value="/manage/city_update")
@@ -72,5 +72,12 @@ public class CityControl {
 			model.addAttribute("provinces", provinces);
 		}
 		return "manage/city_update";
+	}
+	
+	@RequestMapping(value="/manage/city_delete")
+	public String delete(Model model, @ModelAttribute(value="id") Long id) {
+		logger.info("++++++++city delete++++++++++"+id);
+		cityService.deleteCityById(id);
+		return "redirect:city_list";
 	}
 }
