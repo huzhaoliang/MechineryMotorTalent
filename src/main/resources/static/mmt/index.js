@@ -33,24 +33,25 @@ function verifyEmail()
 	
 }
 
+
+function toSignUp()
+{
+	window.location.href = "signup";
+}
+
+function toSignIn()
+{
+	window.location.href = "signin";
+
+}
+
+function doSignUp()
+{
+	alert("do sign up");
+	
+}
+
 function doSignIn()
 {
 
 }
-
-
-function toSingUp()
-{
-	window.location.href="www.baidu.com";
-
-}
-
-//evnet
-//$("#buttonSignIn").on('click', verifyEmail());
-
-//$("#buttonSignUp").on('click', verifyEmail());
-
-
-//let
-
-//const
