@@ -70,4 +70,9 @@ public class CityServiceImpl implements CityService{
 		Page<City> citys = cityRepository.findAll(spec, request);
 		return citys;
 	}
+
+	@Override
+	public void deleteCityById(Long id) {
+		cityRepository.deleteCityById(id);
+	}
 }

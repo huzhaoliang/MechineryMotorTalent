@@ -40,4 +40,14 @@ public class JobServiceImpl implements JobService{
 		return jobRepository.findJobsByCompanyId(companyId);
 	}
 
+	@Override
+	public void deleteJobs(List<Job> jobs) {
+		jobRepository.deleteInBatch(jobs);
+	}
+
+	@Override
+	public void deleteJobById(Long id) {
+		jobRepository.deleteJobById(id);
+	}
+
 }
