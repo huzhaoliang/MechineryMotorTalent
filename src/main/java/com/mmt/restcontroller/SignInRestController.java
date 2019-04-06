@@ -1,5 +1,6 @@
 package com.mmt.restcontroller;
 
-public class SignRestController {
+public class SignInRestController 
+{
 
 }
