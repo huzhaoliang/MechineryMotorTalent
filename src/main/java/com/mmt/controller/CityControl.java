@@ -25,9 +25,15 @@ public class CityControl {
 	private CityService cityService;
 	
 	@RequestMapping(value="/manage/city_list")
-	public String list(Model model) {
-		logger.info("++++++++city list++++++++++");
-		Page<City> citys = cityService.getCitys(1, 20);
+	public String list(Model model, @ModelAttribute(value="parentId") String parentId, @ModelAttribute(value="name") String name) {
+		System.out.println("++++++++city list++++++++++" + parentId + name);
+		Page<City> citys = null;
+		if(("-1".equals(parentId) || "".equals(parentId)) && "".equals(name)){
+			citys = cityService.getCitys(1, 20);
+		}else {
+			citys = cityService.getCitysByQueries(Long.valueOf(parentId), name, 1, 20);
+		}
+		
 		if(citys != null) {
 			model.addAttribute("citys", citys);
 		}
@@ -37,6 +43,12 @@ public class CityControl {
 			provinceMap.put(city.getId(), city.getName());
 		}
 		model.addAttribute("provinces", provinceMap);
+		
+		if(provinces != null) {
+			model.addAttribute("provs", provinces);
+		}
+		model.addAttribute("parentId", parentId);
+		model.addAttribute("name", name);
 		return "manage/city_list";
 	}
 	

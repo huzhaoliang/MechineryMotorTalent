@@ -54,16 +54,19 @@ public class CityServiceImpl implements CityService{
 	}
 
 	@Override
-	public Page<City> getCitysByQueries(City param, int pageNumber, int pageSize) {
+	public Page<City> getCitysByQueries(Long parentId, String name, int pageNumber, int pageSize) {
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
 		PageRequest request = PageRequest.of(pageNumber - 1, pageSize, sort);
 		Specification<City> spec = new Specification<City>() {
 			public Predicate toPredicate(Root<City> root, CriteriaQuery<?> query,CriteriaBuilder cb) {
-				Path<String> name = root.get("name");
-				Path<Integer> age = root.get("parentId");
-				Predicate p1 = cb.like(name, "%"+param.getName()+"%");
-				Predicate p2 = cb.equal(age, param.getParentId());
-				Predicate p = cb.and(p1, p2);
+				Path<String> nameAttribute = root.get("name");
+				Predicate p1 = cb.like(nameAttribute, "%"+name+"%");
+				Predicate p = cb.and(p1);
+				if(parentId != -1) {
+					Path<Integer> parentIdAttribute = root.get("parentId");
+					Predicate p2 = cb.equal(parentIdAttribute, parentId);
+					p = cb.and(p1, p2);
+				}
 				return p;
 			}  
 		};

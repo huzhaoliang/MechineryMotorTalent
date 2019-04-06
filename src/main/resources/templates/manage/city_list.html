@@ -31,8 +31,23 @@
        <div th:include="/manage/left"></div>
 
         <div class="content-inner chart-cont">
-
             <!--***** CONTENT *****-->
+            <div class="card form" id="form1">
+            	<a th:href="@{'/manage/city_add'}">新增城市</a>
+                <form class="form-inline" id="city_form" th:action="@{/manage/city_list}" method="get">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">省份：</label>
+				<select class="form-control" id="parentId" name="parentId" style="width:200px;">
+				<option value="-1">------</option>
+				<option th:each="city,cityStat:${provs}" th:value="${city.id}" th:text="${city.name}"></option>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<label class="mr-sm-2" for="inlineFormCustomSelect">名称：</label>
+				 <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+					<input class="form-control" type="text" name="name" id="name" th:value="${name}" style="width:200px;"/>
+				</div> 
+				<button type="submit" class="btn btn-general btn-blue mr-2">Search</button> 
+                </form>  
+            </div>
 			<div class="row">
                 <table class="table table-hover">
                   <thead>
@@ -52,8 +67,7 @@
                     <td th:text="${city.name}"></td>
                     <td th:if="${city.parentId}" th:text="${provinces[city.parentId]}"></td>
                     <td th:if="not ${city.parentId}" th:text="null"></td>
-                    <td><a th:href="@{'/manage/city_add'}">新增</a>
-                    <a th:href="@{'/manage/city_delete?id='+${city.id}}">删除</a></td>
+                    <td><a th:href="@{'/manage/city_delete?id='+${city.id}}">删除</a></td>
                   	</tr>
                   </tbody>
                 </table>
