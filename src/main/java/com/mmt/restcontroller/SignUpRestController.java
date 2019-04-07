@@ -21,7 +21,6 @@ public class SignUpRestController
 	SignUpService signUpService;
 	
 	
-	
 	@ResponseBody
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String doSignUp()
