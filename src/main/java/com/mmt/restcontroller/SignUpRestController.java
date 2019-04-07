@@ -27,7 +27,6 @@ public class SignUpRestController
 	{
 		logger.info("############hello############");
 		
-		
 		return "Hello";
 	}
 	
