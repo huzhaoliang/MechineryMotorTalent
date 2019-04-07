@@ -14,7 +14,10 @@ let passwordFormat = /^[\w_-]{6,16}$/;
 //function
 function doSignUp()
 {
-	if($("#Email").val()==undefined||$("#Email").val()==null||$("#Email").val()=="")
+	email = $("#Email").val();
+	password = $("#Password1").val();
+	
+	if(email==undefined||email==null||email=="")
 	{
 		alert("邮箱不能为空");
 		return
@@ -26,7 +29,7 @@ function doSignUp()
 		return
 	}
 	
-	if($("#Password1").val()==undefined||$("#Email").val()==null||$("#Email").val()=="")
+	if(password==undefined||password==null||password=="")
 	{
 		alert("密码不能为空");
 		return
@@ -38,18 +41,24 @@ function doSignUp()
 		return
 	}
 	
-	email = $("Email").val();
-	password = $("#Password1").val();
 	
+	alert(signup_url);
 	$.ajax({
 		  type: 'POST',
-		  url: url,
-		  data: data,
-		  success: success,
-		  dataType: dataType
+		  url: signup_url,
+		  data: 
+		  {
+			  "email":email,
+			  "password":password
+		  },
+		  success: signup_success(),
+		  dataType: "json"
 		});
 	
 	
 }
 
-
+function signup_success(res)
+{
+	alert(res);
+}

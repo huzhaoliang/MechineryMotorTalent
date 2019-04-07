@@ -1,6 +1,6 @@
 
-//request url
-
+//request uri
+const signup_url = "/api/signup";
 
 
 //function
