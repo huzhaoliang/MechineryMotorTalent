@@ -16,6 +16,10 @@ public class SignUpController
 	public String signup() 
 	{
 		logger.info("++++++++Sign up++++++++++");
+		
+		
+		
+		
 		return "signup";
 	}
 	
