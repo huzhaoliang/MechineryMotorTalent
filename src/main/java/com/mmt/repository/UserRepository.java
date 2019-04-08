@@ -1,10 +1,20 @@
 package com.mmt.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mmt.entity.User;
 
 @Repository("UserRepository")
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepository<User, Long>{
+	
+	@Modifying
+	@Transactional
+	@Query(value="update table user set status=:status where id=:id", nativeQuery = true)
+	void updateUserStatusById(@Param("id")Long id, @Param("status")Integer status);
 }

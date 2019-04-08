@@ -9,4 +9,8 @@ public interface UserService
 	User insertUser(User user);
 	
 	Page<User> getUsers(int pageNumber, int pageSize);
+	
+	Page<User> getUsersByQueries(String name, int pageNumber, int pageSize);
+	
+	void updateUserStatus(Long id, Integer status);
 }
