@@ -57,6 +57,7 @@
                                     <div class="form-group" id="provincediv">
                                         <legend>省份：</legend>
                                         <select class="form-control" id="${city.city.id}" name="parentId">
+                                        <option value="-1">-------省份-------</option>
                                         <option th:each="city,cityStat:${provinces}" th:value="${city.id}" th:text="${city.name}"></option>
                                         </select>
                                     </div>

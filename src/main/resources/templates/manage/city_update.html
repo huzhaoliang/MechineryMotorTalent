@@ -46,23 +46,34 @@
                                         <legend>类别：</legend>
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="flag" onclick="$('#provincediv').css('display','none');" value="1"/>省/直辖市
+                                            	<input type="radio" th:if="${city.flag eq 1}" th:checked="checked" class="form-check-input" th:text="省" name="flag" onclick="$('#provincediv').css('display','none');" value="1"/>
+                                                <input type="radio" th:if="${city.flag ne 1}" class="form-check-input" th:text="省" name="flag" onclick="$('#provincediv').css('display','none');" value="1"/>
                                             </label>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="flag" onclick="$('#provincediv').css('display','block');" value="2" checked/>二级城市
+                                                <input type="radio" th:if="${city.flag eq 2}" th:checked="checked" th:text="二级城市" class="form-check-input" name="flag" onclick="$('#provincediv').css('display','block');" value="2"/>
+                                                <input type="radio" th:if="${city.flag ne 2}" th:text="二级城市" class="form-check-input" name="flag" onclick="$('#provincediv').css('display','block');" value="2"/>
                                             </label>
                                         </div>
                                     </fieldset>
-                                    <div class="form-group" id="provincediv">
+                                    <div class="form-group" th:if="${city.flag eq 1}" style="display:none;" id="provincediv">
                                         <legend>省份：</legend>
-                                        <select class="form-control" id="${city.city.id}" name="parentId">
-                                        <option th:each="city,cityStat:${provinces}" th:value="${city.id}" th:text="${city.name}"></option>
+                                        <select class="form-control" name="parentId">
+                                        <option th:each="prov,provStat:${provinces}" th:value="${prov.id}" th:text="${prov.name}" th:if="${prov.id eq city.parentId}" th:selected="selected"></option>
+                                        <option th:each="prov,provStat:${provinces}" th:value="${prov.id}" th:text="${prov.name}" th:if="${prov.id ne city.parentId}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" th:if="${city.flag eq 2}" style="display:block;" id="provincediv">
+                                        <legend>省份：</legend>
+                                        <select class="form-control" name="parentId">
+                                        <option th:each="prov,provStat:${provinces}" th:value="${prov.id}" th:text="${prov.name}" th:if="${prov.id eq city.parentId}" th:selected="selected"></option>
+                                        <option th:each="prov,provStat:${provinces}" th:value="${prov.id}" th:text="${prov.name}" th:if="${prov.id ne city.parentId}"></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <legend>名称：</legend>
-                                        <input class="form-control" type="text" name="name" id="name" required/>
+                                        <input class="form-control" name="name" th:value="${city.name}" required/>
+                                        <input type="hidden" name="id" th:value="${city.id}"/>
                                     </div> 
                                 </div>
                             </div> 
