@@ -15,6 +15,6 @@ public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepos
 	
 	@Modifying
 	@Transactional
-	@Query(value="update table user set status=:status where id=:id", nativeQuery = true)
+	@Query(value="update user set status=:status where id=:id", nativeQuery = true)
 	void updateUserStatusById(@Param("id")Long id, @Param("status")Integer status);
 }

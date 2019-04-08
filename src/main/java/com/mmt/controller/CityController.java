@@ -18,7 +18,7 @@ import com.mmt.entity.City;
 import com.mmt.service.CityService;
 
 @Controller
-public class CityControl {
+public class CityController {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired

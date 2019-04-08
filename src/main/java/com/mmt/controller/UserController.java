@@ -13,7 +13,7 @@ import com.mmt.entity.User;
 import com.mmt.service.UserService;
 
 @Controller
-public class UserControl {
+public class UserController {
 private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
