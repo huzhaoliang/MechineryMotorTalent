@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService{
 		userRepository.updateUserStatusById(id, status);
 	}
 
+	@Override
+	public User getUserByName(String name) {
+		return userRepository.getUserByName(name);
+	}
+
 }

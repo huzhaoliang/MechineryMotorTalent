@@ -13,4 +13,6 @@ public interface UserService
 	Page<User> getUsersByQueries(String name, int pageNumber, int pageSize);
 	
 	void updateUserStatus(Long id, Integer status);
+	
+	User getUserByName(String name);
 }

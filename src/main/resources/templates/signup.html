@@ -58,7 +58,7 @@
 
 	<div class="container" id="signup_container">
 		<div class="row">
-		<form id="signup_form" th:action="@{/api/signup}" method="post" th:object="${user}">
+		<form id="signup_form" th:action="@{/api/signup}" method="post" th:object="${userForm}">
 		  <div class="form-group">
 		    <label for="email_input">邮箱地址</label>
 		    <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp" placeholder="输入邮箱" th:value="${user.email}"></input>
