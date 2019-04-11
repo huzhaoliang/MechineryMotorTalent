@@ -14,7 +14,7 @@ let passwordFormat = /^[\w_-]{6,16}$/;
 //function
 function doSignUp()
 {
-	email = $("#Email").val();
+	email = $("#email_input").val();
 	password = $("#Password1").val();
 	
 	if(email==undefined||email==null||email=="")
@@ -35,7 +35,7 @@ function doSignUp()
 		return
 	}
 	
-	if($("#Password1").val()!=$("#Password2").val())
+	if($("#password").val()!=$("#passcode").val())
 	{
 		alert("密码与确认密码不一致");
 		return
