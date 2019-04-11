@@ -58,19 +58,19 @@
 
 	<div class="container" id="signup_container">
 		<div class="row justify-content-md-center">
-		<form id="signup_form" th:action="@{/api/signup}" method="post" th:object="${userForm}">
+		<form id="signup_form">
 		  <div class="form-group">
 		    <label for="email_input">邮箱地址</label>
-		    <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp" placeholder="输入邮箱" th:value="#{user.email}"></input>
+		    <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp" placeholder="输入邮箱"></input>
 		    <small id="emailHelp" class="form-text text-muted">邮箱对外不做公开</small>
 		  </div>
 		  <div class="form-group">
 		    <label for="password">输入密码</label>
-		    <input type="password" class="form-control" id="password" placeholder="输入密码" th:value="#{user.password}"></input>
+		    <input type="password" class="form-control" id="password" placeholder="输入密码"></input>
 		  </div>
 		  <div class="form-group">
 		    <label for="passcode">重复密码</label>
-		    <input type="password" class="form-control" id="passcode" placeholder="确认密码" th:value="#{user.passcode}"></input>
+		    <input type="password" class="form-control" id="passcode" placeholder="确认密码"></input>
 		  </div>
 		  <button type="submit" class="btn btn-primary">注册</button>
 		</form>
