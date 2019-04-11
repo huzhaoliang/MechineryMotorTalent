@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/static/img/**",
             			"/static/bootstrap-4.3.1-dist/**",
             			"/static/mmt/**",
+            			"/api/signup",
             			"/index",
             			"/signin",
             			"/signup",
