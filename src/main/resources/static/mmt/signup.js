@@ -1,21 +1,18 @@
 "use strict";
 //varible
 let email = "";
-let emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
 let password = "";
-let passwordFormat = /^[\w_-]{6,16}$/;
+let passcode = "";
 //const
-
-
-
-
-
+const emailFormat = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+const passwordFormat = /^[\w_-]{6,16}$/;
 
 //function
 function doSignUp()
 {
 	email = $("#email_input").val();
-	password = $("#Password1").val();
+	password = $("#password_input").val();
+	passwd = $("#password_input").val();
 	
 	if(email==undefined||email==null||email=="")
 	{
@@ -35,7 +32,13 @@ function doSignUp()
 		return
 	}
 	
-	if($("#password").val()!=$("#passcode").val())
+	if(passcode==undefined||passcode==null||passcode=="")
+	{
+		alert("密码不能为空");
+		return
+	}
+	
+	if(passcode!=password)
 	{
 		alert("密码与确认密码不一致");
 		return
