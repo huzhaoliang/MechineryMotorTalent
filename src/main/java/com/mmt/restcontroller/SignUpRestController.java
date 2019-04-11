@@ -12,7 +12,7 @@ import com.mmt.service.SignUpService;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping(value="/api/")
 public class SignUpRestController 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -26,7 +26,6 @@ public class SignUpRestController
 	public String doSignUp()
 	{
 		logger.info("############hello############");
-		
 		return "Hello";
 	}
 	

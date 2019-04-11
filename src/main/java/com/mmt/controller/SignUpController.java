@@ -13,7 +13,6 @@ import com.mmt.entity.User;
 import com.mmt.service.UserService;
 
 @Controller
-@RequestMapping(value="/")
 public class SignUpController 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -22,13 +21,11 @@ public class SignUpController
 	private UserService userService;
 	
 	@RequestMapping(value="/signup")
-	public String signup(Model model) 
+	public String signup() 
 	{
 		logger.info("++++++++Sign up++++++++++");
-		//当前登录的用户
-		String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		User user = userService.getUserByName(name);
-		model.addAttribute("user", user);
+		
+		
 		return "signup";
 	}
 	
