@@ -25,7 +25,6 @@
 	<script src="/static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 	<script src="/static/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
 	
-	
     <!--Global Javascript -->
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/popper/popper.min.js"></script>
@@ -33,57 +32,46 @@
     <script src="/static/js/jquery.cookie.js"></script>
     <script src="/static/js/jquery.validate.min.js"></script> 
     <script src="/static/js/chart.min.js"></script> 
-    <script src="/static/js/front.js"></script> 
+    <script src="/static/js/front.js"></script>
+    
+    <!-- custiomized function -->
+    <script src="/static/mmt/common.js" type="text/javascript"></script>
+    <script src="/static/mmt/signin.js" type="text/javascript"></script>
+    
 </head>
-<body id="homeBody">
+<body id="signin_body">
 
 	<nav class="navbar navbar-default navbar-fixed-top navbar-expand-lg">
 		<div id="homeNavContainer" class="container">
-			<!-- header -->
-			<!-- 
-			<div class="navbar-header">
-				<a class="navbar-brand" herf="#">汽车人才网</a>
-			</div>
-			 -->
 			<a class="navbar-brand" herf="#">汽车人才网</a>
-			
 			<!--  nav -->
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#">首页</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">职位</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">企业</a></li>
+			<ul class="navbar-nav mr-left">
+				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Dell</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">EMC</a></li>
+				<li class="nav-item"><a class="nav-link" onclick="toSignIn();">登入</a></li>
+				<li class="nav-item"><a class="nav-link" onclick="toSignUp();">注册</a></li>
 			</ul>
-			
-		
 		</div>
 	</nav>
 
 
-
-	<div class="container">
-  		<div class="fixed-width-page">
-		  <div class="bg-white tiled">
-		  
-		    <form role="form" method="post">
-		      <div class="form-group ">
-		        <label for="org_slug">Enter your organization's Redash address:</label>
-		        <div class="input-group">
-		          <span class="input-group-addon p-l-5 p-r-5" id="basic-addon3">https://app.redash.io/</span>
-		          <input autofocus="" class="form-control" id="org_slug" name="org_slug" type="text" value="">
-		        </div>
-		      </div>
-		      <div class="text-center">
-		        <button type="submit" class="btn btn-primary btn-block m-t-25">Continue</button>
-		      </div>
-		    </form>
-		    <div class="m-t-25">
-		      <p>Can't remember your organization's Redash URL? <a href="/find">Find your account</a>.</p>
-		      <p class="m-b-0">Don't have an account? <a href="/signup">Sign up</a>.</p>
-		    </div>
-		  </div>
-		</div>
-	</div>
-			
+	<form class="form-signin">
+	  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+	  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	  <label for="inputEmail" class="sr-only">Email address</label>
+	  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+	  <label for="inputPassword" class="sr-only">Password</label>
+	  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+	  <div class="checkbox mb-3">
+	    <label>
+	      <input type="checkbox" value="remember-me"> Remember me
+	    </label>
+	  </div>
+	  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	  <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+	</form>
+	
 
 		
 
