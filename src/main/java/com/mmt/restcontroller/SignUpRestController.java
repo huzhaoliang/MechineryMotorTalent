@@ -23,9 +23,14 @@ public class SignUpRestController
 	
 	@ResponseBody
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String doSignUp()
+	public String doSignUp(@RequestBody )
 	{
 		logger.info("############hello############");
+		
+		signUpService.checkIfUserExisted(_username);
+		
+		
+		
 		return "Hello";
 	}
 	
