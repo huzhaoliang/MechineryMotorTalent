@@ -26,6 +26,8 @@ public class SignUpController
 		logger.info("++++++++Sign up++++++++++");
 		
 		
+		
+		
 		return "signup";
 	}
 	
