@@ -12,7 +12,7 @@ function doSignUp()
 {
 	email = $("#email_input").val();
 	password = $("#password_input").val();
-	passcode = $("#password_input").val();
+	passcode = $("#passcode_input").val();
 	
 	if(email==undefined||email==null||email=="")
 	{
@@ -51,8 +51,8 @@ function doSignUp()
 		  url: signup_url,
 		  data: 
 		  {
-//			  "email":email,
-//			  "password":password
+			  "email":email,
+			  "password":password
 		  },
 		  success: signup_success(),
 		  dataType: "json"
