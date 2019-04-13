@@ -50,7 +50,7 @@ function doSignUp()
 		  type: 'POST',
 		  url: signup_url,
 		  dataType: "json",
-		  contentType: "application/json;charset=utf-8",
+		  //contentType: "application/json;charset=utf-8",
 		  data: 
 		  {
 			  "email" : email,

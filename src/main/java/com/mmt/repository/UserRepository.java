@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mmt.entity.User;
 
 @Repository("UserRepository")
-public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepository<User, Long>{
+public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepository<User, Long>
+{
 	
 	@Query(value="select a.* from user a where a.name=:name", nativeQuery = true)
 	User getUserByName(@Param("name")String name);
@@ -20,4 +21,7 @@ public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepos
 	@Transactional
 	@Query(value="update user set status=:status where id=:id", nativeQuery = true)
 	void updateUserStatusById(@Param("id")Long id, @Param("status")Integer status);
+	
+	
+	
 }
