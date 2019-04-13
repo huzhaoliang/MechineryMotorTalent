@@ -55,7 +55,8 @@ function doSignUp()
 			  "password":password
 		  },
 		  success: signup_success(),
-		  dataType: "json"
+		  dataType: "json",
+		  contentType: "application/json"
 		});
 	
 	
