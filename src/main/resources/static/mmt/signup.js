@@ -49,14 +49,15 @@ function doSignUp()
 	$.ajax({
 		  type: 'POST',
 		  url: signup_url,
+		  dataType: "json",
+		  contentType: "application/json;charset=utf-8",
 		  data: 
 		  {
-			  "email":email,
-			  "password":password
+			  "email" : email,
+			  "password" : password
 		  },
-		  success: signup_success(),
-		  dataType: "json",
-		  contentType: "application/json"
+		  success: signup_success()
+		  
 		});
 	
 	

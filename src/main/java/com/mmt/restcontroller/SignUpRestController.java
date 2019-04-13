@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.Model;
+
+import com.ailibaba.
+
 import com.mmt.service.SignUpService;
 
-import com.mmt.json.SignUpJson;
+
 
 
 @RestController
@@ -26,13 +28,13 @@ public class SignUpRestController
 	
 	@ResponseBody
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String doSignUp(@RequestBody SignUpJson _signUpJson)
+	public String doSignUp(@RequestBody String _signUpJson)
 	{
 		logger.info("############hello############");
 		
 		//signUpService.checkIfUserExisted();
 		
-		logger.info(_signUpJson.getEmail());
+		logger.info(_signUpJson);
 		
 		return "Hello";
 	}
