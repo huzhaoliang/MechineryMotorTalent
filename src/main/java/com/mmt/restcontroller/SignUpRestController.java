@@ -37,7 +37,6 @@ public class SignUpRestController
 		logger.info(_email);
 		logger.info(_pass);
 		//able to be regisitered == true
-
 		signUpService.doUserSignUp(_email, _pass);
 		
 		
