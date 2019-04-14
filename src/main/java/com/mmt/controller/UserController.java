@@ -40,6 +40,13 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 	public String delete(Model model, @ModelAttribute(value="id") Long id, @ModelAttribute(value="status") Integer status) {
 		logger.info("++++++++update user status++++++++++"+id);
 		userService.updateUserStatus(id, status);
-		return "redirect:city_list";
+		return "redirect:user_list";
 	}
+
+	@RequestMapping(value="/manage/user_save")
+	public String save(@ModelAttribute(value="userForm") User user) {
+		userService.insertUser(user);
+		return "redirect:user_list";
+	}
+
 }
