@@ -18,22 +18,27 @@ public class SignUpServiceImpl implements SignUpService
 	@Autowired
 	UserRepository userRepository;
 	
+	
+
 	@Override
-	public boolean checkIfUserExisted(String _username) 
+	public boolean doUserSignUp(String _username, String _password) 
 	{
 		logger.info("+++ check if the user is existed +++");
 		if(userRepository.getUserByName(_username)==null)
 		{
 			logger.info("+++ current useremail is able to be regisitered +++");
-			return true;
+			
+			
+			long userId = 0;
+			
+			logger.info("+++ to regisiter user +++");
+			userRepository.regisiterUserByEmail();
 		}
-		return false;
-	}
-
-	@Override
-	public boolean doUserSignUp(String _username, String _password) 
-	{
-		logger.info("+++ to regisiter user +++");
+		else
+		{
+			logger.info("+++ current useremail has been regisitered +++");
+			return false;
+		}
 		
 		
 		return false;

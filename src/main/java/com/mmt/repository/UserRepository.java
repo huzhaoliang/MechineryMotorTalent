@@ -17,10 +17,20 @@ public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepos
 	@Query(value="select a.* from user a where a.name=:name", nativeQuery = true)
 	User getUserByName(@Param("name")String name);
 	
+	@Query(value="select a.* from user a where a.name=:name", nativeQuery = true)
+	User getUserMaxId(@Param("name")String name);
+	
+	@Modifying
+	@Transactional
+	@Query(value="insert into user(id, email, password, status) values(?1, ?2, ?3, ?4)", nativeQuery = true)
+	void regisiterUserByEmail(@Param("id")Long _userId, @Param("emal")String _email, @Param("password") String _pass, @Param("status")Integer _status);
+	
 	@Modifying
 	@Transactional
 	@Query(value="update user set status=:status where id=:id", nativeQuery = true)
 	void updateUserStatusById(@Param("id")Long id, @Param("status")Integer status);
+	
+	
 	
 	
 	
