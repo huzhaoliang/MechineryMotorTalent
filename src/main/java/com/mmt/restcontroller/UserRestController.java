@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mmt.service.SignUpService;
-
+import com.mmt.service.UserService;
+import com.mmt.entity.User;
 
 
 
@@ -23,12 +23,14 @@ public class UserRestController
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	SignUpService signUpService;
+	UserService userService;
 	
+	@Autowired
+	User user;
 	
 	@ResponseBody
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String doSignUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
+	public String signUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		
 		
@@ -39,7 +41,15 @@ public class UserRestController
 		logger.info(_email);
 		logger.info(_pass);
 		//able to be regisitered == true
+		user = userService.getUserByEmail(_email);
 		
+		
+		if(user == null)
+		{
+			user.setEmail(_email);
+			user.setPassword(_pass);
+			userService.insertUser(user);
+		}
 		
 		
 		return "Hello";

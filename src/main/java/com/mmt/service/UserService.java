@@ -15,4 +15,8 @@ public interface UserService
 	void updateUserStatus(Long id, Integer status);
 	
 	User getUserByName(String name);
+	
+	User getUserByEmail(String email);
+	
+	
 }
