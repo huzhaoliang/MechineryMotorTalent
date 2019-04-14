@@ -25,9 +25,7 @@ public class UserRestController
 	@Autowired
 	UserService userService;
 	
-	@Autowired
-	User user;
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
@@ -41,7 +39,7 @@ public class UserRestController
 		logger.info(_email);
 		logger.info(_pass);
 		//able to be regisitered == true
-		user = userService.getUserByEmail(_email);
+		User user = userService.getUserByEmail(_email);
 		
 		
 		if(user == null)
