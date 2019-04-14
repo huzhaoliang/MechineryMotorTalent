@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mmt.repository.UserRepository;
 import com.mmt.service.SignUpService;
-
+import com.mmt.entity.User;
 
 
 @Service(value="SignUpService")
@@ -32,7 +32,8 @@ public class SignUpServiceImpl implements SignUpService
 			long userId = 0;
 			
 			logger.info("+++ to regisiter user +++");
-			userRepository.regisiterUserByEmail();
+			User user = new User();
+			
 		}
 		else
 		{

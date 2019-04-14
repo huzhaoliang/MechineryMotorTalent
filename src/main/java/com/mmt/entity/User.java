@@ -28,6 +28,7 @@ public class User {
 	private Long id;
 	@Column(name = "email", nullable = false)
 	private String email;
+	@Column(name = "password", nullable = false)
 	private String password;
 	private String name;
 	private String birth; // like 1990-10-01
