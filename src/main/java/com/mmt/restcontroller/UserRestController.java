@@ -18,7 +18,7 @@ import com.mmt.service.SignUpService;
 
 @RestController
 @RequestMapping(value="/api/")
-public class SignUpRestController 
+public class UserRestController 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -30,6 +30,8 @@ public class SignUpRestController
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String doSignUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
+		
+		
 		logger.info("############hello############");
 		
 		
@@ -37,7 +39,7 @@ public class SignUpRestController
 		logger.info(_email);
 		logger.info(_pass);
 		//able to be regisitered == true
-		signUpService.doUserSignUp(_email, _pass);
+		
 		
 		
 		return "Hello";

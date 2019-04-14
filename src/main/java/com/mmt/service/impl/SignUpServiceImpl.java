@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mmt.repository.UserRepository;
 import com.mmt.service.SignUpService;
+import com.mmt.service.UserService;
 import com.mmt.entity.User;
 
 
@@ -21,18 +22,22 @@ public class SignUpServiceImpl implements SignUpService
 	
 
 	@Override
-	public boolean doUserSignUp(String _username, String _password) 
+	public boolean doUserSignUp(String _email, String _pass) 
 	{
+		
 		logger.info("+++ check if the user is existed +++");
-		if(userRepository.getUserByName(_username)==null)
+		
+		User user = userRepository.getUserByEmail(_email);
+		
+		if(user==null)
 		{
 			logger.info("+++ current useremail is able to be regisitered +++");
-			
-			
-			long userId = 0;
+			user.setEmail(_email);
+			user.setPassword(_pass);
 			
 			logger.info("+++ to regisiter user +++");
-			User user = new User();
+			userRepository.
+			User insertUser(User user);
 			
 		}
 		else
@@ -42,7 +47,7 @@ public class SignUpServiceImpl implements SignUpService
 		}
 		
 		
-		return false;
+		return true;
 	}
 
 }

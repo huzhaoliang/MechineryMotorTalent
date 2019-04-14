@@ -48,5 +48,16 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 		userService.insertUser(user);
 		return "redirect:user_list";
 	}
+	
+	
+	@RequestMapping(value="/signup")
+	public String signup() 
+	{
+		logger.info("++++++++Sign up++++++++++");
+		
+		return "signup";
+	}
+	
+	
 
 }
