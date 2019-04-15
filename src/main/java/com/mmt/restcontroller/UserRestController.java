@@ -39,11 +39,15 @@ public class UserRestController
 		logger.info(_email);
 		logger.info(_pass);
 		//able to be regisitered == true
-		User user = userService.getUserByEmail(_email);
-		
-		
-		if(user == null)
+		if(userService.getUserAmoumtByEmail(_email)>0)
 		{
+			logger.info("############ email existed ############");
+			return "email existed";
+		}
+		
+		if(userService.getUserAmoumtByEmail(_email)==0)
+		{
+			User user = new User();
 			user.setEmail(_email);
 			user.setPassword(_pass);
 			userService.insertUser(user);
