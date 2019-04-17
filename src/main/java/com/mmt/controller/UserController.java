@@ -58,6 +58,14 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 		return "signup";
 	}
 	
+	@RequestMapping(value="/signin")
+	public String signin() 
+	{
+		logger.info("++++++++Sign up++++++++++");
+		
+		return "signin";
+	}
+	
 	
 
 }

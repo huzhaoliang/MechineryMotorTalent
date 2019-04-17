@@ -1,7 +1,7 @@
 "use strict";
 //request uri
-const signup_url = "/api/signup";
-const signin_url = "";
+const api_signup = "/api/signup";
+const api_signin = "/api/signin";
 
 //function
 function toSignUp()

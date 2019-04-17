@@ -32,23 +32,29 @@ function doSignUp()
 		return
 	}
 	
+	if(passwordFormat.test(password)==false)
+	{
+		alert("密码不符合要求");
+		return
+	}
+	
+	
 	if(passcode==undefined||passcode==null||passcode=="")
 	{
-		alert("密码不能为空");
+		alert("密码需要确认");
 		return
 	}
 	
 	if(passcode!=password)
 	{
-		alert("密码与确认密码不一致");
+		alert("密码两次输入不一致");
 		return
 	}
 	
-	
-	alert(signup_url);
+
 	$.ajax({
 		  type: 'POST',
-		  url: signup_url,
+		  url: api_signup,
 		  dataType: "json",
 		  //contentType: "application/json;charset=utf-8",
 		  data: 

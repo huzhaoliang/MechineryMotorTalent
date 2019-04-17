@@ -59,4 +59,15 @@ public class UserRestController
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	public String signin()
+	{
+		
+		
+		
+		return "Hello";
+	}
+	
+	
 }
