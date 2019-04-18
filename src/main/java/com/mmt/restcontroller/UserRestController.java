@@ -30,11 +30,6 @@ public class UserRestController
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
-		
-		
-		logger.info("############hello############");
-		
-		
 		//JSONObject jsonObject = JSONObject.parseObject(_signUpJson);
 		logger.info(_email);
 		logger.info(_pass);
@@ -54,15 +49,25 @@ public class UserRestController
 			logger.info("############ current new user is regisitered ############");
 		}
 		
-		
 		return "Hello";
 	}
 	
 	
 	@ResponseBody
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signin()
+	public String signin(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
+		if(userService.getUserAmoumtByEmail(_email)<1)
+		{
+			logger.info("############ email not existed ############");
+			return "email not existed";
+		}
+		
+		if(userService.getUserAmoumtByEmail(_email)>1)
+		{
+			logger.info("############ email account is duplicated ############");
+			return "email account is duplicated";
+		}
 		
 		
 		

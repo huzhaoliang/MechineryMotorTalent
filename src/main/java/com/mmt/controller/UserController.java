@@ -61,7 +61,7 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 	@RequestMapping(value="/signin")
 	public String signin() 
 	{
-		logger.info("++++++++Sign up++++++++++");
+		logger.info("++++++++Sign in++++++++++");
 		
 		return "signin";
 	}
