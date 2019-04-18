@@ -20,4 +20,6 @@ public interface UserService
 	
 	int getUserAmoumtByEmail(String email);
 	
+	int getUserAmoumtByName(String name);
+	
 }

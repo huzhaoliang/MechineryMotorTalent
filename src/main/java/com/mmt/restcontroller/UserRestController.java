@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mmt.support.UserTokenService;
 import com.mmt.service.UserService;
 import com.mmt.entity.User;
+
 
 
 
@@ -21,6 +23,7 @@ import com.mmt.entity.User;
 public class UserRestController 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	private String token = null;
 	
 	@Autowired
 	UserService userService;
@@ -57,21 +60,32 @@ public class UserRestController
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signin(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
-		if(userService.getUserAmoumtByEmail(_email)<1)
+		if(userService.getUserAmoumtByEmail(_email)!=1)
 		{
 			logger.info("############ email not existed ############");
 			return "email not existed";
 		}
 		
-		if(userService.getUserAmoumtByEmail(_email)>1)
+		try
 		{
-			logger.info("############ email account is duplicated ############");
-			return "email account is duplicated";
+			User user = userService.getUserByEmail(_email);
+			
+			if(user != null)
+			{
+				this.token = UserTokenService.generateToken(_email, _pass);
+				logger.info("####current token is####" + this.token);
+				return this.token;
+			}
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 		
+		return "signin not successed";
 		
-		
-		return "Hello";
 	}
 	
 	

@@ -36,15 +36,14 @@ function doSignIn()
 	$.ajax({
 		  type: 'POST',
 		  url: api_signin,
-		  dataType: "json",
+		  dataType: 'json',
 		  //contentType: "application/json;charset=utf-8",
 		  data: 
 		  {
-			  "email" : email,
-			  "password" : password
+			  'email' : email,
+			  'password' : password
 		  },
-		  success: signin_success()
-		  
+		  success: function(data){alert("haha");alert(data);}
 		});
 	
 	
@@ -53,4 +52,5 @@ function doSignIn()
 function signin_success(res)
 {
 	alert(res);
+	window.location.href = "index";
 }

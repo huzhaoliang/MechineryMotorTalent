@@ -18,7 +18,8 @@ import com.mmt.repository.UserRepository;
 import com.mmt.service.UserService;
 
 @Service(value="UserService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService
+{
 	@Autowired
 	private UserRepository userRepository;
 
@@ -70,6 +71,12 @@ public class UserServiceImpl implements UserService{
 	public int getUserAmoumtByEmail(String email) 
 	{
 		return userRepository.getUserAmountByEmail(email);
+	}
+
+	@Override
+	public int getUserAmoumtByName(String name) 
+	{
+		return userRepository.getUserAmountByName(name);
 	}
 
 }

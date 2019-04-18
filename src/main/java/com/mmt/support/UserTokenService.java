@@ -21,7 +21,7 @@ public class UserTokenService
 	// 私钥和加密算法
     private static Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
     
-	public static String generateToken(String _user, String _pass)
+	public static String generateToken(String _email, String _pass)
 	{
 		// 设置过期时间
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
@@ -34,7 +34,7 @@ public class UserTokenService
         
 		return  JWT.create()
                 .withHeader(header)
-                .withClaim("user", _user)
+                .withClaim("user", _email)
                 .withClaim("pass", _pass)
                 .withExpiresAt(date)
                 .sign(algorithm);
