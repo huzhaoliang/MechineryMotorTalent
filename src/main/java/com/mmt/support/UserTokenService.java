@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
@@ -14,6 +17,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class UserTokenService 
 {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	//token过期时间
 	private static final long EXPIRE_TIME = 15 * 60 * 1000;
 	//token密钥
@@ -46,6 +50,7 @@ public class UserTokenService
 		{
 	        JWTVerifier verifier = JWT.require(algorithm).build();
 	        DecodedJWT jwt = verifier.verify(_token);
+	        
 	        return true;
 	    } 
 		catch (Exception e)

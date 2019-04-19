@@ -57,6 +57,7 @@ function doSignUp()
 		  url: api_signup,
 		  dataType: "json",
 		  //contentType: "application/json;charset=utf-8",
+		  async: false,
 		  data: 
 		  {
 			  "email" : email,

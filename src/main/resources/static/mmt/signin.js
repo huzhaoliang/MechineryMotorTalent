@@ -9,6 +9,8 @@ const passwordFormat = /^[\w_-]{6,16}$/;
 
 
 //function
+
+
 function doSignIn()
 {
 	email = $("#input_email").val();
@@ -33,17 +35,23 @@ function doSignIn()
 	}
 	
 	//alert(api_signin);
+	
 	$.ajax({
+		  async: false,
 		  type: 'POST',
 		  url: api_signin,
 		  dataType: 'json',
 		  //contentType: "application/json;charset=utf-8",
 		  data: 
 		  {
-			  'email' : email,
-			  'password' : password
+			  'email': email,
+			  'password': password
 		  },
-		  success: function(data){alert("haha");alert(data);}
+		  success: function(data){alert(data);},
+		  error: function()
+		  		{
+			  		alert("Error");
+		  		}
 		});
 	
 	
@@ -52,5 +60,7 @@ function doSignIn()
 function signin_success(res)
 {
 	alert(res);
-	window.location.href = "index";
+	//window.location.href = "index";
 }
+
+
