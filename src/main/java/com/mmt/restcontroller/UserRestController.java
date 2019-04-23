@@ -14,7 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.mmt.support.UserTokenService;
 import com.mmt.service.UserService;
 import com.mmt.entity.User;
-
+import org.json.*;
 
 
 
@@ -63,7 +63,7 @@ public class UserRestController
 		if(userService.getUserAmoumtByEmail(_email)!=1)
 		{
 			logger.info("############ email not existed ############");
-			return "email not existed";
+			return null;
 		}
 		
 		try
@@ -74,7 +74,10 @@ public class UserRestController
 			{
 				this.token = UserTokenService.generateToken(_email, _pass);
 				logger.info("####current token is####" + this.token);
-				return this.token;
+				String jsonStr = "{\"token\":\"" + this.token + "\"}";
+				JSONObject jsonObject = new JSONObject(jsonStr);
+				
+				return jsonObject;
 			}
 			
 			
@@ -84,7 +87,7 @@ public class UserRestController
 			e.printStackTrace();
 		}
 		
-		return "signin not successed";
+		
 		
 	}
 	
