@@ -63,7 +63,7 @@ public class UserRestController
 		if(userService.getUserAmoumtByEmail(_email)!=1)
 		{
 			logger.info("############ email not existed ############");
-			return null;
+			return "Email existed";
 		}
 		
 		try
