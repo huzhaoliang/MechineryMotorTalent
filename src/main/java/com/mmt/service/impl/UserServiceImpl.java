@@ -79,4 +79,10 @@ public class UserServiceImpl implements UserService
 		return userRepository.getUserAmountByName(name);
 	}
 
+	@Override
+	public User verifyUser(String email, String pass) 
+	{
+		return userRepository.verifyUser(email, pass);
+	}
+
 }

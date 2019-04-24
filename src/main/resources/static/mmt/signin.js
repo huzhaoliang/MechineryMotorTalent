@@ -47,7 +47,11 @@ function doSignIn()
 			  'email': email,
 			  'password': password
 		  },
-		  success: function(data){alert(data);},
+		  success: function(data)
+		  			{
+			  			localStorage["token"]=data.token;
+			  			window.location.href = "index";
+		  			},
 		  error: function()
 		  		{
 			  		alert("Error");

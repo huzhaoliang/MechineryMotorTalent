@@ -3,6 +3,10 @@
 const api_signup = "/api/signup";
 const api_signin = "/api/signin";
 
+
+//variable
+let localStorage = window.localStorage;
+
 //function
 function toSignUp()
 {

@@ -18,6 +18,8 @@ public interface UserService
 	
 	User getUserByEmail(String email);
 	
+	User verifyUser(String email, String pass);
+	
 	int getUserAmoumtByEmail(String email);
 	
 	int getUserAmoumtByName(String name);

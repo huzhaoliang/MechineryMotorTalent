@@ -66,18 +66,18 @@ public class UserRestController
 			return "Email existed";
 		}
 		
+		String jsonStr = null;
 		try
 		{
-			User user = userService.getUserByEmail(_email);
+			User user = userService.verifyUser(_email, _pass);
 			
 			if(user != null)
 			{
 				this.token = UserTokenService.generateToken(_email, _pass);
 				logger.info("####current token is####" + this.token);
-				String jsonStr = "{\"token\":\"" + this.token + "\"}";
-				JSONObject jsonObject = new JSONObject(jsonStr);
+				jsonStr = "{\"token\":\"" + this.token + "\"}";
+				//JSONObject jsonObject = new JSONObject(jsonStr);
 				
-				return jsonObject;
 			}
 			
 			
@@ -87,7 +87,7 @@ public class UserRestController
 			e.printStackTrace();
 		}
 		
-		
+		return jsonStr;
 		
 	}
 	
