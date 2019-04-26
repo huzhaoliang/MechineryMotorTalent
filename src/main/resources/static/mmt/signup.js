@@ -54,7 +54,7 @@ function doSignUp()
 
 	$.ajax({
 		  type: 'POST',
-		  url: api_signup,
+		  url: api_signUp,
 		  dataType: "json",
 		  //contentType: "application/json;charset=utf-8",
 		  async: false,

@@ -4,8 +4,8 @@
 
 const localStorage = window.localStorage;
 const api_verifyToken = "/api/verifyToken";
-const api_signup = "/api/signup";
-const api_signin = "/api/signin";
+const api_signUp = "/api/signUp";
+const api_signIn = "/api/signIn";
 
 //variable
 

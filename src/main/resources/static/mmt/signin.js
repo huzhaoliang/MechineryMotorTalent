@@ -39,7 +39,7 @@ function doSignIn()
 	$.ajax({
 		  async: false,
 		  type: 'POST',
-		  url: api_signin,
+		  url: api_signIn,
 		  dataType: 'json',
 		  //contentType: "application/json;charset=utf-8",
 		  data: 
