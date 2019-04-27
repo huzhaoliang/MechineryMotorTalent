@@ -47,13 +47,14 @@ function doSignIn()
 		  {
 			  'email': email,
 			  'password': password
+			  
 		  },
 		  success: function(data)
 		  			{
 			  			//console.log(data);
 			  			//alert(data);
+			  			sessionStorage["token"]=data.Token;
 			  			localStorage["token"]=data.Token;
-			  			
 			  			alert("登入系统成功");
 			  			
 		  			},

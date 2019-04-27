@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/static/mmt/**",
             			"/api/signUp",
             			"/api/signIn",
+            			"/api/verifyToken",
             			"/index",
             			"/signin",
             			"/signup",

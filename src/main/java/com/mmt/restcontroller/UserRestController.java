@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import com.mmt.support.UserTokenService;
 import com.mmt.service.UserService;
 import com.mmt.entity.User;
+import com.mmt.jsonformat.TokenJosnFormat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -123,5 +124,16 @@ public class UserRestController
 
 	}
 	
+	//to verify if user is signed in
+	@ResponseBody
+	@RequestMapping(value = "/verifyToken", method = RequestMethod.POST)
+	public String verifyToken(@RequestBody TokenJosnFormat jsonBody)
+	{
+		logger.info("######");
+		logger.info(jsonBody.toString());
+		logger.info("######");
+		//UserTokenService.ver
+		return null;
+	}
 	
 }

@@ -46,11 +46,12 @@ public class UserTokenService
 	
 	public static boolean verifyToken(String _token)
 	{
+		System.out.println(_token);
 		try 
 		{
 	        JWTVerifier verifier = JWT.require(algorithm).build();
 	        DecodedJWT jwt = verifier.verify(_token);
-	        
+	        System.out.println(jwt);
 	        return true;
 	    } 
 		catch (Exception e)
