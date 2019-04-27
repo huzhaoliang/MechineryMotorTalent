@@ -36,6 +36,7 @@ function doSignIn()
 	
 	//alert(api_signin);
 	
+	
 	$.ajax({
 		  async: false,
 		  type: 'POST',
@@ -49,8 +50,12 @@ function doSignIn()
 		  },
 		  success: function(data)
 		  			{
-			  			localStorage["token"]=data.token;
-			  			window.location.href = "index";
+			  			//console.log(data);
+			  			//alert(data);
+			  			localStorage["token"]=data.Token;
+			  			
+			  			alert("登入系统成功");
+			  			
 		  			},
 		  error: function()
 		  		{

@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.mmt.support.UserTokenService;
 import com.mmt.service.UserService;
 import com.mmt.entity.User;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.*;
 
 
@@ -24,6 +31,8 @@ public class UserRestController
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private String token = null;
+	private Map<String, Object> jsonHashMap;
+	
 	
 	@Autowired
 	UserService userService;
@@ -60,13 +69,21 @@ public class UserRestController
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public String signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
+		this.jsonHashMap = new HashMap<String, Object>();
+		JSONObject jsonObject = null;
+		
 		if(userService.getUserAmoumtByEmail(_email)!=1)
 		{
 			logger.info("############ email not existed ############");
-			return "{\"result\":\"Email doesn't existed\"}";
+			
+			this.jsonHashMap.put("ReturnCode", 101);
+			this.jsonHashMap.put("Message", "User Account doesn't exist");
+			jsonObject = new JSONObject(this.jsonHashMap);
+			return jsonObject.toString();
+			
 		}
 		
-		String jsonStr = null;
+		
 		try
 		{
 			User user = userService.verifyUser(_email, _pass);
@@ -75,20 +92,35 @@ public class UserRestController
 			{
 				this.token = UserTokenService.generateToken(_email, _pass);
 				logger.info("####current token is####" + this.token);
-				jsonStr = "{\"token\":\"" + this.token + "\"}";
-				//JSONObject jsonObject = new JSONObject(jsonStr);
+				
+				this.jsonHashMap.put("ReturnCode", 001);
+				this.jsonHashMap.put("Message", "User Signed In Successfully");
+				this.jsonHashMap.put("Token", this.token);
+			}
+			else
+			{
+				logger.info("#### not able to find user ######");
+				this.jsonHashMap.put("ReturnCode", 102);
+				this.jsonHashMap.put("Message", "Incorrect email or password");
 				
 			}
-			
-			
+			jsonObject = new JSONObject(this.jsonHashMap);
+	
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			logger.info("#### login in error #######");
+			this.jsonHashMap.put("ReturnCode", 103);
+			this.jsonHashMap.put("Message", "Sign In Error !");
+			jsonObject = new JSONObject(this.jsonHashMap);
+			
 		}
 		
-		return jsonStr;
-		
+		//String str = jsonObject.toJSONString();
+		logger.info(jsonObject.toString());
+		return jsonObject.toString();
+
 	}
 	
 	
