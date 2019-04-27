@@ -30,7 +30,7 @@ public class UserRestController
 	
 
 	@ResponseBody
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public String signUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		//JSONObject jsonObject = JSONObject.parseObject(_signUpJson);
@@ -57,13 +57,13 @@ public class UserRestController
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signin(@RequestParam("email") String _email, @RequestParam("password") String _pass)
+	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
+	public String signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		if(userService.getUserAmoumtByEmail(_email)!=1)
 		{
 			logger.info("############ email not existed ############");
-			return "Email existed";
+			return "{\"result\":\"Email doesn't existed\"}";
 		}
 		
 		String jsonStr = null;
