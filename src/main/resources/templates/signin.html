@@ -46,9 +46,9 @@
 			<!--  nav -->
 			<div class="navbar-header collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Dell</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">EMC</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">首页</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">热门职位</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">企业</a></li>
 					<li class="nav-item"><a class="nav-link" onclick="toSignIn();">登入</a></li>
 					<li class="nav-item"><a class="nav-link" onclick="toSignUp();">注册</a></li>
 				</ul>
@@ -56,23 +56,27 @@
 		</div>
 	</nav>
 	<div class="container mt-4" id="signin_container">
-		<div class="col-sm-4">
-			<form class="form-signin">
-			  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			  <label for="input_email" class="sr-only">Email address</label>
-			  <input type="email" id="input_email" class="form-control" placeholder="Email address" required="" autofocus="">
-			  <label for="input_password" class="sr-only">Password</label>
-			  <input type="password" id="input_password" class="form-control" placeholder="Password" required="">
-			  <div class="checkbox mb-3">
-			    <label>
-			      <input type="checkbox" value="remember-me"> Remember me
-			    </label>
-			  </div>
-			  <a class="btn btn-lg btn-primary btn-block" type="submit" onclick="doSignIn()">Sign in</a>
-			  <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
-			</form>
-		</div>
-		<div class="col-sm-8">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-4">
+				<form class="form-signin">
+				  <h1 class="h3 mb-3 font-weight-normal mt-4">Please sign in</h1>
+				  <label for="input_email" class="sr-only">Email address</label>
+				  <input type="email" id="input_email" class="form-control mt-4" placeholder="Email address" required="" autofocus="">
+				  <label for="input_password" class="sr-only">Password</label>
+				  <input type="password" id="input_password" class="form-control mt-2" placeholder="Password" required="">
+				  <div class="checkbox mb-3">
+				    <label>
+				      <input type="checkbox" value="remember-me" class="mt-2"> Remember me
+				    </label>
+				  </div>
+				  <a class="btn btn-lg btn-primary btn-block mt-2" type="submit" onclick="doSignIn()">Sign in</a>
+				  <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+				</form>
+			</div>
+			<div class="col-sm-4">
+			</div>
 		</div>
 		
 	</div>
@@ -91,8 +95,6 @@
     	</div>
 	</footer>
   	<!-- Footer -->
-
-
 
 </body>
 
