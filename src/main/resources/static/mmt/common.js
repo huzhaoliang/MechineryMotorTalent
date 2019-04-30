@@ -11,11 +11,13 @@ const api_signIn = "/api/signIn";
 function toSignUp()
 {
 	window.location.href = "signup";
+	sessionStorage["backurl"] = "\";
 }
 
 function toSignIn()
 {
 	window.location.href = "signin";
+	sessionStorage["backurl"] = "\";
 }
 
 
