@@ -30,13 +30,14 @@ public class Job {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_id")
 	private EnterpriseUser company;
-	private Long number; 
-	private String salary;
+	private Long number;
+	private String startSalary;
+	private String endSalary;
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
 	private City city;
-	private Long edu;
-	private Long exp;
+	private String edu;
+	private String exp;
 	private String tag;
 	private Date publishTime;
 	private Clob description;
@@ -124,16 +125,28 @@ public class Job {
 		this.number = number;
 	}
 	/**
-	 * @return the salary
+	 * @return the startSalary
 	 */
-	public String getSalary() {
-		return salary;
+	public String getStartSalary() {
+		return startSalary;
 	}
 	/**
-	 * @param salary the salary to set
+	 * @param startSalary the startSalary to set
 	 */
-	public void setSalary(String salary) {
-		this.salary = salary;
+	public void setStartSalary(String startSalary) {
+		this.startSalary = startSalary;
+	}
+	/**
+	 * @return the endSalary
+	 */
+	public String getEndSalary() {
+		return endSalary;
+	}
+	/**
+	 * @param endSalary the endSalary to set
+	 */
+	public void setEndSalary(String endSalary) {
+		this.endSalary = endSalary;
 	}
 	/**
 	 * @return the city
@@ -150,25 +163,25 @@ public class Job {
 	/**
 	 * @return the edu
 	 */
-	public Long getEdu() {
+	public String getEdu() {
 		return edu;
 	}
 	/**
 	 * @param edu the edu to set
 	 */
-	public void setEdu(Long edu) {
+	public void setEdu(String edu) {
 		this.edu = edu;
 	}
 	/**
 	 * @return the exp
 	 */
-	public Long getExp() {
+	public String getExp() {
 		return exp;
 	}
 	/**
 	 * @param exp the exp to set
 	 */
-	public void setExp(Long exp) {
+	public void setExp(String exp) {
 		this.exp = exp;
 	}
 	/**
