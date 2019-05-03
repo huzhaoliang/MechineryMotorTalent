@@ -32,70 +32,58 @@
     <script src="/static/js/front.js"></script> 
 </head>
 <body id="jobBody">
-<!-- Head Part -->>
-<header class="header">
-   <nav class="navbar navbar-default">
-     <div class="container-fluid">
-       <!-- Brand and toggle get grouped for better mobile display -->
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-side" aria-expanded="false">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-         <a href="#" class="btn-closemenu"><i class="icon-x"></i></a>
-         <a class="navbar-brand" href="/">
-             <!--<span class="tagline">Beyond Credit Card Statements</span>-->
-             <h5>汽车人才网</h5>
-         </a>
-       </div>
-
-       <!-- Collect the nav links, forms, and other content for toggling -->
-       <div class="collapse navbar-collapse" id="job-mobile-side">
-         <ul class="nav navbar-nav navbar-right">
-           <li><a href="/features" title="Sync and Automate Your Expense Data">Features</a></li>
-           <li><a href="/in" title="Receipts on one dashboard. Home Depot, Amazon, eBay, and more">Integrations</a></li>
-           <li><a href="/pricing" title="Our straight forward pricing plans">Pricing</a></li>
-           <li><a href="/security" title="Safe and Bank-Level Secure">Security</a></li>
-           <li><a href="/blog" title="Learn from the Experts in Connected Accounting">Blog</a></li>
-           <li><a href="/about" title="Global Leader in Cloud Accounting">About</a></li>
-           <li><a href="/contact" title="Contact Us About Connected Accounting">Contact</a></li>
-           <li class="sec"><a href="/auth/signin" class="btn btn-head-signin" title="Sign In">Sign In</a></li>
-           <li class="sec"><a href="/register/signup" class="btn btn-head-signup" title="Sign Up for Free">Sign Up</a></li>
-         </ul>
-
-         <ul class="list-unstyled list-mobilebtns">
-           <li><a href="/auth/signin" class="btn btn-outline btn-head-signin" title="Sign In">Sign In</a></li>
-           <li><a href="/register/signup" class="btn btn-primary btn-head-signup" title="Sign Up for Free">Sign Up</a></li>
-         </ul>
-       </div><!-- /.navbar-collapse -->
-     </div><!-- /.container-fluid -->
-   </nav>
- </header>
-	<div class="container-fluid">
-		<div class="row">
-			<form class="form-inline" role="form">
-				<div class="form-group">
-					<label class="sr-only" for="city">城市</label>
-					<input class="form-control" type="text" id="city" placeholder="请选择城市">
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="company">公司</label>
-					<input class="form-control" type="text" id="company" placeholder="请选择公司">
-				</div>
-				<div class="form-group">
-					<label class="sr-only" for="position">职位</label>
-					<input class="form-control" type="text" id="position" placeholder="请选择职位">
-				</div>
-				<div class="form-group">
-					<button type="button" class="btn btn-primary">立即搜索</button>>
-				</div>
-				
-			</form>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm">
+		<div id="homeNavContainer" class="container">
+			<a class="navbar-brand" herf="#">汽车人才网</a>
+			<!--  nav -->
+			<div class="navbar-header collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">首页</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">热门职位</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">企业</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="toSignIn();">登入</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="toSignUp();">注册</a></li>
+				</ul>
+			</div>
 		</div>
+	</nav>
 	
-	
+	<div class="container mt-2">
+		<form id="searchBox">
+		  <div class="input-group">
+		    <label class="sr-only" for="city">城市</label>
+			<input class="form-control" type="text" id="city" placeholder="请选择城市">
+		    <label class="sr-only" for="company">公司</label>
+			<input class="form-control" type="text" id="company" placeholder="请选择公司">
+			<label class="sr-only" for="position">职位</label>
+			<input class="form-control" type="text" id="position" placeholder="请选择职位">
+			<div class="input-group-append">
+		      <a class="btn btn-lg btn-block" type="submit">立即搜索</a>  
+		    </div>
+    	  </div>
+		</form>
+		<div id="hostPost" class="mt-2 mb-2">
+		  <span>热门职位：</span>
+		  <a href='#' class="mr-1">IT</a>
+		  <a href="#" class="mr-1">销售</a>
+		</div>
+		<div class="mt-4">
+		  <img src="/static/img/favicon.ico">
+		  <span>职位导航</span>
+		</div>
+		<div>
+			<ul class="nav flex-column">
+			    <li class="nav-item">
+			      <a class="nav-link" href="#">IT</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" href="#">销售</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" href="#">电子商务</a>
+			    </li>
+			</ul>
+		</div>
 	</div>
 
 </body>
