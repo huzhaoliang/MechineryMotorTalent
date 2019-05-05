@@ -6,18 +6,17 @@ const api_signIn = "/api/signIn";
 
 //variable
 
-
 //function
 function toSignUp()
 {
 	window.location.href = "signup";
-	sessionStorage["backurl"] = "\";
+	//sessionStorage["backurl"] = "\";
 }
 
 function toSignIn()
 {
 	window.location.href = "signin";
-	sessionStorage["backurl"] = "\";
+	//sessionStorage["backurl"] = "\";
 }
 
 
