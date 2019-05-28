@@ -50,4 +50,11 @@ public class JobServiceImpl implements JobService{
 		jobRepository.deleteJobById(id);
 	}
 
+	@Override
+	public List<Job> getJobRecommend() 
+	{
+		
+		return jobRepository.findJobsByUpdateTime();
+	}
+
 }
