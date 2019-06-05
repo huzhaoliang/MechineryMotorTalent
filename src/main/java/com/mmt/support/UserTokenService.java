@@ -21,7 +21,7 @@ public class UserTokenService
 	//token过期时间
 	private static final long EXPIRE_TIME = 15 * 60 * 1000;
 	//token密钥
-	private static final String TOKEN_SECRET = "hep1baij2maxsh3";
+	private static final String TOKEN_SECRET = "hep1baij2maxsh3chenl4";
 	// 私钥和加密算法
     private static Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
     

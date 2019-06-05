@@ -15,7 +15,7 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 	List<Job> findJobsByCompanyId(@Param("companyId")Long companyId);
 	
 	
-	@Query(value = "select a.* from job a order by a.publishTime Desc")
+	@Query(value = "select * from job order by publishTime Desc", nativeQuery = true)
 	List<Job> findJobsByUpdateTime();
 	
 	

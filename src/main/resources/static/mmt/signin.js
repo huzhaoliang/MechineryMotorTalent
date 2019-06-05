@@ -54,13 +54,13 @@ function doSignIn()
 			  			//console.log(data);
 			  			//alert(data);
 			  			sessionStorage["token"]=data.Token;
-			  			localStorage["token"]=data.Token;
+			  			//localStorage["token"]=data.Token;
 			  			alert("登入系统成功");
 			  			
 		  			},
 		  error: function()
 		  		{
-			  		alert("Error");
+			  		alert("登入系统失败");
 		  		}
 		});
 	
