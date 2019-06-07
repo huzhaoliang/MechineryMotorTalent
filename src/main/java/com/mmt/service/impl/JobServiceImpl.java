@@ -56,8 +56,23 @@ public class JobServiceImpl implements JobService{
 		return jobRepository.findJobsByUpdateTime();
 	}
 
-	
-	public List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions) {
-		return jobRepository.findJobsByCityAndJobFunctions(cities, job_functions);
+	@Override
+	public List<Job> findJobsByAreaJobFunctionName(String name) {
+		return jobRepository.findJobsByAreaJobFunctionName(name);
+	}
+
+	@Override
+	public List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds) {
+		return jobRepository.findJobsByAreaJobFunctionIds(cityIds, jobTypeIds);
+	}
+
+	@Override
+	public List<Job> findJobsByAreaIds(List<Long> cityIds) {
+		return jobRepository.findJobsByAreaIds(cityIds);
+	}
+
+	@Override
+	public List<Job> findJobsByJobFunctionIds(List<Long> jobTypeIds) {
+		return jobRepository.findJobsByJobFunctionIds(jobTypeIds);
 	}
 }

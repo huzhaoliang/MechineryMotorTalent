@@ -21,5 +21,11 @@ public interface JobService {
 	
 	void deleteJobById(Long id);
 	
-	List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions);
+	List<Job> findJobsByAreaJobFunctionName(String name);
+	
+	List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds);
+	
+	List<Job> findJobsByAreaIds(List<Long> cityIds);
+	
+	List<Job> findJobsByJobFunctionIds(List<Long> jobTypeIds);
 }

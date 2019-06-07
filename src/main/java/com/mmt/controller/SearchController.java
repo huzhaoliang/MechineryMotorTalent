@@ -37,55 +37,132 @@ public class SearchController {
 	@Autowired
 	private JobService jobService;
 	
+	private int pageSize = 20;
+	
 	@RequestMapping(value="/search")
 	public String search(Model model, @ModelAttribute(value="s_area") String s_area,
 			   @ModelAttribute(value="s_jobfunction") String s_jobfunction,
-			   @ModelAttribute(value="s_job") String s_job) {
+			   @ModelAttribute(value="s_job") String s_job,
+			   @ModelAttribute(value="pageNumber") int pageNumber) {
 		logger.info("++++++++ search jobs ++++++++++");
 		
-		List<Job> jobs = new ArrayList<Job>();
-		List<Long> city_ids = Collections.emptyList();//new ArrayList<Long>();
-		List<Long> jobtype_ids = Collections.emptyList();//new ArrayList<Long>();
+		List<Job> jobs = null;
+		List<Long> city_ids = new ArrayList<Long>();
+		List<Long> jobtype_ids = new ArrayList<Long>();
 		
-		// get all the cities by name.
-		if (s_area != null) {
-			String[] s_areas = s_area.split("-");
-			List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
-			if (cities != null) {
-				for (City c : cities) {
-					city_ids.add(c.getId());
+		if (s_job != null && s_job != "") {
+			jobs = jobService.findJobsByAreaJobFunctionName(s_job);
+			
+			if (s_area != null) {
+				String[] s_areas = s_area.split("-");
+				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
+				if (cities != null) {
+					for (City c : cities) {
+						city_ids.add(c.getId());
+					}
 				}
-			}
-		}
-		
-		if (s_jobfunction != null) {
-			String[] s_jobfunctions = s_jobfunction.split("-");
-			List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
-			if (jobtypes != null) {
-				for (JobType j : jobtypes) {
-					if (j.getFlag() == 3) {
-						jobtype_ids.add(j.getId());
-					} else if (j.getFlag() == 2) {
-						for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
-							jobtype_ids.add(l3_j.getId());
+				
+				for (Long id : city_ids) {
+					for (Job j : jobs) {
+						if (j.getCity().getId() != id) {
+							jobs.remove(j);
 						}
 					}
 				}
 			}
-		}
-		
-		for (Job j : jobService.findJobsByCityAndJobFunctions(city_ids, jobtype_ids))  {
-			String city_name = j.getCity().getName();
-			String jobtype_name = j.getJobType().getType();
 			
-			System.out.println("job name:" + j.getName());
-			
-			if (city_name.contains(s_job) || jobtype_name.contains(s_job)) {
-				jobs.add(j);
+			if (s_jobfunction != null) {
+				String[] s_jobfunctions = s_jobfunction.split("-");
+				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
+				if (jobtypes != null) {
+					for (JobType j : jobtypes) {
+						if (j.getFlag() == 3) {
+							jobtype_ids.add(j.getId());
+						} else if (j.getFlag() == 2) {
+							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
+								jobtype_ids.add(l3_j.getId());
+							}
+						}
+					}
+				}
+				
+				for (Long id : jobtype_ids) {
+					for (Job j : jobs) {
+						if (j.getJobType().getId() != id) {
+							jobs.remove(j);
+						}
+					}
+				}
+			}
+		} else {
+			if (s_area != null && s_jobfunction !=null) {
+				String[] s_areas = s_area.split("-");
+				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
+				if (cities != null) {
+					for (City c : cities) {
+						city_ids.add(c.getId());
+					}
+				}
+				
+				String[] s_jobfunctions = s_jobfunction.split("-");
+				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
+				if (jobtypes != null) {
+					for (JobType j : jobtypes) {
+						if (j.getFlag() == 3) {
+							jobtype_ids.add(j.getId());
+						} else if (j.getFlag() == 2) {
+							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
+								jobtype_ids.add(l3_j.getId());
+							}
+						}
+					}
+				}
+				
+				jobs = jobService.findJobsByAreaJobFunctionIds(city_ids, jobtype_ids);
+			}
+			else if (s_area != null) {
+				String[] s_areas = s_area.split("-");
+				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
+				if (cities != null) {
+					for (City c : cities) {
+						city_ids.add(c.getId());
+					}
+				}
+				
+				jobs = jobService.findJobsByAreaIds(city_ids);
+			}
+			else if (s_jobfunction != null) {
+				String[] s_jobfunctions = s_jobfunction.split("-");
+				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
+				if (jobtypes != null) {
+					for (JobType j : jobtypes) {
+						if (j.getFlag() == 3) {
+							jobtype_ids.add(j.getId());
+						} else if (j.getFlag() == 2) {
+							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
+								jobtype_ids.add(l3_j.getId());
+							}
+						}
+					}
+				}
+				
+				jobs = jobService.findJobsByJobFunctionIds(jobtype_ids);
 			}
 		}
 		
-		return "search_result?PageNumber=1";
+		int totalPages = 0;
+		if (jobs != null) {
+			totalPages = jobs.size() / this.pageSize;
+		}
+		
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("jobs", jobs);
+		model.addAttribute("s_area", s_area);
+		model.addAttribute("s_jobfunction", s_jobfunction);
+		model.addAttribute("s_job", s_job);
+		
+		return "search";
 	}
 	
 	@RequestMapping(value="/search_jobfunction")

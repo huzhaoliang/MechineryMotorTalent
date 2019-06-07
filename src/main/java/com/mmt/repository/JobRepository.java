@@ -15,7 +15,7 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 	List<Job> findJobsByCompanyId(@Param("companyId")Long companyId);
 	
 	
-	@Query(value = "select * from job order by publishTime Desc", nativeQuery = true)
+	@Query(value = "select * from job order by publish_time Desc", nativeQuery = true)
 	List<Job> findJobsByUpdateTime();
 	
 	
@@ -24,6 +24,15 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 	@Query(value="delete from job where id=:id", nativeQuery = true)
 	void deleteJobById(@Param("id")Long id);
 	
-	@Query(value = "select * from job j where j.city_id in :cities and j.type_id in :job_functions order by publish_time Desc", nativeQuery = true)
-	List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions);
+	@Query(value = "select job.* from job, city, job_type where job.city_id = city.id and job.type_id = job_type.id and city.name like '%:name%' and job_type.type like '%:name%' order by publish_time Desc", nativeQuery = true)
+	List<Job> findJobsByAreaJobFunctionName(String name);
+	
+	@Query(value = "select * from job where job.city_id in :cityIds and job.type_id in :jobTypeIds order by publish_time Desc", nativeQuery = true)
+	List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds);
+	
+	@Query(value = "select * from job where job.city_id in :cityIds order by publish_time Desc", nativeQuery = true)
+	List<Job> findJobsByAreaIds(List<Long> cityIds);
+	
+	@Query(value = "select * from job where job.type_id in :jobTypeIds order by publish_time Desc", nativeQuery = true)
+	List<Job> findJobsByJobFunctionIds(List<Long> jobTypeIds);
 }
