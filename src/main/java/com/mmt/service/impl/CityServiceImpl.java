@@ -78,4 +78,21 @@ public class CityServiceImpl implements CityService{
 	public void deleteCityById(Long id) {
 		cityRepository.deleteCityById(id);
 	}
+	
+	public List<City> findAllLevelOneArea() {
+		return cityRepository.findAllLevelOneArea();
+	}
+
+	public List<City> findAllLevelTwoArea() {
+		return cityRepository.findAllLevelTwoArea();
+	}
+
+	public List<City> findAllLevelThreeArea() {
+		return cityRepository.findAllLevelThreeArea();
+	}
+
+	@Override
+	public List<City> findCityByNames(List<String> names) {
+		return null;
+	}
 }

@@ -12,4 +12,14 @@ public interface JobTypeService {
 	Page<JobType> getJobTypes(int pageNumber, int pageSize);
 	
 	void deleteJobType(List<JobType> jobTypes);
+	
+    List<JobType> findAllLevelOneJobType();
+	
+	List<JobType> findAllLevelTwoJobType();
+	
+	List<JobType> findAllLevelThreeJobType();
+	
+	List<JobType> findJobTypeByNames(List<String> names);
+	
+	List<JobType> findJobTypeByParentId(Long parentId);
 }

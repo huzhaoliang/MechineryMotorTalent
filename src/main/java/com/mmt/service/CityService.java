@@ -13,6 +13,14 @@ public interface CityService {
 	
 	List<City> getProvinces();
 	
+	List<City> findAllLevelOneArea();
+	
+	List<City> findAllLevelTwoArea();
+	
+	List<City> findAllLevelThreeArea();
+	
+	List<City> findCityByNames(List<String> names);
+	
 	void deleteCities(List<City> cities);
 	
 	City getOneCity(Long id);

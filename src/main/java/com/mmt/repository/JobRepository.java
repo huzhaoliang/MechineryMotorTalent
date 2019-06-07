@@ -23,4 +23,7 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 	@Transactional
 	@Query(value="delete from job where id=:id", nativeQuery = true)
 	void deleteJobById(@Param("id")Long id);
+	
+	@Query(value = "select * from job j where j.city_id in :cities and j.type_id in :job_functions order by publish_time Desc", nativeQuery = true)
+	List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions);
 }

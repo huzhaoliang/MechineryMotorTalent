@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.mmt.entity.EnterpriseUser;
 import com.mmt.entity.Job;
 import com.mmt.repository.JobRepository;
 import com.mmt.service.JobService;
@@ -57,4 +56,8 @@ public class JobServiceImpl implements JobService{
 		return jobRepository.findJobsByUpdateTime();
 	}
 
+	
+	public List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions) {
+		return jobRepository.findJobsByCityAndJobFunctions(cities, job_functions);
+	}
 }

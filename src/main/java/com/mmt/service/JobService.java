@@ -20,4 +20,6 @@ public interface JobService {
 	void deleteJobs(List<Job> jobs);
 	
 	void deleteJobById(Long id);
+	
+	List<Job> findJobsByCityAndJobFunctions(List<Long> cities, List<Long> job_functions);
 }

@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
 import com.mmt.entity.JobType;
 import com.mmt.repository.JobTypeRepository;
 import com.mmt.service.JobTypeService;
 
+@Service("JobTypeService")
 public class JobTypeServiceImpl implements JobTypeService{
 	
 	@Autowired
@@ -32,5 +35,26 @@ public class JobTypeServiceImpl implements JobTypeService{
 	public void deleteJobType(List<JobType> jobTypes) {
 		jobTypeRepository.deleteInBatch(jobTypes);
 	}
+	
+	
+	public List<JobType> findAllLevelOneJobType() {
+		return jobTypeRepository.findAllLevelOneJobType();
+	}
 
+	public List<JobType> findAllLevelTwoJobType() {
+		return jobTypeRepository.findAllLevelTwoJobType();
+	}
+
+	public List<JobType> findAllLevelThreeJobType() {
+		return jobTypeRepository.findAllLevelThreeJobType();
+	}
+
+	@Override
+	public List<JobType> findJobTypeByNames(List<String> names) {
+		return jobTypeRepository.findJobTypeByNames(names);
+	}
+
+	public List<JobType> findJobTypeByParentId(Long parentId) {
+		return jobTypeRepository.findJobTypeByParentId(parentId);
+	}
 }
