@@ -70,13 +70,15 @@ $(document).ready(function(){
 
 <form id="search_form" th:action="@{/search}" th:object="${searchForm}" method="get">
 <div class="row">
-<div class="col-md-2"><input class="btn-block" type="text" name="s_area" id="s_area" value="选择城市" />
+<div class="col-md-2"><input class="btn-block" type="text" name="s_area" id="s_area" value="" />
 </div>
-<div class="col-md-2"><input class="btn-block" type="text" name="s_jobfunction" id="s_jobfunction" value="职位类别" />
+<div class="col-md-2"><input class="btn-block" type="text" name="s_jobfunction" id="s_jobfunction" value="" />
 </div>
 <div class="col-md-6"><input class="btn-block" type="text" name="s_job" id="s_job" value="" />
 </div>
-<div class="col-md-2"><button type="submit" class="btn btn-primary btn-block">立即搜索</button>
+<div class="col-md-2">
+<input type="text" name="pageNumber" id="pageNumber" value="1" hidden="true"/>
+<button type="submit" class="btn btn-primary btn-block">立即搜索</button>
 </div>
 </div>
 </form>

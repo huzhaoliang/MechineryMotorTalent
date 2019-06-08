@@ -93,6 +93,6 @@ public class CityServiceImpl implements CityService{
 
 	@Override
 	public List<City> findCityByNames(List<String> names) {
-		return null;
+		return cityRepository.findCityByNames(names);
 	}
 }

@@ -31,4 +31,7 @@ public interface CityRepository extends JpaSpecificationExecutor<City>, JpaRepos
 	@Transactional
 	@Query(value="delete from city where id=:id", nativeQuery = true)
 	void deleteCityById(@Param("id")Long id);
+	
+	@Query(value="select a.* from city a where a.name like CONCAT('%',:name,'%')", nativeQuery = true)
+	List<City> findCityByName(String name);
 }

@@ -76,6 +76,40 @@
 
 
 
+<div class="row">
+<div class="col-md-5">职位名称
+</div>
+<div class="col-md-5">公司名称
+</div>
+<div class="col-md-2">操作
+</div>
+</div>
+
+<div th:each="job,jobStat:${jobs}" class="row">
+<div class="col-md-5">
+	<div class="row">
+		<a href="#" th:text="${job.name}"></a>
+	</div>
+</div>
+<div class="col-md-5"><a href="#" th:text="${job.company.name}"></a>
+</div>
+<div class="col-md-2">操作
+</div>
+</div>
+
+
+<div class="row">
+	<a th:if="${pageNumber gt 1}" th:href="@{'/search?pageNumber='+${pageNumber-1}+'&s_area='+${s_area}+'&s_jobfunction='+${s_jobfunction}+'&s_job='+${s_job}}">上一页</a>
+	<span th:text="'第'+${pageNumber}+'页'"></span>
+	<a th:if="${pageNumber lt totalPages}" th:href="@{'/search?pageNumber='+${pageNumber+1}+'&s_area='+${s_area}+'&s_jobfunction='+${s_jobfunction}+'&s_job='+${s_job}}">下一页</a>
+</div>
+
+
+</div>
+
+
+
+
 </div>
 
 

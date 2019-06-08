@@ -21,11 +21,11 @@ public interface JobService {
 	
 	void deleteJobById(Long id);
 	
-	List<Job> findJobsByAreaJobFunctionName(String name);
-	
 	List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds);
 	
 	List<Job> findJobsByAreaIds(List<Long> cityIds);
 	
 	List<Job> findJobsByJobFunctionIds(List<Long> jobTypeIds);
+	
+	Page<Job> searchJobs(String s_area, String s_jobfunction, String s_job, int pageNumber, int pageSize);
 }

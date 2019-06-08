@@ -1,13 +1,11 @@
 package com.mmt.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,118 +44,14 @@ public class SearchController {
 			   @ModelAttribute(value="pageNumber") int pageNumber) {
 		logger.info("++++++++ search jobs ++++++++++");
 		
-		List<Job> jobs = null;
-		List<Long> city_ids = new ArrayList<Long>();
-		List<Long> jobtype_ids = new ArrayList<Long>();
+		Page<Job> jobs = jobService.searchJobs(s_area, s_jobfunction, s_job, pageNumber, this.pageSize);
 		
-		if (s_job != null && s_job != "") {
-			jobs = jobService.findJobsByAreaJobFunctionName(s_job);
-			
-			if (s_area != null) {
-				String[] s_areas = s_area.split("-");
-				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
-				if (cities != null) {
-					for (City c : cities) {
-						city_ids.add(c.getId());
-					}
-				}
-				
-				for (Long id : city_ids) {
-					for (Job j : jobs) {
-						if (j.getCity().getId() != id) {
-							jobs.remove(j);
-						}
-					}
-				}
-			}
-			
-			if (s_jobfunction != null) {
-				String[] s_jobfunctions = s_jobfunction.split("-");
-				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
-				if (jobtypes != null) {
-					for (JobType j : jobtypes) {
-						if (j.getFlag() == 3) {
-							jobtype_ids.add(j.getId());
-						} else if (j.getFlag() == 2) {
-							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
-								jobtype_ids.add(l3_j.getId());
-							}
-						}
-					}
-				}
-				
-				for (Long id : jobtype_ids) {
-					for (Job j : jobs) {
-						if (j.getJobType().getId() != id) {
-							jobs.remove(j);
-						}
-					}
-				}
-			}
-		} else {
-			if (s_area != null && s_jobfunction !=null) {
-				String[] s_areas = s_area.split("-");
-				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
-				if (cities != null) {
-					for (City c : cities) {
-						city_ids.add(c.getId());
-					}
-				}
-				
-				String[] s_jobfunctions = s_jobfunction.split("-");
-				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
-				if (jobtypes != null) {
-					for (JobType j : jobtypes) {
-						if (j.getFlag() == 3) {
-							jobtype_ids.add(j.getId());
-						} else if (j.getFlag() == 2) {
-							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
-								jobtype_ids.add(l3_j.getId());
-							}
-						}
-					}
-				}
-				
-				jobs = jobService.findJobsByAreaJobFunctionIds(city_ids, jobtype_ids);
-			}
-			else if (s_area != null) {
-				String[] s_areas = s_area.split("-");
-				List<City> cities = cityService.findCityByNames(Arrays.asList(s_areas));
-				if (cities != null) {
-					for (City c : cities) {
-						city_ids.add(c.getId());
-					}
-				}
-				
-				jobs = jobService.findJobsByAreaIds(city_ids);
-			}
-			else if (s_jobfunction != null) {
-				String[] s_jobfunctions = s_jobfunction.split("-");
-				List<JobType> jobtypes = jobTypeService.findJobTypeByNames(Arrays.asList(s_jobfunctions));
-				if (jobtypes != null) {
-					for (JobType j : jobtypes) {
-						if (j.getFlag() == 3) {
-							jobtype_ids.add(j.getId());
-						} else if (j.getFlag() == 2) {
-							for (JobType l3_j : jobTypeService.findJobTypeByParentId(j.getParentId())) {
-								jobtype_ids.add(l3_j.getId());
-							}
-						}
-					}
-				}
-				
-				jobs = jobService.findJobsByJobFunctionIds(jobtype_ids);
-			}
-		}
-		
-		int totalPages = 0;
-		if (jobs != null) {
-			totalPages = jobs.size() / this.pageSize;
+		if(jobs != null) {
+			model.addAttribute("jobs", jobs);
 		}
 		
 		model.addAttribute("pageNumber", pageNumber);
-		model.addAttribute("totalPages", totalPages);
-		model.addAttribute("jobs", jobs);
+		model.addAttribute("totalPages", jobs.getTotalPages());
 		model.addAttribute("s_area", s_area);
 		model.addAttribute("s_jobfunction", s_jobfunction);
 		model.addAttribute("s_job", s_job);
