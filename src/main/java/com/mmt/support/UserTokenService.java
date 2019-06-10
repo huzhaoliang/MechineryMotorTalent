@@ -30,7 +30,6 @@ public class UserTokenService
 		// 设置过期时间
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         
-        
         //设置头部信息
         Map<String, Object> header = new HashMap<String, Object>(2);
         header.put("Type", "Jwt");
@@ -62,5 +61,24 @@ public class UserTokenService
 	}
 	
 	
+	
+	/*
+	 **
+ * Created by Java Developer Zone on 26-08-2017.
+
+@Service
+public class ApplicationService {
+
+    @Autowired
+    private Environment environment;
+    
+    public void printProperties(){
+        System.out.println(environment.getProperty("app.domain"));          // It will return properties value from application.properties file, If key will not available than it will return null
+        System.out.println(environment.getProperty("app.subdomain"));
+        System.out.println(environment.getProperty("app.rootsubdomain","Default Value")); // If value is null than return default value
+    }
+}
+
+	 */
 	
 }
