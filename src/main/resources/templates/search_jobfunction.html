@@ -54,7 +54,7 @@ $(document).ready(function(){
 		  <div class="collapse navbar-collapse" id="navbarNav">
 		    <ul class="navbar-nav">
 		      <li class="nav-item active">
-		        <a class="nav-link" th:href="@{/index}">主页</a>
+		        <a class="nav-link" th:href="@{/index}">汽车人才网</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" th:href="@{/search_jobfunction}">职位搜索</a>
@@ -127,7 +127,7 @@ $(document).ready(function(){
 				     		</div>
 				     		<div class="col-md-10">
 
-					     		<a th:each="level_three_jobtype,iterStat3 : ${level_three_jobtypes}" th:if="${level_three_jobtype.getParentId()} == ${level_two_jobtype.getId()}" href="#" th:text="${level_three_jobtype.getType()}">
+					     		<a th:each="level_three_jobtype,iterStat3 : ${level_three_jobtypes}" target="_blank" th:if="${level_three_jobtype.getParentId()} == ${level_two_jobtype.getId()}" th:href="@{'/search?pageNumber=1&s_job=&s_area=&s_jobfunction='+${level_three_jobtype.getType()}}" th:text="${level_three_jobtype.getType()}">
 					     		</a>
 					     	</div>
 				     	</div>

@@ -24,6 +24,6 @@ public interface JobTypeRepository extends JpaRepository<JobType, Long>{
     @Query(value="select a.* from job_type a where a.parentId=:parentId", nativeQuery = true)
     List<JobType> findJobTypeByParentId(Long parentId);
     
-    @Query(value="select a.* from job_type a where a.type like '%:name%'", nativeQuery = true)
+    @Query(value="select a.* from job_type a where a.type like CONCAT('%',:name,'%')", nativeQuery = true)
     List<JobType> findJobTypeByName(String name);
 }

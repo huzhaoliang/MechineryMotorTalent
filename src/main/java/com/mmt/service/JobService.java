@@ -9,6 +9,8 @@ import com.mmt.entity.Job;
 public interface JobService {
 	Job insertJob(Job job);
 	
+	Job getJobById(Long jobId);
+	
 	Page<Job> getJobs(int pageNumber, int pageSize);
 	
 	List<Job> getAllJobs();

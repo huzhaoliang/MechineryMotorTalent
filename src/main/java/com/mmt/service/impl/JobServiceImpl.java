@@ -169,7 +169,7 @@ public class JobServiceImpl implements JobService{
 				}
 				
 				if (!jobtype_ids.isEmpty()) {
-					Expression<Long> exp = root.get("type");
+					Expression<Long> exp = root.get("jobType");
 					p2 = exp.in(jobtype_ids);
 				}
 				
@@ -200,5 +200,10 @@ public class JobServiceImpl implements JobService{
 		jobs = jobRepository.findAll(spec, request);
 		
 		return jobs;
+	}
+
+	@Override
+	public Job getJobById(Long jobId) {
+		return jobRepository.getOne(jobId);
 	}
 }
