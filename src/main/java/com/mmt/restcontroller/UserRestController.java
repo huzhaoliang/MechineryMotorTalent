@@ -69,7 +69,7 @@ public class UserRestController
 	
 	@ResponseBody
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
-	public String signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
+	public User signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		this.jsonHashMap = new HashMap<String, Object>();
 		JSONObject jsonObject = null;
@@ -81,14 +81,14 @@ public class UserRestController
 			this.jsonHashMap.put("ReturnCode", 101);
 			this.jsonHashMap.put("Message", "User Account doesn't exist");
 			jsonObject = new JSONObject(this.jsonHashMap);
-			return jsonObject.toString();
+			//return jsonObject.toString();
 			
 		}
 		
-		
+		User user = null;
 		try
 		{
-			User user = userService.verifyUser(_email, _pass);
+			user = userService.verifyUser(_email, _pass);
 			
 			if(user != null)
 			{
@@ -121,9 +121,14 @@ public class UserRestController
 		
 		//String str = jsonObject.toJSONString();
 		logger.info(jsonObject.toString());
-		return jsonObject.toString();
+		//return jsonObject.toString();
+		return user;
 
 	}
+	
+	
+	
+	
 	
 	//to verify if user is signed in
 	@ResponseBody
