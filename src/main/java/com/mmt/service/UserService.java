@@ -8,6 +8,8 @@ public interface UserService
 {
 	User insertUser(User user);
 	
+	User updateUser(User user);
+	
 	Page<User> getUsers(int pageNumber, int pageSize);
 	
 	Page<User> getUsersByQueries(String name, int pageNumber, int pageSize);

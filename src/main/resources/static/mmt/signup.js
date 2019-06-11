@@ -1,5 +1,6 @@
 "use strict";
 //varible
+let username = "";
 let email = "";
 let password = "";
 let passcode = "";
@@ -10,9 +11,15 @@ const passwordFormat = /^[\w_-]{6,16}$/;
 //function
 function doSignUp()
 {
+	username= $("#username_input").val();
 	email = $("#email_input").val();
 	password = $("#password_input").val();
 	passcode = $("#passcode_input").val();
+	
+	if(username==undefined||username==null||username=="")
+	{
+		alert("用户名不能为空");
+	}
 	
 	if(email==undefined||email==null||email=="")
 	{
@@ -55,15 +62,23 @@ function doSignUp()
 	$.ajax({
 		  type: 'POST',
 		  url: api_signUp,
-		  dataType: "json",
+		  dataType: "text",
 		  //contentType: "application/json;charset=utf-8",
 		  async: false,
 		  data: 
 		  {
+			  "name" : username,
 			  "email" : email,
 			  "password" : password
 		  },
-		  success: signup_success()
+		  success: function(res)
+		  			{
+			  			alert(res);
+			  		},
+		  error: function(res)
+		  			{
+			  			alert(res);
+			  		}
 		  
 		});
 	

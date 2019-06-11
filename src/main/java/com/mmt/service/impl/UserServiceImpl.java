@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService
 	public User insertUser(User user) {
 		return userRepository.saveAndFlush(user);
 	}
+	
+	@Override
+	public User updateUser(User user) 
+	{
+		return userRepository.saveAndFlush(user);
+	}
 
 	@Override
 	public Page<User> getUsers(int pageNumber, int pageSize) {
@@ -84,5 +90,7 @@ public class UserServiceImpl implements UserService
 	{
 		return userRepository.verifyUser(email, pass);
 	}
+
+	
 
 }

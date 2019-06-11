@@ -40,6 +40,9 @@ public class User {
 	private City destCity;
 	private String resumePath;
 	private Date refreshTime;
+	private String token;
+	
+	
 	// to be added: 投递职位，收藏职位
 	@ManyToMany(cascade = {
 			CascadeType.PERSIST,
@@ -231,5 +234,16 @@ public class User {
 	public void setRefreshTime(Date refreshTime) {
 		this.refreshTime = refreshTime;
 	}
+	
+	public String getToken()
+	{
+		return this.token;
+	}
+	
+	public void setToken(String _token)
+	{
+		this.token = _token;
+	}
+	
 	
 }

@@ -53,7 +53,8 @@ function doSignIn()
 		  			{
 			  			//console.log(data);
 			  			//alert(data);
-			  			sessionStorage["token"]=data.Token;
+			  			sessionStorage["token"]=data.token;
+			  			sessionStorage["userId"]=data.id;
 			  			//localStorage["token"]=data.Token;
 			  			alert("登入系统成功");
 			  			

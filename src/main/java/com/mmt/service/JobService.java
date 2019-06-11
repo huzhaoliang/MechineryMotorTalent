@@ -17,7 +17,7 @@ public interface JobService {
 	
 	List<Job> getJobsByCompany(Long companyId);
 	
-	List<Job> getJobRecommend();
+	List<Job> getHotJobs();
 	
 	void deleteJobs(List<Job> jobs);
 	

@@ -71,7 +71,7 @@ public class JobServiceImpl implements JobService{
 	}
 
 	@Override
-	public List<Job> getJobRecommend() 
+	public List<Job> getHotJobs() 
 	{
 		
 		return jobRepository.findJobsByUpdateTime();

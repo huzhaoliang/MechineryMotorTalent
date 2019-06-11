@@ -24,9 +24,9 @@ public class JobRestController
 	
 	@ResponseBody
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public List<Job> getRecommendJobsList()
+	public List<Job> getHotJobs()
 	{
-		return jobService.getJobRecommend();
+		return jobService.getHotJobs();
 	}
 	
 	

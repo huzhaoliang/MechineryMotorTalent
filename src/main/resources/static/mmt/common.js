@@ -40,7 +40,7 @@ if(sessionStorage["token"]!= null)
 		  			},
 		  error: function()
 		  		{
-			  		alert("chech token Error");
+			  		alert("check token Error");
 		  		}
 		});
 }

@@ -41,34 +41,46 @@ public class UserRestController
 	
 
 	@ResponseBody
-	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUp(@RequestParam("email") String _email, @RequestParam("password") String _pass)
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST, produces = "application/json")
+	public String signUp(@RequestParam("name") String _name, @RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		//JSONObject jsonObject = JSONObject.parseObject(_signUpJson);
+		logger.info(_name);
 		logger.info(_email);
 		logger.info(_pass);
-		//able to be regisitered == true
-		if(userService.getUserAmoumtByEmail(_email)>0)
+		
+		int emailCount = userService.getUserAmoumtByEmail(_email);
+		int nameCount = userService.getUserAmoumtByName(_name);
+		
+		//verify if name is existed
+		if(nameCount>0)
 		{
-			logger.info("############ email existed ############");
-			return "email existed";
+			logger.info("############ username existed ############");
+			return "用户已经存在";
 		}
 		
-		if(userService.getUserAmoumtByEmail(_email)==0)
+		//able to be regisitered == true
+		if(emailCount>0)
+		{
+			logger.info("############ email existed ############");
+			return "邮箱已经存在";
+		}
+		
+		if(emailCount==0)
 		{
 			User user = new User();
+			user.setName(_name);
 			user.setEmail(_email);
 			user.setPassword(_pass);
 			userService.insertUser(user);
 			logger.info("############ current new user is regisitered ############");
 		}
-		
-		return "Hello";
+		return "注册成功，请登录。";
 	}
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
+	@RequestMapping(value = "/signIn", method = RequestMethod.POST, produces = "application/json")
 	public User signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		this.jsonHashMap = new HashMap<String, Object>();
@@ -94,6 +106,8 @@ public class UserRestController
 			{
 				this.token = UserTokenService.generateToken(_email, _pass);
 				logger.info("####current token is####" + this.token);
+				user.setToken(this.token);
+				user = userService.updateUser(user);
 				
 				this.jsonHashMap.put("ReturnCode", 001);
 				this.jsonHashMap.put("Message", "User Signed In Successfully");
@@ -111,6 +125,7 @@ public class UserRestController
 		}
 		catch(Exception e)
 		{
+			this.token = null;
 			e.printStackTrace();
 			logger.info("#### login in error #######");
 			this.jsonHashMap.put("ReturnCode", 103);
@@ -122,6 +137,8 @@ public class UserRestController
 		//String str = jsonObject.toJSONString();
 		logger.info(jsonObject.toString());
 		//return jsonObject.toString();
+		
+		
 		return user;
 
 	}
