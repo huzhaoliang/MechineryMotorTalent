@@ -33,4 +33,5 @@ public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaReposit
 	
 	@Query(value = "select * from job where job.type_id in :jobTypeIds order by publish_time Desc", nativeQuery = true)
 	List<Job> findJobsByJobFunctionIds(List<Long> jobTypeIds);
+	
 }
