@@ -52,8 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             // 任何尚未匹配的URL只需要验证用户即可访问
             .anyRequest().authenticated()
             .and().formLogin().loginPage("/signin")// 指定登录页面,授予所有用户访问登录页面
-            .successHandler(new ForwardAuthenticationSuccessHandler("/manage/main"))
-            .failureUrl("/manage/login-error").permitAll()
+            .successHandler(new ForwardAuthenticationSuccessHandler("/index"))
+            .failureUrl("/signin").permitAll()
             .and().logout().logoutSuccessUrl("/index")
             .and().csrf().disable();
         }
