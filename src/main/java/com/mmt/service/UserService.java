@@ -26,4 +26,8 @@ public interface UserService
 	
 	int getUserAmoumtByName(String name);
 	
+	boolean checkUserNameExisted(String name);
+	
+	boolean checkUserEmailExisted(String email);
+	
 }

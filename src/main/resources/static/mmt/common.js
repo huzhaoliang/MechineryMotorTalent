@@ -20,9 +20,10 @@ function toSignIn()
 }
 
 
-if(sessionStorage["token"]!= null)
+function verifyToken()
 {
-	
+	if(sessionStorage["token"]!= null)
+	{
 	alert("start to verify token");
 	$.ajax({
 		  async: false,
@@ -43,5 +44,6 @@ if(sessionStorage["token"]!= null)
 			  		alert("check token Error");
 		  		}
 		});
+	}
 }
 

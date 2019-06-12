@@ -30,6 +30,7 @@ public class User {
 	private String email;
 	@Column(name = "password", nullable = false)
 	private String password;
+	@Column(name = "name", nullable = false)
 	private String name;
 	private String birth; // like 1990-10-01
 	private Long gender;

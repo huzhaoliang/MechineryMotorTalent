@@ -48,8 +48,19 @@ public class UserTokenService
 		try 
 		{
 	        JWTVerifier verifier = JWT.require(algorithm).build();
-	        DecodedJWT jwt = verifier.verify(_token);
+	        
+	        String json[] = _token.split("=");
+	        String token = json[1];
+	        System.out.println(_token);
+	        System.out.println(token);
+	        
+	        DecodedJWT jwt = verifier.verify(token);
 	        System.out.println(jwt);
+	        
+	        Map<String, Claim> claims = jwt.getClaims();
+		    System.out.println(claims.get("username").asString());
+		    
+		    
 	        return true;
 	    } 
 		catch (Exception e)

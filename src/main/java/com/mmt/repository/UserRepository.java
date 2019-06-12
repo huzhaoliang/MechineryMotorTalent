@@ -17,12 +17,20 @@ public interface UserRepository extends JpaSpecificationExecutor<User>, JpaRepos
 	@Query(value="select a.* from user a where a.name=:name", nativeQuery = true)
 	User getUserByName(@Param("name")String name);
 	
-	@Query(value="select count(*) from user a where a.name=:name", nativeQuery = true)
-	int getUserAmountByName(@Param("name")String name);
-	
 	@Query(value="select a.* from user a where a.email=:email", nativeQuery = true)
 	User getUserByEmail(@Param("email")String email);
 	
+	@Query(value="select a.* from user a where exist (select b.name from user b where b.name=:name)", nativeQuery = true)
+	User checkUserNameExisted(@Param("name")String name);
+	
+	@Query(value="select a.* from user a where exist (select b.name from user b where b.email=:email)", nativeQuery = true)
+	User checkUserEmailExisted(@Param("email")String email);
+	
+	
+	@Query(value="select count(*) from user a where a.name=:name", nativeQuery = true)
+	int getUserAmountByName(@Param("name")String name);
+	
+
 	@Query(value="select count(*) from user a where a.email=:email", nativeQuery = true)
 	int getUserAmountByEmail(@Param("email")String email);
 	

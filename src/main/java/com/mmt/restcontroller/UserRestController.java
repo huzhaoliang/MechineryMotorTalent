@@ -49,24 +49,20 @@ public class UserRestController
 		logger.info(_email);
 		logger.info(_pass);
 		
-		int emailCount = userService.getUserAmoumtByEmail(_email);
-		int nameCount = userService.getUserAmoumtByName(_name);
-		
 		//verify if name is existed
-		if(nameCount>0)
+		if(userService.checkUserNameExisted(_name)==true)
 		{
 			logger.info("############ username existed ############");
 			return "用户已经存在";
 		}
 		
 		//able to be regisitered == true
-		if(emailCount>0)
+		if(userService.checkUserEmailExisted(_email)==true)
 		{
 			logger.info("############ email existed ############");
 			return "邮箱已经存在";
 		}
-		
-		if(emailCount==0)
+		else
 		{
 			User user = new User();
 			user.setName(_name);
@@ -104,7 +100,7 @@ public class UserRestController
 			
 			if(user != null)
 			{
-				this.token = UserTokenService.generateToken(_email, _pass);
+				this.token = UserTokenService.generateToken(user.getName());
 				logger.info("####current token is####" + this.token);
 				user.setToken(this.token);
 				user = userService.updateUser(user);
@@ -150,13 +146,13 @@ public class UserRestController
 	//to verify if user is signed in
 	@ResponseBody
 	@RequestMapping(value = "/verifyToken", method = RequestMethod.POST)
-	public ResponseEntity<String> verifyToken(@RequestBody TokenJosnFormat jsonBody)
+	public boolean verifyToken(@RequestBody String token)
 	{
 		logger.info("######");
-		logger.info(jsonBody.toString());
+		logger.info(token);
 		logger.info("######");
-		//UserTokenService.ver
-		return null;
+		UserTokenService.verifyToken(token);
+		return false;
 	}
 	
 }

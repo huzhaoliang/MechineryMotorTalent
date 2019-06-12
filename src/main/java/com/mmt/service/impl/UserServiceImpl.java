@@ -91,6 +91,24 @@ public class UserServiceImpl implements UserService
 		return userRepository.verifyUser(email, pass);
 	}
 
+	@Override
+	public boolean checkUserNameExisted(String name) 
+	{
+		User user = userRepository.checkUserNameExisted(name);
+		if (user == null)
+			return false;
+		return true;
+	}
+
+	@Override
+	public boolean checkUserEmailExisted(String email) 
+	{
+		User user = userRepository.checkUserEmailExisted(email);
+		if (user == null)
+			return false;
+		return true;
+	}
+
 	
 
 }
