@@ -23,7 +23,7 @@ public class JobRestController
 	JobService jobService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
+	@RequestMapping(value = "/hotJobs", method = RequestMethod.POST)
 	public List<Job> getHotJobs()
 	{
 		return jobService.getHotJobs();

@@ -42,9 +42,9 @@ public class UserTokenService
                 .sign(algorithm);
 	}
 	
-	public static boolean verifyToken(String _token)
+	public static String verifyToken(String _token)
 	{
-		System.out.println(_token);
+		String username = null;
 		try 
 		{
 	        JWTVerifier verifier = JWT.require(algorithm).build();
@@ -58,16 +58,13 @@ public class UserTokenService
 	        System.out.println(jwt);
 	        
 	        Map<String, Claim> claims = jwt.getClaims();
-		    System.out.println(claims.get("username").asString());
-		    
-		    
-	        return true;
+	        username = claims.get("username").asString();
 	    } 
 		catch (Exception e)
 		{
 	    	e.printStackTrace();
-	        return false;
 	    }
+		return username;
 	}
 	
 	
