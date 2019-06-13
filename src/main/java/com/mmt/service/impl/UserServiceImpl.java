@@ -109,6 +109,11 @@ public class UserServiceImpl implements UserService
 		return true;
 	}
 
+	@Override
+	public User getUser(Long id) {
+		return userRepository.getOne(id);
+	}
+
 	
 
 }

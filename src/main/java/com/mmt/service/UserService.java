@@ -6,6 +6,8 @@ import com.mmt.entity.User;
 
 public interface UserService 
 {
+	User getUser(Long id);
+	
 	User insertUser(User user);
 	
 	User updateUser(User user);
