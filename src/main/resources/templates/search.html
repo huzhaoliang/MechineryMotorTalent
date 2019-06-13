@@ -31,6 +31,24 @@
     <script src="/static/js/chart.min.js"></script> 
     <script src="/static/js/front.js"></script> 
 
+<script type="text/javascript">
+    function applyjob(jobid) {
+        userid = sessionStorage["userId"];
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/applyjob",
+            data: {jobId: jobid, userId: userid},
+            success: function(result){
+                alert(result);
+            },
+            error: function(result) {
+            	alert(result);
+            },
+        });
+    }
+</script>
+
 </head>
 <body>
 
@@ -93,7 +111,7 @@
 </div>
 <div class="col-md-5"><a href="#" th:text="${job.company.name}"></a>
 </div>
-<div class="col-md-2"><button type="button" class="btn btn-primary">申请职位</button>
+<div class="col-md-2"><button type="button" class="btn btn-primary" th:onclick="'applyjob('+${job.getId()}+');'">申请职位</button>
 </div>
 </div>
 

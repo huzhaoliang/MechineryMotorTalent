@@ -45,6 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/job",
             			"/enterprise",
             			"/search",
+            			"/search_jobfunction",
+            			"/search_area",
+            			"/applyjob",
             			"/"
             		     )
             .permitAll()
