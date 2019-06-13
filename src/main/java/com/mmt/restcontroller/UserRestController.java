@@ -151,7 +151,10 @@ public class UserRestController
 		logger.info("######");
 		logger.info(token);
 		logger.info("######");
-		UserTokenService.verifyToken(token);
+		String userName = UserTokenService.verifyToken(token);
+		
+		if(userService.checkUserNameExisted(userName)==true)
+			return true;
 		return false;
 	}
 	
