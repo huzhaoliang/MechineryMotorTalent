@@ -74,6 +74,8 @@ function doSignUp()
 		  success: function(res)
 		  			{
 			  			alert(res);
+			  			//window.location.href = "signin";
+			  			sessionStorage["redirect_uri"] = "/index"
 			  			toSignIn();
 			  		},
 		  error: function(res)

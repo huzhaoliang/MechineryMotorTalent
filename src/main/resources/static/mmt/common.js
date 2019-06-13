@@ -19,6 +19,14 @@ function toSignIn()
 	//sessionStorage["backurl"] = "\";
 }
 
+function toRedirectURL()
+{
+	alert(sessionStorage["redirect_uri"]);
+	if(sessionStorage["redirect_uri"]!=null||sessionStorage["redirect_uri"]!=undefined||sessionStorage["redirect_uri"]!='')
+	{
+		window.location.href = sessionStorage["redirect_uri"];
+	}
+}
 
 function verifyToken()
 {

@@ -58,6 +58,8 @@ function doSignIn()
 			  			//localStorage["token"]=data.Token;
 			  			alert("登入系统成功");
 			  			
+			  			toRedirectURL();
+			  			
 		  			},
 		  error: function()
 		  		{
