@@ -74,6 +74,7 @@ function doSignUp()
 		  success: function(res)
 		  			{
 			  			alert(res);
+			  			toSignIn();
 			  		},
 		  error: function(res)
 		  			{

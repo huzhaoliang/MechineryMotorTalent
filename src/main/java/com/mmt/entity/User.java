@@ -32,6 +32,8 @@ public class User {
 	private String password;
 	@Column(name = "name", nullable = false)
 	private String name;
+	@Column(name = "status", nullable = false)
+	private Integer status;
 	private String birth; // like 1990-10-01
 	private Long gender;
 	private Long education;
@@ -64,7 +66,7 @@ public class User {
     )
 	private List<Job> collectJobs;
 	
-	private Integer status;
+	
 	/**
 	 * @return the id
 	 */

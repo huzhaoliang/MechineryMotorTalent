@@ -68,6 +68,7 @@ public class UserRestController
 			user.setName(_name);
 			user.setEmail(_email);
 			user.setPassword(_pass);
+			user.setStatus(0);
 			userService.insertUser(user);
 			logger.info("############ current new user is regisitered ############");
 		}
