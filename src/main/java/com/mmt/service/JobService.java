@@ -23,6 +23,8 @@ public interface JobService {
 	
 	void deleteJobById(Long id);
 	
+	List<Job> findJobsByEnterprise(Long enterpriseId);
+	
 	List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds);
 	
 	List<Job> findJobsByAreaIds(List<Long> cityIds);

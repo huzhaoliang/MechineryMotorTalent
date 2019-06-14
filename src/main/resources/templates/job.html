@@ -34,7 +34,7 @@
 <body id="jobBody">
 	<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm">
 		<div id="homeNavContainer" class="container">
-			<a class="navbar-brand" herf="#">汽车人才网</a>
+			<a class="navbar-brand" href="#">汽车人才网</a>
 			<!--  nav -->
 			<div class="navbar-header collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
@@ -49,42 +49,18 @@
 	</nav>
 	
 	<div class="container mt-2">
-		<form id="searchBox">
-		  <div class="input-group">
-		    <label class="sr-only" for="city">城市</label>
-			<input class="form-control" type="text" id="city" placeholder="请输入城市">
-		    <label class="sr-only" for="company">公司</label>
-			<input class="form-control" type="text" id="company" placeholder="请输入公司">
-			<label class="sr-only" for="position">职位</label>
-			<input class="form-control" type="text" id="position" placeholder="请输入职位">
-			<div class="input-group-append">
-		      <a class="btn btn-lg btn-block" type="submit">立即搜索</a>  
-		    </div>
-    	  </div>
-		</form>
-		<div id="hostPost" class="mt-2 mb-2">
-		  <span>热门职位：</span>
-		  <a href='#' class="mr-1">IT</a>
-		  <a href="#" class="mr-1">销售</a>
+		<div class="row">
+			当前位置：
+			<a th:href="@{/index}" th:text="首页"></a>&nbsp;>&nbsp;
+			<a th:href="@{'/enterprise?entId='+${job.getCompany().getId()}}" target="_blank" th:text=${job.getCompany().getName()}></a>&nbsp;>&nbsp;
+			<span class="label label-default" th:text="${job.name}"></span>
 		</div>
-		<div class="mt-4">
-		  <img src="/static/img/favicon.ico">
-		  <span>职位导航</span>
-		</div>
-		<div>
-			<ul class="nav flex-column">
-			    <li class="nav-item">
-			      <a class="nav-link" href="#">IT</a>
-			    </li>
-			    <li class="nav-item">
-			      <a class="nav-link" href="#">销售</a>
-			    </li>
-			    <li class="nav-item">
-			      <a class="nav-link" href="#">电子商务</a>
-			    </li>
-			</ul>
-		</div>
+		<div class="row"><h2><span class="label label-default" th:text="${job.name}"></span></h2></div>
+		
+		<div class="row"><h2><span class="label label-default" th:text="${job.name}"></span></h2></div>
 	</div>
+
+
 
 </body>
 

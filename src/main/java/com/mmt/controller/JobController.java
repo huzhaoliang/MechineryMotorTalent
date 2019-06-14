@@ -8,11 +8,13 @@ import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +32,9 @@ public class JobController
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
+	@Autowired
+    private Environment env;
+	
     @Autowired
 	private UserService userService;
     
@@ -37,16 +42,21 @@ public class JobController
 	private JobService jobService;
 	
 	@RequestMapping(value="/job")
-	public String job() 
+	public String job(Model model, @ModelAttribute(value="jobId") Long jobId) 
 	{
 		logger.info("++++++++ job ++++++++++");
+		
+		Job job = jobService.getJobById(jobId);
+		
+		model.addAttribute("job", job);
 		
 		return "job";
 	}
 	
     @ResponseBody
     @RequestMapping(value="/applyjob")
-    public Integer applyJob(@ModelAttribute(value="jobId") Long jobId, @ModelAttribute(value="userId") Long userId){
+    public Integer applyJob(@ModelAttribute(value="jobId") Long jobId,
+    		@ModelAttribute(value="userId") Long userId){
     	// read resume from resume path
     	User user = userService.getUser(userId);
     	String resume_path = user.getResumePath();
@@ -63,7 +73,7 @@ public class JobController
     	MimeMessageHelper helper;
 		try {
 			helper = new MimeMessageHelper(message, true);
-			helper.setFrom(user.getEmail());
+			helper.setFrom(env.getProperty("spring.mail.username"));
 	    	helper.setTo(company_email);
 	    	helper.setSubject(String.format("求职简历 - %s 寻求职位 - %s", user.getName(), job.getName()));
 	    	helper.setText(String.format("申请职位：%s", job.getName()));
