@@ -34,4 +34,9 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 		return enterpriseRepository.findAll();
 	}
 
+	@Override
+	public EnterpriseUser getEUser(Long id) {
+		return enterpriseRepository.getOne(id);
+	}
+
 }

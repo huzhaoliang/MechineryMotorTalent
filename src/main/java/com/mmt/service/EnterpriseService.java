@@ -12,4 +12,6 @@ public interface EnterpriseService {
 	Page<EnterpriseUser> getEnterpriseUsers(int pageNumber, int pageSize);
 	
 	List<EnterpriseUser> getAllEnterprise();
+	
+	EnterpriseUser getEUser(Long id);
 }

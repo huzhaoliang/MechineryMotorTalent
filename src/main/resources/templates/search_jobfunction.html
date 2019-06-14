@@ -68,20 +68,20 @@ $(document).ready(function(){
 	</div>
 </div>
 
-<form id="search_form" th:action="@{/search}" th:object="${searchForm}" method="get">
-<div class="row">
-<div class="col-md-2"><input class="btn-block" type="text" name="s_area" id="s_area" value="" />
-</div>
-<div class="col-md-2"><input class="btn-block" type="text" name="s_jobfunction" id="s_jobfunction" value="" />
-</div>
-<div class="col-md-6"><input class="btn-block" type="text" name="s_job" id="s_job" value="" />
-</div>
-<div class="col-md-2">
-<input type="text" name="pageNumber" id="pageNumber" value="1" hidden="true"/>
-<button type="submit" class="btn btn-primary btn-block">立即搜索</button>
-</div>
-</div>
-</form>
+
+	<div class="container mt-2">
+		<form id="search_form" th:action="@{/search}" th:object="${searchForm}" method="get">
+		  <div class="input-group">
+			<input class="form-control" type="text" name="s_area" id="s_area" placeholder="选择城市">
+			<input class="form-control" type="text" name="s_jobfunction" id="s_jobfunction" placeholder="职位类别">
+			<input class="form-control" type="text" name="s_job" id="s_job" placeholder="">
+			<input type="text" name="pageNumber" id="pageNumber" value="1" hidden="true"/>
+			<div class="input-group-append">
+		      <button class="btn btn-lg btn-block" type="submit">立即搜索</button>  
+		    </div>
+    	  </div>
+		</form>
+	</div>
 
 
 <div class="row">

@@ -34,16 +34,21 @@
 <script type="text/javascript">
     function applyjob(jobid) {
         userid = sessionStorage["userId"];
+        alert(userid);
+        alert(jobid);
         $.ajax({
             type: "get",
             async: false,
             url: "/applyjob",
-            data: {jobId: jobid, userId: userid},
+            data: {"jobId":jobid, "userId":userid},
             success: function(result){
-                alert(result);
+                //alert(result);
+                //disable button
+            	$("#btn-apply-"+jobid).attr("disabled", true);
+            	$("#btn-apply-"+jobid).addClass('disabled');
             },
             error: function(result) {
-            	alert(result);
+            	//alert(result);
             },
         });
     }
@@ -78,21 +83,21 @@
 	</div>
 </div>
 
-<form id="search_form" th:action="@{/search}" th:object="${searchForm}" method="get">
 <div class="row">
-<div class="col-md-2"><input class="btn-block" type="text" name="s_area" id="s_area" value="选择城市" />
+	<div class="container mt-2">
+		<form id="search_form" th:action="@{/search}" th:object="${searchForm}" method="get">
+		  <div class="input-group">
+			<input class="form-control" type="text" name="s_area" id="s_area" placeholder="选择城市">
+			<input class="form-control" type="text" name="s_jobfunction" id="s_jobfunction" placeholder="职位类别">
+			<input class="form-control" type="text" name="s_job" id="s_job" placeholder="">
+			<input type="text" name="pageNumber" id="pageNumber" value="1" hidden="true"/>
+			<div class="input-group-append">
+		      <button class="btn btn-lg btn-block" type="submit">立即搜索</button>  
+		    </div>
+    	  </div>
+		</form>
+	</div>
 </div>
-<div class="col-md-2"><input class="btn-block" type="text" name="s_jobfunction" id="s_jobfunction" value="职位类别" />
-</div>
-<div class="col-md-6"><input class="btn-block" type="text" name="s_job" id="s_job" value="" />
-</div>
-<div class="col-md-2"><button type="submit" class="btn btn-primary btn-block">立即搜索</button>
-</div>
-</div>
-</form>
-
-
-
 
 <div class="row">
 <div class="col-md-5">职位名称
@@ -106,12 +111,12 @@
 <div th:each="job,jobStat:${jobs}" class="row">
 <div class="col-md-5">
 	<div class="row">
-		<a href="#" th:text="${job.name}"></a>
+		<a th:href="@{'/job?jobId='+${job.id}}" target="_blank" th:text="${job.name}"></a>
 	</div>
 </div>
-<div class="col-md-5"><a href="#" th:text="${job.company.name}"></a>
+<div class="col-md-5"><a th:href="@{'/enterprise?entId='+${job.getCompany().getId()}}" target="_blank" th:text="${job.company.name}"></a>
 </div>
-<div class="col-md-2"><button type="button" class="btn btn-primary" th:onclick="'applyjob('+${job.getId()}+');'">申请职位</button>
+<div class="col-md-2"><button type="button" class="btn btn-primary" th:id="'btn-apply-'+${job.getId()}" th:onclick="'applyjob('+${job.getId()}+');'">申请职位</button>
 </div>
 </div>
 

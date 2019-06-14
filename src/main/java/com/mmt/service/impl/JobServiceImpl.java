@@ -206,4 +206,9 @@ public class JobServiceImpl implements JobService{
 	public Job getJobById(Long jobId) {
 		return jobRepository.getOne(jobId);
 	}
+
+	@Override
+	public List<Job> findJobsByEnterprise(Long enterpriseId) {
+		return jobRepository.findJobsByEnterprise(enterpriseId);
+	}
 }
