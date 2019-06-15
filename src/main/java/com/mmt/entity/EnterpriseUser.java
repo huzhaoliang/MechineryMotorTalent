@@ -16,7 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="enterprise_user")
-public class EnterpriseUser {
+public class EnterpriseUser 
+{
 	
 	@Id
 	@GeneratedValue
