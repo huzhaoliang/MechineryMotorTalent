@@ -14,6 +14,7 @@ import com.mmt.entity.Job;
 import com.mmt.service.JobService;
 
 @RestController
+@RequestMapping(value="/api/")
 public class JobRestController 
 {
 	private Logger logger = LoggerFactory.getLogger(getClass());

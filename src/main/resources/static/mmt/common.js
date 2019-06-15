@@ -3,6 +3,7 @@
 const api_verifyToken = "/api/verifyToken";
 const api_signUp = "/api/signUp";
 const api_signIn = "/api/signIn";
+const api_getHotJobs = "/api/hotJobs";
 
 //variable
 

@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             			"/api/signUp",
             			"/api/signIn",
             			"/api/verifyToken",
+            			"/api/hotJobs",
             			"/index",
             			"/signin",
             			"/signup",
