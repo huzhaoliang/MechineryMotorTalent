@@ -11,7 +11,7 @@ const passwordFormat = /^[\w_-]{6,16}$/;
 //function
 
 
-function doSignIn()
+function doSignIn(_redirect_uri)
 {
 	email = $("#input_email").val();
 	password = $("#input_password").val();
@@ -34,7 +34,6 @@ function doSignIn()
 		return
 	}
 	
-	//alert(api_signin);
 	
 	
 	$.ajax({
@@ -51,14 +50,10 @@ function doSignIn()
 		  },
 		  success: function(data)
 		  			{
-			  			//console.log(data);
-			  			//alert(data);
+
 			  			sessionStorage["token"]=data.token;
-			  			sessionStorage["userId"]=data.id;
-			  			sessionStorage["redirect_uri"]="index";
-			  			//localStorage["token"]=data.Token;
+			  			sessionStorage["redirect_uri"]=_redirect_uri;
 			  			alert("登入系统成功");
-			  			
 			  			toRedirectURL();
 			  			
 		  			},

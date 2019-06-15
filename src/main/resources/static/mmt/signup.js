@@ -75,8 +75,8 @@ function doSignUp()
 		  			{
 			  			alert(res);
 			  			//window.location.href = "signin";
-			  			sessionStorage["redirect_uri"] = "/index"
-			  			toSignIn();
+			  			//sessionStorage["redirect_uri"] = "/index"
+			  			toSignIn("/index");
 			  		},
 		  error: function(res)
 		  			{
