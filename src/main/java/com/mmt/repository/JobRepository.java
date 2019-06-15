@@ -16,8 +16,8 @@ public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaReposit
 	List<Job> findJobsByCompanyId(@Param("companyId")Long companyId);
 	
 	
-	@Query(value = "select * from job order by publish_time Desc", nativeQuery = true)
-	List<Job> findJobsByUpdateTime();
+	@Query(value = "select * from job", nativeQuery = true)
+	List<Job> findHotJobs();
 	
 	
 	@Modifying

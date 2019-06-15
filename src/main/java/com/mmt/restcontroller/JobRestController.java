@@ -24,9 +24,11 @@ public class JobRestController
 	JobService jobService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/hotJobs", method = RequestMethod.POST)
+	@RequestMapping(value = "/hotJobs", method = RequestMethod.GET)
 	public List<Job> getHotJobs()
 	{
+		logger.info(jobService.getHotJobs().toString());
+		
 		return jobService.getHotJobs();
 	}
 	

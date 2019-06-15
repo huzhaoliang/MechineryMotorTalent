@@ -3,22 +3,24 @@
 const api_verifyToken = "/api/verifyToken";
 const api_signUp = "/api/signUp";
 const api_signIn = "/api/signIn";
-const api_getHotJobs = "/api/hotJobs";
+const api_hotJobs = "/api/hotJobs";
 
 //variable
 
 //function
+function toSignIn()
+{
+	window.location.href = "signin";
+	//sessionStorage["backurl"] = "\";
+}
+
 function toSignUp()
 {
 	window.location.href = "signup";
 	//sessionStorage["backurl"] = "\";
 }
 
-function toSignIn()
-{
-	window.location.href = "signin";
-	//sessionStorage["backurl"] = "\";
-}
+
 
 function toRedirectURL()
 {
