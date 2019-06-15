@@ -55,6 +55,7 @@ function doSignIn()
 			  			//alert(data);
 			  			sessionStorage["token"]=data.token;
 			  			sessionStorage["userId"]=data.id;
+			  			sessionStorage["redirect_uri"]="index";
 			  			//localStorage["token"]=data.Token;
 			  			alert("登入系统成功");
 			  			
