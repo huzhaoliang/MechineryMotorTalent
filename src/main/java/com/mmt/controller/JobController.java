@@ -55,8 +55,8 @@ public class JobController
 	
     @ResponseBody
     @RequestMapping(value="/applyjob")
-    public Integer applyJob(@ModelAttribute(value="jobId") Long jobId,
-    		@ModelAttribute(value="userId") Long userId){
+    public Integer applyJob(@ModelAttribute(value="jobId") Long jobId, @ModelAttribute(value="userId") Long userId)
+    {
     	// read resume from resume path
     	User user = userService.getUser(userId);
     	String resume_path = user.getResumePath();

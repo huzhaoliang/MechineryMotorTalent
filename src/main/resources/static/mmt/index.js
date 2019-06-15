@@ -7,6 +7,14 @@
 
 
 //function
+
+function getAdvertisement()
+{
+	
+
+}
+
+
 function getHotJobs()
 {
 	$.ajax({
@@ -18,7 +26,7 @@ function getHotJobs()
 		  
 		  success: function(data)
 		  			{
-			  			
+			  			alert(data);
 			  			
 		  			},
 		  error: function()
@@ -29,4 +37,8 @@ function getHotJobs()
 }
 
 
+function getCompanyInfo()
+{
+	
 
+}
