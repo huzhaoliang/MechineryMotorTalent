@@ -22,10 +22,12 @@ public class EnterpriseRestController
 	@Autowired
 	EnterpriseService enterpriseService;
 	
+	/*
 	@ResponseBody
 	@RequestMapping(value = "/HotEnterprises", method = RequestMethod.POST)
 	public List<Job> getHotEnterprises()
 	{
 		return enterpriseService.getHotJobs();
 	}
+	*/
 }
