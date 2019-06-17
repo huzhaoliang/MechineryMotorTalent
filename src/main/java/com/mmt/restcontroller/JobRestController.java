@@ -27,7 +27,7 @@ public class JobRestController
 	@RequestMapping(value = "/hotJobs", method = RequestMethod.GET)
 	public List<Job> getHotJobs()
 	{
-		logger.info(jobService.getHotJobs().toString());
+		//logger.info(jobService.getHotJobs().toString());
 		
 		return jobService.getHotJobs();
 	}

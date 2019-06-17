@@ -27,7 +27,8 @@ import com.mmt.repository.JobTypeRepository;
 import com.mmt.service.JobService;
 
 @Service("JobService")
-public class JobServiceImpl implements JobService{
+public class JobServiceImpl implements JobService
+{
 
 	@Autowired
 	private JobRepository jobRepository;
@@ -73,6 +74,7 @@ public class JobServiceImpl implements JobService{
 	@Override
 	public List<Job> getHotJobs() 
 	{
+		System.out.println("######");
 		return jobRepository.findHotJobs();
 	}
 

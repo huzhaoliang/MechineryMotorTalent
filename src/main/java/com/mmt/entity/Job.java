@@ -23,6 +23,7 @@ public class Job {
 	@GeneratedValue
 	@Column(name = "id", nullable = false)
 	private Long id;
+	@Column(name = "name", nullable = false)
 	private String name;
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
