@@ -10,7 +10,7 @@
 
 function getAdvertisement()
 {
-	alert("ad");
+	//alert("ad");
 
 }
 
@@ -41,5 +41,5 @@ function getHotJobs()
 function getCompanyInfo()
 {
 	
-	alert("comp info");
+	//alert("comp info");
 }
