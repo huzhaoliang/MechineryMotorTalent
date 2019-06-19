@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mmt.entity.City;
 import com.mmt.entity.Job;
 import com.mmt.entity.JobType;
@@ -25,6 +26,7 @@ import com.mmt.repository.CityRepository;
 import com.mmt.repository.JobRepository;
 import com.mmt.repository.JobTypeRepository;
 import com.mmt.service.JobService;
+
 
 @Service("JobService")
 public class JobServiceImpl implements JobService
@@ -40,12 +42,14 @@ public class JobServiceImpl implements JobService
 	private JobTypeRepository jobTypeRepository;
 	
 	@Override
-	public Job insertJob(Job job) {
+	public Job insertJob(Job job) 
+	{
 		return jobRepository.saveAndFlush(job);
 	}
 
 	@Override
-	public Page<Job> getJobs(int pageNumber, int pageSize) {
+	public Page<Job> getJobs(int pageNumber, int pageSize) 
+	{
 		PageRequest request = PageRequest.of(pageNumber - 1, pageSize, null);
 		Page<Job> jobs = jobRepository.findAll(request);
 		return jobs;
@@ -74,8 +78,24 @@ public class JobServiceImpl implements JobService
 	@Override
 	public List<Job> getHotJobs() 
 	{
-		System.out.println("######");
-		return jobRepository.findHotJobs();
+		
+		
+		List<Job> list = new ArrayList<Job>();
+		
+		list = jobRepository.findHotJobs();
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(int i = 0; i < list.size(); i++)
+		{
+			System.out.println("######");
+			System.out.println(list.get(i).toString());
+		}
+		return list; //jobRepository.findHotJobs();
 	}
 
 	@Override
