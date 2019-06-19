@@ -18,7 +18,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mmt.entity.City;
 import com.mmt.entity.Job;
 import com.mmt.entity.JobType;
@@ -79,23 +78,7 @@ public class JobServiceImpl implements JobService
 	public List<Job> getHotJobs() 
 	{
 		
-		
-		List<Job> list = new ArrayList<Job>();
-		
-		list = jobRepository.findHotJobs();
-		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(int i = 0; i < list.size(); i++)
-		{
-			System.out.println("######");
-			System.out.println(list.get(i).toString());
-		}
-		return list; //jobRepository.findHotJobs();
+		return jobRepository.findHotJobs();
 	}
 
 	@Override
