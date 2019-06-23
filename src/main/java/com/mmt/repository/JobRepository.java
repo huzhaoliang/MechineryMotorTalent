@@ -11,13 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mmt.entity.Job;
 
-public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaRepository<Job, Long>{
+public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaRepository<Job, Long>
+{
+	
 	@Query(value="select a.* from job a where a.com_id=:companyId", nativeQuery = true)
 	List<Job> findJobsByCompanyId(@Param("companyId")Long companyId);
 	
 	
-	@Query(value = "select * from job", nativeQuery = true)
+	@Query(value = "select a.* from job a", nativeQuery = true)
 	List<Job> findHotJobs();
+	
+	
 	
 	
 	@Modifying

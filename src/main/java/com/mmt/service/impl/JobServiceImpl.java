@@ -55,7 +55,9 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public List<Job> getAllJobs() {
+	public List<Job> getAllJobs() 
+	{
+		
 		return jobRepository.findAll();
 	}
 
@@ -75,10 +77,14 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public List<Job> getHotJobs() 
+	public Page<Job> getHotJobs(int _pageNumber) 
 	{
+		Sort sort = new Sort(Sort.Direction.DESC, "publishTime");
+		PageRequest request = PageRequest.of( _pageNumber, 50, sort);
+		Page<Job> jobs = jobRepository.findAll(request);
 		
-		return jobRepository.findHotJobs();
+		return jobs;
+		
 	}
 
 	@Override
@@ -97,7 +103,8 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public Page<Job> searchJobs(String s_area, String s_jobfunction, String s_job, int pageNumber, int pageSize) {
+	public Page<Job> searchJobs(String s_area, String s_jobfunction, String s_job, int pageNumber, int pageSize) 
+	{
 		Sort sort = new Sort(Sort.Direction.DESC, "publishTime");
 		PageRequest request = PageRequest.of(pageNumber - 1, pageSize, sort);
 		Page<Job> jobs = null;

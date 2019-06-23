@@ -6,7 +6,8 @@ import org.springframework.data.domain.Page;
 
 import com.mmt.entity.Job;
 
-public interface JobService {
+public interface JobService 
+{
 	Job insertJob(Job job);
 	
 	Job getJobById(Long jobId);
@@ -17,7 +18,7 @@ public interface JobService {
 	
 	List<Job> getJobsByCompany(Long companyId);
 	
-	List<Job> getHotJobs();
+	Page<Job> getHotJobs(int _pageNumber);
 	
 	void deleteJobs(List<Job> jobs);
 	

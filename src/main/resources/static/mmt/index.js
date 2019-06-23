@@ -1,6 +1,6 @@
 "use strict";
 //varible
-
+let pageNumber = 0;
 
 //const
 
@@ -20,14 +20,12 @@ function getHotJobs()
 	$.ajax({
 		  async: false,
 		  type: 'GET',
-		  url: api_hotJobs,
+		  url: api_hotJobs+pageNumber,
 		  dataType: 'json',
 		  //contentType: "application/json;charset=utf-8",
 		  success: function(data)
 		  			{
-			  			console.log(data);
-			  			
-			  			
+			  			console.log(data);	
 		  			},
 		  error: function(data)
 		  		{
