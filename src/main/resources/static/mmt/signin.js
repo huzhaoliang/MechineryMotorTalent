@@ -50,7 +50,7 @@ function doSignIn(_redirect_uri)
 		  },
 		  success: function(data)
 		  			{
-
+			  			sessionStorage["name"]=data.name
 			  			sessionStorage["token"]=data.token;
 			  			sessionStorage["redirect_uri"]=_redirect_uri;
 			  			alert("登入系统成功");

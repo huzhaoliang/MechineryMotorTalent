@@ -79,7 +79,12 @@ function getUserName()
 		  success: function(data)
 		  			{
 			  			console.log(data);
-			  			username = data;
+			  			if(data==true)
+			  			{
+			  				
+			  			}
+			  			
+			  			
 		  			},
 		  error: function()
 		  		{
