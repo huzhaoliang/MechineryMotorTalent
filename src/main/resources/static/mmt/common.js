@@ -6,7 +6,7 @@ const api_signIn = "/api/signIn";
 const api_hotJobs = "/api/hotJobs?pageNumber=";
 
 //variable
-
+let username;
 //function
 function toSignIn()
 {
@@ -49,6 +49,37 @@ function verifyToken()
 		  success: function(data)
 		  			{
 			  			console.log(data);	
+		  			},
+		  error: function()
+		  		{
+			  		alert("check token Error");
+		  		}
+		});
+	}
+}
+
+
+
+
+function getUserName()
+{
+	if(sessionStorage["token"]!= null)
+	{
+	alert("start to verify token");
+	$.ajax({
+		  async: false,
+		  type: 'POST',
+		  url: api_verifyToken,
+		  dataType: 'json',
+		  contentType: "application/json;charset=utf-8",
+		  data: 
+		  {
+			  "token": sessionStorage["token"]
+		  },
+		  success: function(data)
+		  			{
+			  			console.log(data);
+			  			username= data;
 		  			},
 		  error: function()
 		  		{
