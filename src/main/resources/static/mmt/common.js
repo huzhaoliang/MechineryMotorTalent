@@ -7,6 +7,7 @@ const api_hotJobs = "/api/hotJobs?pageNumber=";
 
 //variable
 let username;
+
 //function
 function toSignIn()
 {
@@ -20,8 +21,6 @@ function toSignUp()
 	//sessionStorage["backurl"] = "\";
 }
 
-
-
 function toRedirectURL()
 {
 	alert(sessionStorage["redirect_uri"]);
@@ -29,6 +28,23 @@ function toRedirectURL()
 	{
 		window.location.href = sessionStorage["redirect_uri"];
 	}
+}
+
+function toshowUserName()
+{
+	if (sessionStorage["name"] !=undefined && sessionStorage["name"] !=null && sessionStorage["name"] !="")
+		{
+			$("#sign_in").hide();
+			$("#sign_up").hide();
+			$("#userProfile").show();
+			$("#userProfile").children().first().text("欢迎，" + sessionStorage["name"] + "!");
+		}
+	else
+		{
+			$("#userProfile").hide();
+			$("#sign_in").show();
+			$("#sign_up").show();
+		}
 }
 
 function verifyToken()
@@ -93,4 +109,3 @@ function getUserName()
 		});
 	}
 }
-

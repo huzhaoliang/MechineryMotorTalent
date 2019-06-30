@@ -1,13 +1,9 @@
 "use strict";
 //varible
 let pageNumber = 0;
-
 //const
 
-
-
 //function
-
 function getAdvertisement()
 {
 	//alert("ad");

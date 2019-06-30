@@ -38,35 +38,13 @@
     <!-- own function -->
     <script src="/static/mmt/common.js" type="text/javascript"></script>
     <script src="/static/mmt/index.js" type="text/javascript"></script>
-    
-    <!-- Custom Javascript -->
-    <script src="/static/mmt/index.js"></script>
+ 
 </head>
-<body id="home_body">
-	<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm">
-		<div id="homeNavContainer" class="container">
-			<!-- header -->
-			<div class="navbar-header">
-				<a class="navbar-brand" herf="/">汽车人才网</a>
-				<a th:href="@{/search_jobfunction}">职位搜索</a>
-			</div>
-			<div class="navbar-header collapse navbar-collapse">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown userProfile">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="iconfont">&#xe647;</i>欢迎，周长雨！</a>
-						<div class="dropdown-menu dropdown-menu-left">
-							<a class="dropdown-item text-dark" href="#">个人中心</a>
-							<a class="dropdown-item text-dark" href="#">退出</a>
-						</div>
-					</li>
-					<li class="nav-item active"><a class="nav-link" href="#" onclick="toSignIn()">登入</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" onclick="toSignUp()">注册</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">消息通知</a></li>
-				</ul>
-			</div>			
-		</div>
+<body id="home_body" onload="toshowUserName()">
+	<!-- Nav -->
+	<nav th:replace="nav :: nav_copy">
 	</nav>
-
+	
 	<div class="container mt-2">
 		<div class="row no-gutters justify-content-center align-items-center mt-2 mb-3 border">
 			<div class="col-sm-8 h-100 indexSlides">
@@ -121,7 +99,7 @@
 						<label class="sr-only" for="position">职位</label>
 						<input class="form-control rounded-0 position" type="text" id="position" placeholder="请输入职位">
 					</div>
-				    <button class="btn btn-block btn-lg text-white align-middle rounded-0 mt-3 searchBtn" type="button" onclick="verifyToken()">立即搜索</button>  
+				    <button class="btn btn-block btn-lg text-white align-middle rounded-0 mt-3 searchBtn" type="button" onclick="showUserName()">立即搜索</button>  
 				</form>
 			</div>	
 		</div>
@@ -251,16 +229,8 @@
 	</div>
 
 	<!-- Footer -->
-	<footer class="footer fixed-bottom">
-		<div class="container">
-			<!-- Copyright -->
-		    <div class="footer-copyright text-center py-3">©版权所有:
-		      <a href="https://mdbootstrap.com/education/bootstrap/">马小帅</a>
-		    </div>
-	    <!-- Copyright -->
-    	</div>
+	<footer th:replace="footer :: footer_copy">
 	</footer>
-  	<!-- Footer -->
 
 </body>
 
