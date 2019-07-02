@@ -17,20 +17,16 @@
     vertical-align: middle;
     margin: -4px 4px 0px;
 }
-body {
-	color: #676767;
-}
 
-.navbar a[href]:hover {
-	font-weight: bold;
-}
-
+/* carousel */
 .indexSlides {
 	height:20em;
 }
 .indexSlides img{
 	height:20em;
 }
+
+/* indexSearch */
 .indexSearch {
 	height:20em;
 	background:#f4f4f4;
@@ -51,9 +47,8 @@ body {
 	height:12em;
 	border: 1px solid #d0d0d0;
 } */
-.hotJob {
-	border: 1px solid #d0d0d0;
-}
+
+/* excellentJob */
 .excellentJob .card-body a {
 	color: #1E90FF;
 }
@@ -63,6 +58,10 @@ body {
 	
 }
 
+/* hotJob */
+.hotJob {
+	border: 1px solid #d0d0d0;
+}
 .hotJob .company {
 	color: #676767;
 }

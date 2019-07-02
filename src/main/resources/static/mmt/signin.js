@@ -53,9 +53,7 @@ function doSignIn(_redirect_uri)
 			  			sessionStorage["name"]=data.name;
 			  			sessionStorage["token"]=data.token;
 			  			sessionStorage["redirect_uri"]=_redirect_uri;
-			  			alert("登入系统成功");
 			  			toRedirectURL();
-			  			showUserName();
 		  			},
 		  error: function()
 		  		{
