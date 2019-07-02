@@ -18,7 +18,7 @@ public interface JobService
 	
 	List<Job> getJobsByCompany(Long companyId);
 	
-	Page<Job> getHotJobs(int _pageNumber);
+	List<Job> getHotJobs();
 	
 	void deleteJobs(List<Job> jobs);
 	

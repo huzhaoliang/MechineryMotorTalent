@@ -1,6 +1,8 @@
 package com.mmt.restcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONArray;
+import com.google.gson.Gson;
 import com.mmt.entity.Job;
 import com.mmt.service.JobService;
 
@@ -25,16 +29,22 @@ public class JobRestController
 	JobService jobService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/hotJobs", method = RequestMethod.GET, produces = "application/json")
-	public Page<Job> getHotJobs(@RequestParam("pageNumber") int _pageNumber)
+	@RequestMapping(value = "/hotJobs", method = RequestMethod.GET)
+	public String getHotJobs()
 	{
 		//logger.info(jobService.getHotJobs().toString());
-		logger.info("current page number is : " + _pageNumber);
 		
+		//logger.info(jobService.getHotJobs().toString());
+		List<Job> jobs = new ArrayList<Job>();
+		jobs = jobService.getHotJobs();
 		
-		return jobService.getHotJobs(_pageNumber);
-		
-		
+		//JSONArray jsonArray = JSONArray.fromObject(params.get("goodsList"));
+		Gson gson = new Gson(); 
+		String str = gson.toJson(jobs);
+				
+				
+		System.out.println(str);
+		return str;
 		
 	}
 	

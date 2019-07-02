@@ -77,14 +77,10 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public Page<Job> getHotJobs(int _pageNumber) 
+	public List<Job> getHotJobs() 
 	{
-		Sort sort = new Sort(Sort.Direction.DESC, "publishTime");
-		PageRequest request = PageRequest.of( _pageNumber, 50, sort);
-		Page<Job> jobs = jobRepository.findAll(request);
 		
-		return jobs;
-		
+		return jobRepository.findHotJobs();		
 	}
 
 	@Override
