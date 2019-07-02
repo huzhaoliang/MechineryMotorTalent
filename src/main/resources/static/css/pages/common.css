@@ -1,0 +1,15 @@
+body {
+	color: #676767;
+}
+
+/* nav */
+.navbar a[href]:hover {
+	font-weight: bold;
+}
+.navbar .userProfile{
+	width: 8em;
+	min-width: 8em !important;
+}
+.dropdown-menu {
+	color: #676767;
+}
