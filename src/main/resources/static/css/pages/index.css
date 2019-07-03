@@ -1,3 +1,4 @@
+/* iconfont */
 @font-face {
   font-family: 'iconfont';  /* project id 1256967 */
   src: url('//at.alicdn.com/t/font_1256967_20b7p2bg58a.eot');
@@ -19,16 +20,12 @@
 }
 
 /* carousel */
-.indexSlides {
-	height:20em;
-}
-.indexSlides img{
+.indexSlides, .indexSlides img, .indexSearch {
 	height:20em;
 }
 
 /* indexSearch */
 .indexSearch {
-	height:20em;
 	background:#f4f4f4;
 }
 .indexSearch input{
@@ -40,22 +37,20 @@
 	background-color: #1E90FF;
 }
 
-/* .excellentJobCol {
-	height:12em;
+/* excellentJob */
+.excellentJobCol, .excellentJobCol .card {
+	height: 10em;
 }
 .excellentJob .card{
-	height:12em;
+	margin-bottom: 0em;
 	border: 1px solid #d0d0d0;
-} */
-
-/* excellentJob */
+}
 .excellentJob .card-body a {
 	color: #1E90FF;
 }
-.excellentJob .card-body .recommend_list .salary {
+.excellentJob .salary {
 	color: red;
 	font-size: larger;
-	
 }
 
 /* hotJob */
