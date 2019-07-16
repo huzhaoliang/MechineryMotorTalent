@@ -42,48 +42,47 @@
 <body id="signin_body" onload="toshowUserName()">
 	<nav th:replace="nav :: nav_copy">
 	</nav>
-	<div class="container registry mt-4 py-5" id="signin_container">
-		<div class="row justify-content-left align-items-center">
-			<div class="col-sm-6">
-				<ul class="nav nav-pills">
-				  <li class="nav-item">
-				    <a class="nav-link active" data-toggle="pill" href="#individual">个人登录</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" data-toggle="pill" href="#enterprise">企业登录</a>
-				  </li>
-				</ul>
-				<div class="tab-content">
-				  <div class="tab-pane active container" id="individual">
-				  	<label for="input_email" class="sr-only">邮箱：</label>
-				    <input type="email" id="input_email" class="form-control mt-4" placeholder="邮箱地址" required autofocus>
-				    <label for="input_password" class="sr-only">密码</label>
-				    <input type="password" id="input_password" class="form-control mt-2" placeholder="输入密码" required>
-				    <input class="checkbox mb-3" type="checkbox" checked="checked">
-				    <span>记住我的账号</span>
-				  </div>
-				  <div class="tab-pane container" id="enterprise">
-				  	<label for="input_account" class="sr-only">账号：</label>
-				    <input type="text" id="input_account" class="form-control mt-4" placeholder="公司账号" required autofocus>
-				  	<label for="input_email" class="sr-only">邮箱：</label>
-				    <input type="email" id="input_email" class="form-control mt-4" placeholder="邮箱地址" required>
-				    <label for="input_password" class="sr-only">密码：</label>
-				    <input type="password" id="input_password" class="form-control mt-2" placeholder="输入密码" required>
-				    <input class="checkbox mb-3" type="checkbox" checked="checked">
-				    <span>记住我的账号</span>
-				  </div>
-				  <button class="btn btn-block btn-lg text-white align-middle rounded-0 mt-3" type="submit" onclick="doSignIn()">登 入</button>
+	<div class="container mt-5" id="signin_container">
+		<div class="registry p-4">
+			<div class="row justify-content-left align-items-center">
+				<div class="col-sm-6">
+					<form class="form-signin">
+						<ul class="nav nav-tabs">
+						  <li class="nav-item mr-5">
+						    <a class="nav-link active" data-toggle="tab" href="#individual">个人登录</a>
+						  </li>
+						  <li class="nav-item">
+						    <a class="nav-link" data-toggle="tab" href="#enterprise">企业登录</a>
+						  </li>
+						</ul>
+						<div class="tab-content">
+						  <div class="tab-pane active container px-0" id="individual">
+						  	<label for="input_email" class="sr-only">邮箱</label>
+						    <input type="email" id="input_email" class="form-control rounded-0 my-4" placeholder="邮箱地址" required autofocus>
+						    <label for="input_password" class="sr-only">密码</label>
+						    <input type="password" id="input_password" class="form-control rounded-0 my-4" placeholder="输入密码" required>
+						    <input class="checkbox rounded-1 mb-3" type="checkbox" checked="checked">
+						    <span>记住我的账号</span>
+						  </div>
+						  <div class="tab-pane container px-0" id="enterprise">
+						  	<label for="input_account" class="sr-only">账号</label>
+						    <input type="text" id="input_account" class="form-control rounded-0 my-4" placeholder="公司账号" required autofocus>
+						  	<label for="input_email" class="sr-only">邮箱</label>
+						    <input type="email" id="input_email" class="form-control rounded-0 my-4" placeholder="邮箱地址" required>
+						    <label for="input_password" class="sr-only">密码</label>
+						    <input type="password" id="input_password" class="form-control rounded-0 my-4" placeholder="输入密码" required>
+						    <input class="checkbox rounded-1 mb-3" type="checkbox" checked="checked">
+						    <span>记住我的账号</span>
+						  </div>
+					  	  <button class="btn btn-block btn-lg text-white align-middle rounded-0 mt-4" type="submit" onclick="doSignIn()">登 入</button>
+						  
+						</div>
+					</form>
+				</div>
+				<div class="col-sm-6">
 				</div>
 			</div>
-			<div class="col-sm-6">
-			</div>
 		</div>
-		
-		<form class="form-signin">
-			
-		  
-		  
-		</form>
 	</div>
 	
 	<!-- Footer -->
