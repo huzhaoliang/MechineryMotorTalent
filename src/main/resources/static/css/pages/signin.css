@@ -17,15 +17,30 @@ input[placeholder]{
 	height:4em;
 	/* border: 2px solid #1E90FF; */
 }
-.checkbox {
-	height: 1.5em;
-	width: 1.5em;
+.form-check-input {
+	height: 1em;
+	width: 1em;
+	/* color: red;
+	background-color:green;
+	border: 1px solid red; */
 }
-.tab-pane span {
-	font-size: 1.5em;
+.tab-content > span {
+	font-size: 1em;
 }
 .btn-block {
 	height: 3em;
 	font-size: 1.5em;
 	background-color: #1E90FF;
+}
+
+.anouncement {
+	font-size: 1.2em;
+}
+
+.title {
+	font-size: 1.5em;
+	color: #1E90FF;
+}
+.content {
+	color: #676767;
 }

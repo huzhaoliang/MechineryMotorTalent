@@ -43,11 +43,11 @@
 	<nav th:replace="nav :: nav_copy">
 	</nav>
 	<div class="container mt-5" id="signin_container">
-		<div class="registry p-4">
+		<div class="registry py-4">
 			<div class="row justify-content-left align-items-center">
 				<div class="col-sm-6">
 					<form class="form-signin">
-						<ul class="nav nav-tabs">
+						<ul class="nav nav-tabs mb-5">
 						  <li class="nav-item mr-5">
 						    <a class="nav-link active" data-toggle="tab" href="#individual">个人登录</a>
 						  </li>
@@ -55,31 +55,52 @@
 						    <a class="nav-link" data-toggle="tab" href="#enterprise">企业登录</a>
 						  </li>
 						</ul>
-						<div class="tab-content">
+						<div class="tab-content mt-5">
 						  <div class="tab-pane active container px-0" id="individual">
-						  	<label for="input_email" class="sr-only">邮箱</label>
-						    <input type="email" id="input_email" class="form-control rounded-0 my-4" placeholder="邮箱地址" required autofocus>
-						    <label for="input_password" class="sr-only">密码</label>
-						    <input type="password" id="input_password" class="form-control rounded-0 my-4" placeholder="输入密码" required>
-						    <input class="checkbox rounded-1 mb-3" type="checkbox" checked="checked">
-						    <span>记住我的账号</span>
+						  	<div class="form-group mx-0 my-4">
+						  		<label for="input_email" class="sr-only">邮箱</label>
+						    	<input type="email" id="input_email" class="form-control rounded-0" placeholder="邮箱地址" required autofocus>
+						  	</div>
+						  	<div class="form-group mx-0 my-4">
+						  		<label for="input_password" class="sr-only">密码</label>
+						    	<input type="password" id="input_password" class="form-control rounded-0" placeholder="输入密码" required>
+						  	</div>
 						  </div>
 						  <div class="tab-pane container px-0" id="enterprise">
-						  	<label for="input_account" class="sr-only">账号</label>
-						    <input type="text" id="input_account" class="form-control rounded-0 my-4" placeholder="公司账号" required autofocus>
-						  	<label for="input_email" class="sr-only">邮箱</label>
-						    <input type="email" id="input_email" class="form-control rounded-0 my-4" placeholder="邮箱地址" required>
-						    <label for="input_password" class="sr-only">密码</label>
-						    <input type="password" id="input_password" class="form-control rounded-0 my-4" placeholder="输入密码" required>
-						    <input class="checkbox rounded-1 mb-3" type="checkbox" checked="checked">
-						    <span>记住我的账号</span>
+						  	<div class="form-group mx-0 my-4">
+							  	<label for="input_account" class="sr-only">账号</label>
+							    <input type="text" id="input_account" class="form-control rounded-0" placeholder="公司账号" required autofocus>
+						  	</div>
+						  	<div class="form-group mx-0 my-4">
+						  		<label for="input_email" class="sr-only">邮箱</label>
+						    	<input type="email" id="input_email" class="form-control rounded-0" placeholder="邮箱地址" required>
+						  	</div>
+						  	<div class="form-group mx-0 my-4">
+						  		<label for="input_password" class="sr-only">密码</label>
+						    	<input type="password" id="input_password" class="form-control rounded-0" placeholder="输入密码" required>
+						  	</div>
+						  </div>
+						  <div class="form-check my-4">
+						    <label class="form-check-label">
+						      <input class="form-check-input rounded-1" type="checkbox" checked="checked"> 记住我的账号
+						    </label>
 						  </div>
 					  	  <button class="btn btn-block btn-lg text-white align-middle rounded-0 mt-4" type="submit" onclick="doSignIn()">登 入</button>
-						  
+						  <div class="anouncement text-center my-3 mx-auto">
+						  	<a class="mx-auto" href="#">找回密码</a>
+						  	<span> | </span>
+						  	<a class="" href="#" onclick="toSignUp()">免费注册</a>
+						  </div>
 						</div>
 					</form>
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-6 pl-5">
+					<p class="title">网络招聘</p>
+					<p class="content">精准细分行业职位，设置符合行业用人特点的人才检索系统，为招聘企业提供精准、便捷的专业服务。</p>
+					<p class="title">行业猎头</p>
+					<p class="content">依托强大的专业人才储备，全国21家分支机构，为客户提供全面、专业的高级人才猎头服务、中高级人才寻访服务。</p>
+					<p class="title">校园招聘</p>
+					<p class="content">建立行业院校为核心的校园招聘网络，提供全方位的校园招聘解决方案，为企业与人才搭建校园沟通平台。</p>
 				</div>
 			</div>
 		</div>
