@@ -1,7 +1,3 @@
-.registry {
-	/* border: 1px solid #d0d0d0; */
-}
-
 .registry .nav-link {
 	font-size: 2em;
 	color: #676767;
@@ -13,16 +9,15 @@
 	/* font-weight: bold; */
 	color: #367dc9;
 }
+label[for] {
+	font-size: 1.2em;
+}
 input[placeholder]{
 	height:4em;
-	/* border: 2px solid #1E90FF; */
 }
 .form-check-input {
 	height: 1em;
 	width: 1em;
-	/* color: red;
-	background-color:green;
-	border: 1px solid red; */
 }
 .tab-content > span {
 	font-size: 1em;
@@ -33,7 +28,7 @@ input[placeholder]{
 	background-color: #1E90FF;
 }
 
-.anouncement {
+.annotation {
 	font-size: 1.2em;
 }
 
