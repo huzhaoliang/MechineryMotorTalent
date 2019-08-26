@@ -27,32 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         // http.authorizeRequests()每个匹配器按照它们被声明的顺序被考虑。
         http.authorizeRequests()
             // 所有用户均可访问的资源
-            .antMatchers("/static/font-awesome-4.7.0/**",
-            			"/static/fonts/**",
-            			"/static/icons-reference/**",
-            			"/static/css/**",
-            			"/static/js/**",
-            			"/static/img/**",
-            			"/static/images/**",
-            			"/static/bootstrap-4.3.1-dist/**",
-            			"/static/mmt/**",
-            			"/static/bootstrap/**",
-            			"/api/signUp",
-            			"/api/signIn",
-            			"/api/verifyToken",
-            			"/api/hotJobs",
-            			"/index",
-            			"/signin",
-            			"/signup",
-            			"/job",
-            			"/enterprise",
-            			"/search",
-            			"/search_jobfunction",
-            			"/search_area",
-            			"/applyjob",
-            			"/enterprise",
-            			"/job",
-            			"/"
+            .antMatchers("/css/**", "/js/**",
+            		"/static/css/**", "/static/js/**","/static/media/**",
+            		    "/static/**",
+            			"/public/*",
+            			"/api/*",
+            			"**",
+            			"*"
             		     )
             .permitAll()
             // ROLE_USER的权限才能访问的资源

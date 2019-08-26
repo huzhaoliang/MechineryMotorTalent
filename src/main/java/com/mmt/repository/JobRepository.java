@@ -18,8 +18,10 @@ public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaReposit
 	List<Job> findJobsByCompanyId(@Param("companyId")Long companyId);
 	
 	
-	@Query(value = "select a.* from job a", nativeQuery = true)
+	//@Query(value = "select j.id, j.name, j.edu, j.salary, j.city, j.exp from job j", nativeQuery = true)
+	@Query(value = "select j.* from job j", nativeQuery = true)
 	List<Job> findHotJobs();
+	
 	
 	
 	

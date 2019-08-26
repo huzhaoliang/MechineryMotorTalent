@@ -1,8 +1,9 @@
 package com.mmt.restcontroller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,22 +30,45 @@ public class JobRestController
 	JobService jobService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/hotJobs", method = RequestMethod.GET)
-	public String getHotJobs()
+	@RequestMapping(value = "hotJobs", method = RequestMethod.GET)
+	public JSONArray getHotJobs()
 	{
-		//logger.info(jobService.getHotJobs().toString());
 		
-		//logger.info(jobService.getHotJobs().toString());
+
 		List<Job> jobs = new ArrayList<Job>();
 		jobs = jobService.getHotJobs();
 		
-		//JSONArray jsonArray = JSONArray.fromObject(params.get("goodsList"));
-		Gson gson = new Gson(); 
-		String str = gson.toJson(jobs);
+		
+		if(jobs == null)
+		{
+			return null;
+		}
+		Map<String, Object> jobsMap = new HashMap<String, Object>();
+		
+		int index = 0;
+		while(index < jobs.size())
+		{
+			jobsMap.put("id", jobs.get(index).getId());
+			
+			
+			index++;
+		}
+		
+		
+		JSONArray jobJSONArray = null;
+		
+		
+			jobJSONArray = JSONArray.parseArray(jobsMap.toString());
+			System.out.println("####");
+			System.out.println(jobJSONArray.toString());
+		
+		//Gson gson = new Gson(); 
+		//String str = gson.toJson(jobs);
 				
 				
-		System.out.println(str);
-		return str;
+		
+		return jobJSONArray;
+		
 		
 	}
 	
