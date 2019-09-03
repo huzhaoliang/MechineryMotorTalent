@@ -30,7 +30,7 @@ public class JobRestController
 	JobService jobService;
 	
 	@ResponseBody
-	@RequestMapping(value = "hotJobs", method = RequestMethod.GET)
+	@RequestMapping(value = "hotJobs", method = RequestMethod.GET, produces="application/json")
 	public JSONArray getHotJobs()
 	{
 		
@@ -43,31 +43,31 @@ public class JobRestController
 		{
 			return null;
 		}
-		Map<String, Object> jobsMap = new HashMap<String, Object>();
-		
-		int index = 0;
-		while(index < jobs.size())
-		{
-			jobsMap.put("id", jobs.get(index).getId());
-			
-			
-			index++;
-		}
-		
-		
-		JSONArray jobJSONArray = null;
-		
-		
-			jobJSONArray = JSONArray.parseArray(jobsMap.toString());
-			System.out.println("####");
-			System.out.println(jobJSONArray.toString());
+//		Map<String, Object> jobsMap = new HashMap<String, Object>();
+//		
+//		int index = 0;
+//		while(index < jobs.size())
+//		{
+//			jobsMap.put("id", jobs.get(index).getId());
+//			
+//			
+//			index++;
+//		}
+//		
+//		
+//		JSONArray jobJSONArray = null;
+//		
+//		
+//			jobJSONArray = JSONArray.parseArray(jobsMap.toString());
+//			System.out.println("####");
+//			System.out.println(jobJSONArray.toString());
 		
 		//Gson gson = new Gson(); 
 		//String str = gson.toJson(jobs);
 				
 				
 		
-		return jobJSONArray;
+		return null;
 		
 		
 	}
