@@ -31,18 +31,18 @@ public class JobRestController
 	
 	@ResponseBody
 	@RequestMapping(value = "hotJobs", method = RequestMethod.GET, produces="application/json")
-	public JSONArray getHotJobs()
+	public String getHotJobs()
 	{
 		
 
-		List<Job> jobs = new ArrayList<Job>();
-		jobs = jobService.getHotJobs();
+		List<Job> jobs = jobService.getHotJobs();
 		
-		
-		if(jobs == null)
+		for(int i = 0; i < jobs.size(); i++)
 		{
-			return null;
+			System.out.println(jobs.get(i));
 		}
+		
+		
 //		Map<String, Object> jobsMap = new HashMap<String, Object>();
 //		
 //		int index = 0;
@@ -55,7 +55,28 @@ public class JobRestController
 //		}
 //		
 //		
-//		JSONArray jobJSONArray = null;
+		JSONArray jsonArray = new JSONArray();
+		
+		
+		
+		
+		for(int i = 0; i < jobs.size(); i++)
+		{
+			List<String> jobList = new ArrayList<String>();
+			jobList.add(jobs.get(i).getName());
+			jobList.add(jobs.get(i).getExp());
+			jobList.add(jobs.get(i).getEdu());
+			jobList.add(jobs.get(i).getStartSalary());
+			jobList.add(jobs.get(i).getEndSalary());
+			
+			
+			jsonArray.add(jobList);
+		}
+		
+		
+		return jsonArray.toJSONString();
+		
+		
 //		
 //		
 //			jobJSONArray = JSONArray.parseArray(jobsMap.toString());
@@ -67,7 +88,7 @@ public class JobRestController
 				
 				
 		
-		return null;
+		
 		
 		
 	}
