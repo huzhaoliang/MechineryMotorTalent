@@ -44,6 +44,7 @@ public class User {
 	private String resumePath;
 	private Date refreshTime;
 	private String token;
+	private String permission;
 	
 	
 	// to be added: 投递职位，收藏职位
@@ -246,6 +247,12 @@ public class User {
 	public void setToken(String _token)
 	{
 		this.token = _token;
+	}
+	public String getPermission() {
+		return permission;
+	}
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 	
 	
