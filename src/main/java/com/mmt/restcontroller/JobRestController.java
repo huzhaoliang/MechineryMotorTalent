@@ -37,10 +37,10 @@ public class JobRestController
 
 		List<Job> jobs = jobService.getHotJobs();
 		
-		for(int i = 0; i < jobs.size(); i++)
-		{
-			System.out.println(jobs.get(i));
-		}
+//		for(int i = 0; i < jobs.size(); i++)
+//		{
+//			System.out.println(jobs.get(i));
+//		}
 		
 		
 //		Map<String, Object> jobsMap = new HashMap<String, Object>();
@@ -63,6 +63,7 @@ public class JobRestController
 		for(int i = 0; i < jobs.size(); i++)
 		{
 			List<String> jobList = new ArrayList<String>();
+			jobList.add(String.valueOf(jobs.get(i).getId()));
 			jobList.add(jobs.get(i).getName());
 			jobList.add(jobs.get(i).getExp());
 			jobList.add(jobs.get(i).getEdu());
