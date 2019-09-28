@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ import org.json.*;
 
 
 
+@CrossOrigin
 @RestController
 @RequestMapping(value="/api/")
 public class UserRestController 
@@ -69,6 +71,7 @@ public class UserRestController
 			user.setEmail(_email);
 			user.setPassword(_pass);
 			user.setStatus(0);
+			
 			userService.insertUser(user);
 			logger.info("############ current new user is regisitered ############");
 		}
