@@ -32,36 +32,15 @@ public class JobRestController
 	@Autowired
 	JobService jobService;
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "hotJobs", method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
 	public String getHotJobs()
 	{
 		
-
 		List<Job> jobs = jobService.getHotJobs();
 		
-//		for(int i = 0; i < jobs.size(); i++)
-//		{
-//			System.out.println(jobs.get(i));
-//		}
-		
-		
-//		Map<String, Object> jobsMap = new HashMap<String, Object>();
-//		
-//		int index = 0;
-//		while(index < jobs.size())
-//		{
-//			jobsMap.put("id", jobs.get(index).getId());
-//			
-//			
-//			index++;
-//		}
-//		
-//		
 		JSONArray jsonArray = new JSONArray();
-		
-		
-		
 		
 		for(int i = 0; i < jobs.size(); i++)
 		{
@@ -79,23 +58,35 @@ public class JobRestController
 		
 		
 		return jsonArray.toJSONString();
-		
-		
-//		
-//		
-//			jobJSONArray = JSONArray.parseArray(jobsMap.toString());
-//			System.out.println("####");
-//			System.out.println(jobJSONArray.toString());
-		
-		//Gson gson = new Gson(); 
-		//String str = gson.toJson(jobs);
 				
-				
-		
-		
-		
 		
 	}
 	
+	
+	@RequestMapping(value = "searchJobs", method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
+	public String searchJobs()
+	{
+		List<Job> jobs = jobService.getHotJobs();
+		
+		JSONArray jsonArray = new JSONArray();
+		
+		for(int i = 0; i < jobs.size(); i++)
+		{
+			List<String> jobList = new ArrayList<String>();
+			jobList.add(String.valueOf(jobs.get(i).getId()));
+			jobList.add(jobs.get(i).getName());
+			jobList.add(jobs.get(i).getExp());
+			jobList.add(jobs.get(i).getEdu());
+			jobList.add(jobs.get(i).getStartSalary());
+			jobList.add(jobs.get(i).getEndSalary());
+			
+			
+			jsonArray.add(jobList);
+		}
+		
+		
+		return jsonArray.toJSONString();
+	}
 	
 }
