@@ -35,30 +35,10 @@ public class JobRestController
 	
 	@RequestMapping(value = "hotJobs", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public String getHotJobs()
+	public List<Job> getHotJobs()
 	{
-		
-		List<Job> jobs = jobService.getHotJobs();
-		
-		JSONArray jsonArray = new JSONArray();
-		
-		for(int i = 0; i < jobs.size(); i++)
-		{
-			List<String> jobList = new ArrayList<String>();
-			jobList.add(String.valueOf(jobs.get(i).getId()));
-			jobList.add(jobs.get(i).getName());
-			jobList.add(jobs.get(i).getExp());
-			jobList.add(jobs.get(i).getEdu());
-			jobList.add(jobs.get(i).getStartSalary());
-			jobList.add(jobs.get(i).getEndSalary());
-			
-			
-			jsonArray.add(jobList);
-		}
-		
-		
-		return jsonArray.toJSONString();
-				
+
+		return jobService.getHotJobs();
 		
 	}
 	

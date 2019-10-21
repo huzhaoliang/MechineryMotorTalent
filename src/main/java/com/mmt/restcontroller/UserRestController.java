@@ -79,8 +79,9 @@ public class UserRestController
 	}
 	
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST, produces = "application/json")
+	@ResponseBody
 	public User signIn(@RequestParam("email") String _email, @RequestParam("password") String _pass)
 	{
 		this.jsonHashMap = new HashMap<String, Object>();
@@ -137,14 +138,11 @@ public class UserRestController
 		//String str = jsonObject.toJSONString();
 		logger.info(jsonObject.toString());
 		//return jsonObject.toString();
-		
-		
+		logger.info(user.getBirth());
+		logger.info(user.getName());
 		return user;
 
 	}
-	
-	
-	
 	
 	
 	//to verify if user is signed in

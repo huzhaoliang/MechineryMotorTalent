@@ -79,7 +79,12 @@ public class JobServiceImpl implements JobService
 	@Override
 	public List<Job> getHotJobs() 
 	{
-		return jobRepository.findHotJobs();	
+		List<Job> jobs = jobRepository.findHotJobs();	
+		System.out.println("##############################");
+		System.out.println(jobs.get(0).getCity());
+		System.out.println("##############################");
+		
+		return jobs;
 	}
 
 	@Override

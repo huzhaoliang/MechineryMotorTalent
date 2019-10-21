@@ -154,8 +154,8 @@ public class Job {
 	/**
 	 * @return the city
 	 */
-	public City getCity() {
-		return city;
+	public String getCity() {
+		return city.getName();
 	}
 	/**
 	 * @param city the city to set
