@@ -11,6 +11,8 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +32,7 @@ import com.mmt.service.JobService;
 @Service("JobService")
 public class JobServiceImpl implements JobService
 {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private JobRepository jobRepository;
@@ -67,7 +70,8 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public void deleteJobs(List<Job> jobs) {
+	public void deleteJobs(List<Job> jobs) 
+	{
 		jobRepository.deleteInBatch(jobs);
 	}
 
@@ -79,12 +83,8 @@ public class JobServiceImpl implements JobService
 	@Override
 	public List<Job> getHotJobs() 
 	{
-		List<Job> jobs = jobRepository.findHotJobs();	
-		System.out.println("##############################");
-		System.out.println(jobs.get(0).getCity());
-		System.out.println("##############################");
+		return jobRepository.findHotJobs();
 		
-		return jobs;
 	}
 
 	@Override

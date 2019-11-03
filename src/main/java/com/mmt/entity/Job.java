@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job")
@@ -36,6 +36,7 @@ public class Job {
 	private Long number;
 	private String startSalary;
 	private String endSalary;
+	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
 	private City city;
@@ -43,7 +44,7 @@ public class Job {
 	private String exp;
 	private String tag;
 	private Date publishTime;
-	private Clob description;
+	private String description;
 	private String contact;
 	private String contactPhone;
 	private String email;
@@ -154,8 +155,8 @@ public class Job {
 	/**
 	 * @return the city
 	 */
-	public String getCity() {
-		return city.getName();
+	public City getCity() {
+		return city;
 	}
 	/**
 	 * @param city the city to set
@@ -214,13 +215,13 @@ public class Job {
 	/**
 	 * @return the description
 	 */
-	public Clob getDescription() {
+	public String getDescription() {
 		return description;
 	}
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(Clob description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 	/**

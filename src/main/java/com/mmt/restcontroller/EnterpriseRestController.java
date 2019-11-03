@@ -34,4 +34,13 @@ public class EnterpriseRestController
 		return null;
 	}
 	*/
+	
+	public void showCompany()
+	{
+		
+	}
+	
+	
+	
+	
 }
