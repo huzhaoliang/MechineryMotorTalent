@@ -19,8 +19,12 @@ public interface JobRepository extends JpaSpecificationExecutor<Job>, JpaReposit
 	
 	
 	//@Query(value = "select j.id, j.name, j.edu, j.salary, j.city, j.exp from job j", nativeQuery = true)
-	@Query(value = "select j.* from job j order by publish_time", nativeQuery = true)
+	@Query(value = "select j.* from job j order by publish_time Desc", nativeQuery = true)
 	List<Job> findHotJobs();
+	
+	@Query(value = "select j.* from job j order by publish_time", nativeQuery = true)
+	List<Job> searchJobs();
+	
 	
 	@Modifying
 	@Transactional

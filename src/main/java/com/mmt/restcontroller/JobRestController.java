@@ -38,49 +38,15 @@ public class JobRestController
 	@ResponseBody
 	public List<Job> getHotJobs()
 	{
-
 		return jobService.getHotJobs();
-		
 	}
 	
 	
 	@RequestMapping(value = "searchJobs", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public List<Job> searchJobs() throws Exception
+	public List<Job> searchJobs(@RequestParam("position") String _position, @RequestParam("city") String _city, @RequestParam("company") String _company)
 	{
-		 jobService.getHotJobs();
-		 return null;
-//		List<Job> jobs = jobService.getHotJobs();
-//		List<HotJobs> hotJobsList;
-//		if(jobs.size()>0)
-//		{
-//			hotJobsList = new ArrayList<HotJobs>();
-//			
-//			System.out.print("###Hello World###");
-//			
-//		}
-//		else
-//		{
-//			throw new Exception("no job fund");
-//		}
-//		
-//		
-//		for(int i = 0; i < jobs.size(); i++)
-//		{
-//			HotJobs hotJob = new HotJobs();
-//			
-//			hotJob.setJobId(jobs.get(i).getId());
-//			hotJob.setJobName(jobs.get(i).getName());
-//			hotJob.setCity(jobs.get(i).getCity().getName());
-//			hotJob.setEducation(jobs.get(i).getEdu());
-//			hotJob.setExperence(jobs.get(i).getExp());
-//			hotJob.setStartSalary(jobs.get(i).getStartSalary());
-//			hotJob.setEndSalary(jobs.get(i).getEndSalary());
-//			hotJob.setDescription(jobs.get(i).getDescription().toString());
-//			hotJobsList.add(hotJob);
-//		}
-//		
-//		return hotJobsList;
+		 return jobService.searchJobs(_position, _city, _company);
 	}
 	
 	public Job showJob()

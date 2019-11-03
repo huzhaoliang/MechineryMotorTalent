@@ -84,6 +84,12 @@ public class JobServiceImpl implements JobService
 	public List<Job> getHotJobs() 
 	{
 		return jobRepository.findHotJobs();
+	}
+	
+	@Override
+	public List<Job> searchJobs(String _position, String _city, String _company)
+	{
+		return null;
 		
 	}
 

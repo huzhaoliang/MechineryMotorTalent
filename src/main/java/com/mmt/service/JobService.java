@@ -20,6 +20,8 @@ public interface JobService
 	
 	List<Job> getHotJobs();
 	
+	List<Job> searchJobs(String _position, String _city, String _company);
+	
 	void deleteJobs(List<Job> jobs);
 	
 	void deleteJobById(Long id);
