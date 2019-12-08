@@ -87,11 +87,32 @@ public class JobServiceImpl implements JobService
 	}
 	
 	@Override
-	public List<Job> searchJobs(String _position, String _city, String _company)
-	{
+	public List<Job> searchJobs(String _id, String _position, String _city, String _company)
+	{	
+		
+		if(_id==null)
+		{
+			List<Predicate> predicates = new ArrayList<>();
+			if((null != _position)&&(""!=_position))
+			{
+				
+			}
+		}
+		else
+		{
+			
+			
+			
+			
+			
+		}
+		
 		return null;
 		
 	}
+	
+	
+	
 
 	@Override
 	public List<Job> findJobsByAreaJobFunctionIds(List<Long> cityIds, List<Long> jobTypeIds) {

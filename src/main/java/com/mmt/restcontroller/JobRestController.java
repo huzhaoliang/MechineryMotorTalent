@@ -42,11 +42,15 @@ public class JobRestController
 	}
 	
 	
-	@RequestMapping(value = "searchJobs", method = RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "jobs", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
-	public List<Job> searchJobs(@RequestParam("position") String _position, @RequestParam("city") String _city, @RequestParam("company") String _company)
+	public List<Job> jobs(@RequestParam(value="id", required=false) String _id, @RequestParam(value="position", required=false) String _position, @RequestParam(value="city",required=false) String _city, @RequestParam(value="company", required=false) String _company)
 	{
-		 return jobService.searchJobs(_position, _city, _company);
+		logger.info("parameters are : " +  _id  + " " + _position + " " + _city + " " +  _company );
+		
+		
+		return jobService.searchJobs(_id,_position, _city, _company);
+		
 	}
 	
 	public Job showJob()
