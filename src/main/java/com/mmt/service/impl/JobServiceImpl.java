@@ -114,25 +114,28 @@ public class JobServiceImpl implements JobService
 				@Override
 				public Predicate toPredicate(Root<Job> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) 
 				{
+					List<Predicate> predicatesList = new ArrayList<>();
 					Predicate p = null;
-					if((_position!=null)||("".equalsIgnoreCase(_position)==false))
+					if((_position!=null)&&("".equalsIgnoreCase(_position)==false))
 					{
 						Path<Object> position = root.get("name");
-						p = criteriaBuilder.and(p, criteriaBuilder.equal(position, _position));
+						predicatesList.add(criteriaBuilder.equal(position, _position));
 					}
 					
-					if((_city!=null)||("".equalsIgnoreCase(_city)==false))
+					if((_city!=null)&&("".equalsIgnoreCase(_city)==false))
 					{
 						Path<Object> city = root.get("city");
-						p = criteriaBuilder.and(p, criteriaBuilder.equal(city, _city));
+						predicatesList.add(criteriaBuilder.equal(city, _city));
 					}
 					
-					if((_company!=null)||("".equalsIgnoreCase(_company)==false))
+					if((_company!=null)&&("".equalsIgnoreCase(_company)==false))
 					{
 						Path<Object> company = root.get("name");
-						p = criteriaBuilder.and(p, criteriaBuilder.equal(company, _company));
+						predicatesList.add(criteriaBuilder.equal(company, _company));
 					}
 					
+					Predicate[] predicates = new Predicate[predicatesList.size()];
+					p = criteriaBuilder.and(predicatesList.toArray(predicates));
 					return p;
 
 				}	
