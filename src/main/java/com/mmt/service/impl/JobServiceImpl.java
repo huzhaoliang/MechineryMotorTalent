@@ -14,9 +14,10 @@ import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -76,7 +77,8 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public void deleteJobById(Long id) {
+	public void deleteJobById(Long id) 
+	{
 		jobRepository.deleteJobById(id);
 	}
 
@@ -89,25 +91,57 @@ public class JobServiceImpl implements JobService
 	@Override
 	public List<Job> searchJobs(String _id, String _position, String _city, String _company)
 	{	
+		Specification<Job> spec;
 		
-		if(_id==null)
+		if((_id!=null)||("".equalsIgnoreCase(_id)==false))
 		{
-			List<Predicate> predicates = new ArrayList<>();
-			if((null != _position)&&(""!=_position))
+			spec = new Specification<Job>() 
 			{
-				
-			}
+				@Override
+				public Predicate toPredicate(Root<Job> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) 
+				{
+					Path<Object> id = root.get("id");
+					Predicate p = criteriaBuilder.equal(id, _id);
+					return p;
+				}	
+			};
+			
 		}
 		else
 		{
-			
-			
-			
+			spec = new Specification<Job>() 
+			{
+				@Override
+				public Predicate toPredicate(Root<Job> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) 
+				{
+					Predicate p = null;
+					if((_position!=null)||("".equalsIgnoreCase(_position)==false))
+					{
+						Path<Object> position = root.get("name");
+						p = criteriaBuilder.and(p, criteriaBuilder.equal(position, _position));
+					}
+					
+					if((_city!=null)||("".equalsIgnoreCase(_city)==false))
+					{
+						Path<Object> city = root.get("city");
+						p = criteriaBuilder.and(p, criteriaBuilder.equal(city, _city));
+					}
+					
+					if((_company!=null)||("".equalsIgnoreCase(_company)==false))
+					{
+						Path<Object> company = root.get("name");
+						p = criteriaBuilder.and(p, criteriaBuilder.equal(company, _company));
+					}
+					
+					return p;
+
+				}	
+			};
 			
 			
 		}
-		
-		return jobRepository.findHotJobs();
+			
+		return jobRepository.findAll(spec);
 		
 		
 	}
