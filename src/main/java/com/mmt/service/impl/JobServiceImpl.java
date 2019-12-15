@@ -92,7 +92,6 @@ public class JobServiceImpl implements JobService
 	public List<Job> searchJobs(String _id, String _position, String _city, String _company)
 	{	
 		Specification<Job> spec;
-		
 		if((_id!=null)||("".equalsIgnoreCase(_id)==false))
 		{
 			spec = new Specification<Job>() 
@@ -105,7 +104,6 @@ public class JobServiceImpl implements JobService
 					return p;
 				}	
 			};
-			
 		}
 		else
 		{
@@ -115,38 +113,30 @@ public class JobServiceImpl implements JobService
 				public Predicate toPredicate(Root<Job> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) 
 				{
 					List<Predicate> predicatesList = new ArrayList<>();
-					Predicate p = null;
 					if((_position!=null)&&("".equalsIgnoreCase(_position)==false))
 					{
 						Path<Object> position = root.get("name");
 						predicatesList.add(criteriaBuilder.equal(position, _position));
 					}
-					
 					if((_city!=null)&&("".equalsIgnoreCase(_city)==false))
 					{
-						Path<Object> city = root.get("city");
+						Path<Object> city = root.get("city").get("name");
 						predicatesList.add(criteriaBuilder.equal(city, _city));
 					}
-					
 					if((_company!=null)&&("".equalsIgnoreCase(_company)==false))
 					{
-						Path<Object> company = root.get("name");
+						Path<Object> company = root.get("company").get("name");
 						predicatesList.add(criteriaBuilder.equal(company, _company));
 					}
-					
 					Predicate[] predicates = new Predicate[predicatesList.size()];
-					p = criteriaBuilder.and(predicatesList.toArray(predicates));
+					Predicate p = criteriaBuilder.and(predicatesList.toArray(predicates));
 					return p;
-
 				}	
 			};
 			
-			
 		}
-			
 		return jobRepository.findAll(spec);
-		
-		
+
 	}
 	
 	
